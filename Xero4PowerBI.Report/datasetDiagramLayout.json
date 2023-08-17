@@ -343,6 +343,16 @@
             "width": 234
           },
           "zIndex": 0
+        },
+        {
+          "location": {},
+          "nodeIndex": "Logo",
+          "nodeLineageTag": "1b3e769b-ee62-4d2f-a25b-bc3d4fd3716c",
+          "size": {
+            "height": 104,
+            "width": 234
+          },
+          "zIndex": 0
         }
       ],
       "name": "All tables",
