@@ -1,0 +1,904 @@
+{
+  "version": "1.1.0",
+  "diagrams": [
+    {
+      "ordinal": 0,
+      "scrollPosition": {
+        "x": 0,
+        "y": 0
+      },
+      "nodes": [
+        {
+          "location": {
+            "x": 0,
+            "y": 217.6
+          },
+          "nodeIndex": "Accounts",
+          "size": {
+            "height": 300,
+            "width": 234
+          },
+          "zIndex": 9
+        },
+        {
+          "location": {
+            "x": 283.4,
+            "y": 489
+          },
+          "nodeIndex": "AccountsClass",
+          "size": {
+            "height": 248,
+            "width": 234
+          },
+          "zIndex": 10
+        },
+        {
+          "location": {
+            "x": 578.8,
+            "y": 0
+          },
+          "nodeIndex": "BalanceSheet",
+          "size": {
+            "height": 176,
+            "width": 234
+          },
+          "zIndex": 11
+        },
+        {
+          "location": {
+            "x": 1557.075,
+            "y": 422.653125
+          },
+          "nodeIndex": "BalanceSheetByMonth",
+          "size": {
+            "height": 176,
+            "width": 234
+          },
+          "zIndex": 12
+        },
+        {
+          "location": {
+            "x": 1786.5,
+            "y": 0
+          },
+          "nodeIndex": "BudgetSummary",
+          "size": {
+            "height": 128,
+            "width": 234
+          },
+          "zIndex": 14
+        },
+        {
+          "location": {
+            "x": 1595.9,
+            "y": 688.9
+          },
+          "nodeIndex": "BudgetSummaryByMonth",
+          "size": {
+            "height": 133,
+            "width": 252
+          },
+          "zIndex": 15
+        },
+        {
+          "location": {
+            "x": 1632.9,
+            "y": 1022
+          },
+          "nodeIndex": "Contacts",
+          "size": {
+            "height": 300,
+            "width": 234
+          },
+          "zIndex": 16
+        },
+        {
+          "location": {
+            "x": 689.69999999999982,
+            "y": 981.3
+          },
+          "nodeIndex": "Dates",
+          "size": {
+            "height": 224,
+            "width": 234
+          },
+          "zIndex": 17
+        },
+        {
+          "location": {
+            "x": 1806.3,
+            "y": 234.8
+          },
+          "nodeIndex": "DatesByMonth",
+          "size": {
+            "height": 248,
+            "width": 234
+          },
+          "zIndex": 18
+        },
+        {
+          "location": {
+            "x": 1187.2,
+            "y": 664.3
+          },
+          "nodeIndex": "DatesByYear",
+          "size": {
+            "height": 152,
+            "width": 234
+          },
+          "zIndex": 19
+        },
+        {
+          "location": {
+            "x": 943.30000000000018,
+            "y": 0
+          },
+          "nodeIndex": "ExecutiveSummary",
+          "size": {
+            "height": 249,
+            "width": 233
+          },
+          "zIndex": 23
+        },
+        {
+          "location": {
+            "x": 2789.5,
+            "y": 876.6
+          },
+          "nodeIndex": "Organisation",
+          "size": {
+            "height": 300,
+            "width": 234
+          },
+          "zIndex": 25
+        },
+        {
+          "location": {
+            "x": 382.69999999999982,
+            "y": 243
+          },
+          "nodeIndex": "TrialBalance",
+          "size": {
+            "height": 152,
+            "width": 234
+          },
+          "zIndex": 21
+        },
+        {
+          "location": {
+            "x": 1439.5,
+            "y": 0
+          },
+          "nodeIndex": "ExecutiveSummaryType",
+          "size": {
+            "height": 128,
+            "width": 234
+          },
+          "zIndex": 22
+        },
+        {
+          "location": {
+            "x": 625.69999999999982,
+            "y": 465
+          },
+          "nodeIndex": "BalanceSheetReportIndented",
+          "size": {
+            "height": 296,
+            "width": 420
+          },
+          "zIndex": 5
+        },
+        {
+          "location": {
+            "x": 2142.6000000000004,
+            "y": 346
+          },
+          "nodeIndex": "AccType",
+          "size": {
+            "height": 128,
+            "width": 234
+          },
+          "zIndex": 6
+        },
+        {
+          "location": {
+            "x": 2088.8,
+            "y": 759
+          },
+          "nodeIndex": "Invoices",
+          "size": {
+            "height": 300,
+            "width": 234
+          },
+          "zIndex": 7
+        },
+        {
+          "location": {
+            "x": 0,
+            "y": 1020.5999999999999
+          },
+          "nodeIndex": "Journals",
+          "size": {
+            "height": 248,
+            "width": 234
+          },
+          "zIndex": 8
+        },
+        {
+          "location": {
+            "x": 1141.5,
+            "y": 1071
+          },
+          "nodeIndex": "AccountsReceivable",
+          "size": {
+            "height": 300,
+            "width": 234
+          },
+          "zIndex": 1
+        },
+        {
+          "location": {
+            "x": 2968,
+            "y": 102
+          },
+          "nodeIndex": "Items",
+          "size": {
+            "height": 224,
+            "width": 234
+          },
+          "zIndex": 2
+        },
+        {
+          "location": {
+            "x": 3106.3999999999996,
+            "y": 511.4
+          },
+          "nodeIndex": "SalesItems",
+          "size": {
+            "height": 300,
+            "width": 234
+          },
+          "zIndex": 4
+        },
+        {
+          "location": {
+            "x": 6798.3,
+            "y": 98
+          },
+          "nodeIndex": "InvertIconList",
+          "size": {
+            "height": 104,
+            "width": 234
+          },
+          "zIndex": 0
+        },
+        {
+          "location": {
+            "x": 7173.3,
+            "y": 24
+          },
+          "nodeIndex": "DataFiles",
+          "size": {
+            "height": 128,
+            "width": 234
+          },
+          "zIndex": 0
+        },
+        {
+          "location": {
+            "x": 7548.3,
+            "y": 0
+          },
+          "nodeIndex": "ProfitAndLossMultiPeriodTable",
+          "size": {
+            "height": 176,
+            "width": 234
+          },
+          "zIndex": 0
+        },
+        {
+          "location": {
+            "x": 7945,
+            "y": 0
+          },
+          "nodeIndex": "AccountsTypes",
+          "size": {
+            "height": 128,
+            "width": 234
+          },
+          "zIndex": 0
+        },
+        {
+          "location": {
+            "x": 8688.7,
+            "y": 540.5
+          },
+          "nodeIndex": "AccountsTotals",
+          "size": {
+            "height": 248,
+            "width": 234
+          },
+          "zIndex": 0
+        },
+        {
+          "location": {
+            "x": 8292.1,
+            "y": 290.7
+          },
+          "nodeIndex": "AccountsTotalsTypes",
+          "size": {
+            "height": 152,
+            "width": 234
+          },
+          "zIndex": 0
+        },
+        {
+          "location": {
+            "x": 9085.4,
+            "y": 244.4
+          },
+          "nodeIndex": "Bills",
+          "size": {
+            "height": 300,
+            "width": 234
+          },
+          "zIndex": 0
+        }
+      ],
+      "name": "All tables",
+      "zoomValue": 100,
+      "pinKeyFieldsToTop": false,
+      "showExtraHeaderInfo": false,
+      "hideKeyFieldsWhenCollapsed": false,
+      "tablesLocked": false
+    },
+    {
+      "ordinal": 1,
+      "scrollPosition": {
+        "x": 26,
+        "y": 0
+      },
+      "nodes": [
+        {
+          "location": {
+            "x": 611,
+            "y": 229
+          },
+          "nodeIndex": "Contacts",
+          "size": {
+            "height": 300,
+            "width": 234
+          },
+          "zIndex": 0
+        },
+        {
+          "location": {
+            "x": 0,
+            "y": 0
+          },
+          "nodeIndex": "Dates",
+          "size": {
+            "height": 224,
+            "width": 234
+          },
+          "zIndex": 0
+        },
+        {
+          "location": {
+            "x": 319,
+            "y": 1
+          },
+          "nodeIndex": "AccountsReceivable",
+          "size": {
+            "height": 300,
+            "width": 234
+          },
+          "zIndex": 0
+        }
+      ],
+      "name": "AccountsReceivable",
+      "zoomValue": 100,
+      "pinKeyFieldsToTop": false,
+      "showExtraHeaderInfo": false,
+      "hideKeyFieldsWhenCollapsed": false,
+      "tablesLocked": false
+    },
+    {
+      "ordinal": 2,
+      "scrollPosition": {
+        "x": 128,
+        "y": 0
+      },
+      "nodes": [
+        {
+          "location": {
+            "x": 11,
+            "y": 138
+          },
+          "nodeIndex": "Invoices",
+          "size": {
+            "height": 300,
+            "width": 234
+          },
+          "zIndex": 0
+        },
+        {
+          "location": {
+            "x": 307,
+            "y": 0
+          },
+          "nodeIndex": "Dates",
+          "size": {
+            "height": 248,
+            "width": 234
+          },
+          "zIndex": 0
+        },
+        {
+          "location": {
+            "x": 680,
+            "y": 148
+          },
+          "nodeIndex": "SalesItems",
+          "size": {
+            "height": 295,
+            "width": 234
+          },
+          "zIndex": 0
+        }
+      ],
+      "name": "InvoiceItems",
+      "zoomValue": 100,
+      "pinKeyFieldsToTop": false,
+      "showExtraHeaderInfo": false,
+      "hideKeyFieldsWhenCollapsed": false,
+      "tablesLocked": false
+    },
+    {
+      "ordinal": 3,
+      "scrollPosition": {
+        "x": 0,
+        "y": 0
+      },
+      "nodes": [
+        {
+          "location": {
+            "x": 0,
+            "y": 242.60500341587647
+          },
+          "nodeIndex": "DatesByMonth",
+          "size": {
+            "height": 172,
+            "width": 222
+          },
+          "zIndex": 3
+        },
+        {
+          "location": {
+            "x": 613.42612262667194,
+            "y": 0
+          },
+          "nodeIndex": "Accounts",
+          "size": {
+            "height": 300,
+            "width": 234
+          },
+          "zIndex": 4
+        },
+        {
+          "location": {
+            "x": 290.14468885368848,
+            "y": 508.26800774767923
+          },
+          "nodeIndex": "ProfitAndLossMultiPeriodTable",
+          "size": {
+            "height": 248.879120126722,
+            "width": 231.20512879032742
+          },
+          "zIndex": 8
+        },
+        {
+          "location": {
+            "x": 943.97252107713666,
+            "y": 27.654456347923745
+          },
+          "nodeIndex": "AccountsTypes",
+          "size": {
+            "height": 128,
+            "width": 234
+          },
+          "zIndex": 5
+        },
+        {
+          "location": {
+            "x": 949.6587303398635,
+            "y": 247.70725949764818
+          },
+          "nodeIndex": "AccountsTotalsTypes",
+          "size": {
+            "height": 152.71489628456283,
+            "width": 234
+          },
+          "zIndex": 6
+        },
+        {
+          "location": {
+            "x": 954.55067244240354,
+            "y": 514.12148392276413
+          },
+          "nodeIndex": "AccountsTotals",
+          "size": {
+            "height": 248,
+            "width": 234
+          },
+          "zIndex": 7
+        },
+        {
+          "location": {
+            "x": 294.330282655545,
+            "y": 0
+          },
+          "nodeIndex": "BudgetSummaryByMonth",
+          "size": {
+            "height": 300,
+            "width": 234
+          },
+          "zIndex": 1
+        },
+        {
+          "location": {
+            "x": 619.71122634210951,
+            "y": 450.54700249995022
+          },
+          "nodeIndex": "Journals",
+          "size": {
+            "height": 300,
+            "width": 234
+          },
+          "zIndex": 2
+        }
+      ],
+      "name": "ProfitAndLossMultiPeriod",
+      "zoomValue": 79.553182037699784,
+      "pinKeyFieldsToTop": false,
+      "showExtraHeaderInfo": false,
+      "hideKeyFieldsWhenCollapsed": false,
+      "tablesLocked": false
+    },
+    {
+      "ordinal": 4,
+      "scrollPosition": {
+        "x": 0,
+        "y": 0
+      },
+      "nodes": [
+        {
+          "location": {
+            "x": 314,
+            "y": 68
+          },
+          "nodeIndex": "Bills",
+          "size": {
+            "height": 300,
+            "width": 234
+          },
+          "zIndex": 0
+        },
+        {
+          "location": {
+            "x": 731,
+            "y": 56
+          },
+          "nodeIndex": "Contacts",
+          "size": {
+            "height": 300,
+            "width": 234
+          },
+          "zIndex": 0
+        }
+      ],
+      "name": "Bills",
+      "zoomValue": 100,
+      "pinKeyFieldsToTop": false,
+      "showExtraHeaderInfo": false,
+      "hideKeyFieldsWhenCollapsed": false,
+      "tablesLocked": false
+    },
+    {
+      "ordinal": 5,
+      "scrollPosition": {
+        "x": 496,
+        "y": 1218.33203125
+      },
+      "nodes": [
+        {
+          "location": {
+            "x": 0,
+            "y": 2082
+          },
+          "nodeIndex": "DataFiles",
+          "size": {
+            "height": 384,
+            "width": 335
+          },
+          "zIndex": 0
+        },
+        {
+          "location": {
+            "x": 403,
+            "y": 0
+          },
+          "nodeIndex": "ProfitAndLossMultiPeriodTable",
+          "size": {
+            "height": 200,
+            "width": 234
+          },
+          "zIndex": 0
+        },
+        {
+          "location": {
+            "x": 985,
+            "y": 21
+          },
+          "nodeIndex": "Accounts",
+          "size": {
+            "height": 300,
+            "width": 234
+          },
+          "zIndex": 0
+        },
+        {
+          "location": {
+            "x": 794,
+            "y": 2357
+          },
+          "nodeIndex": "Journals",
+          "size": {
+            "height": 300,
+            "width": 234
+          },
+          "zIndex": 0
+        },
+        {
+          "location": {
+            "x": 712,
+            "y": 597
+          },
+          "nodeIndex": "BudgetSummary",
+          "size": {
+            "height": 272,
+            "width": 234
+          },
+          "zIndex": 0
+        },
+        {
+          "location": {
+            "x": 379,
+            "y": 880
+          },
+          "nodeIndex": "BudgetSummaryByMonth",
+          "size": {
+            "height": 300,
+            "width": 234
+          },
+          "zIndex": 0
+        },
+        {
+          "location": {
+            "x": 864,
+            "y": 988.5
+          },
+          "nodeIndex": "BalanceSheet",
+          "size": {
+            "height": 300,
+            "width": 234
+          },
+          "zIndex": 0
+        },
+        {
+          "location": {
+            "x": 585,
+            "y": 1264
+          },
+          "nodeIndex": "BalanceSheetByMonth",
+          "size": {
+            "height": 300,
+            "width": 234
+          },
+          "zIndex": 0
+        },
+        {
+          "location": {
+            "x": 284,
+            "y": 1290
+          },
+          "nodeIndex": "BalanceSheetReportIndented",
+          "size": {
+            "height": 296,
+            "width": 234
+          },
+          "zIndex": 0
+        },
+        {
+          "location": {
+            "x": 371,
+            "y": 1632
+          },
+          "nodeIndex": "Bills",
+          "size": {
+            "height": 300,
+            "width": 234
+          },
+          "zIndex": 0
+        },
+        {
+          "location": {
+            "x": 774,
+            "y": 1644
+          },
+          "nodeIndex": "Contacts",
+          "size": {
+            "height": 300,
+            "width": 234
+          },
+          "zIndex": 0
+        },
+        {
+          "location": {
+            "x": 486,
+            "y": 1999
+          },
+          "nodeIndex": "ExecutiveSummary",
+          "size": {
+            "height": 300,
+            "width": 234
+          },
+          "zIndex": 0
+        },
+        {
+          "location": {
+            "x": 809,
+            "y": 2000
+          },
+          "nodeIndex": "Invoices",
+          "size": {
+            "height": 300,
+            "width": 234
+          },
+          "zIndex": 0
+        },
+        {
+          "location": {
+            "x": 488,
+            "y": 2317
+          },
+          "nodeIndex": "Items",
+          "size": {
+            "height": 248,
+            "width": 234
+          },
+          "zIndex": 0
+        },
+        {
+          "location": {
+            "x": 12,
+            "y": 2622
+          },
+          "nodeIndex": "SalesItems",
+          "size": {
+            "height": 300,
+            "width": 234
+          },
+          "zIndex": 0
+        },
+        {
+          "location": {
+            "x": 797,
+            "y": 2706
+          },
+          "nodeIndex": "TrialBalance",
+          "size": {
+            "height": 300,
+            "width": 234
+          },
+          "zIndex": 0
+        },
+        {
+          "location": {
+            "x": 326,
+            "y": 2662
+          },
+          "nodeIndex": "Organisation",
+          "size": {
+            "height": 300,
+            "width": 234
+          },
+          "zIndex": 0
+        }
+      ],
+      "name": "Datafiles",
+      "zoomValue": 100,
+      "pinKeyFieldsToTop": false,
+      "showExtraHeaderInfo": false,
+      "hideKeyFieldsWhenCollapsed": false,
+      "tablesLocked": false
+    },
+    {
+      "ordinal": 6,
+      "scrollPosition": {
+        "x": 0,
+        "y": 0
+      },
+      "nodes": [
+        {
+          "location": {
+            "x": 716.4,
+            "y": 54.1
+          },
+          "nodeIndex": "Journals",
+          "size": {
+            "height": 300,
+            "width": 234
+          },
+          "zIndex": 0
+        },
+        {
+          "location": {
+            "x": 0,
+            "y": 68.9
+          },
+          "nodeIndex": "Dates",
+          "size": {
+            "height": 248,
+            "width": 234
+          },
+          "zIndex": 0
+        },
+        {
+          "location": {
+            "x": 1039.4,
+            "y": 308.6
+          },
+          "nodeIndex": "Accounts",
+          "size": {
+            "height": 300,
+            "width": 234
+          },
+          "zIndex": 0
+        },
+        {
+          "location": {
+            "x": 1060.4,
+            "y": 4.7
+          },
+          "nodeIndex": "DataFiles",
+          "size": {
+            "height": 128,
+            "width": 234
+          },
+          "zIndex": 0
+        },
+        {
+          "location": {
+            "x": 406,
+            "y": 0
+          },
+          "nodeIndex": "DatesByMonth",
+          "size": {
+            "height": 176,
+            "width": 234
+          },
+          "zIndex": 0
+        }
+      ],
+      "name": "Journals",
+      "zoomValue": 100,
+      "pinKeyFieldsToTop": false,
+      "showExtraHeaderInfo": false,
+      "hideKeyFieldsWhenCollapsed": false,
+      "tablesLocked": false
+    }
+  ],
+  "selectedDiagram": "ProfitAndLossMultiPeriod",
+  "defaultDiagram": "All tables"
+}
