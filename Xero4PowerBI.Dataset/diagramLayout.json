@@ -4,14 +4,14 @@
     {
       "ordinal": 0,
       "scrollPosition": {
-        "x": 0,
+        "x": 6280,
         "y": 0
       },
       "nodes": [
         {
           "location": {
             "x": 0,
-            "y": 217.6
+            "y": 222.6
           },
           "nodeIndex": "Accounts",
           "size": {
@@ -23,7 +23,7 @@
         {
           "location": {
             "x": 283.4,
-            "y": 489
+            "y": 494
           },
           "nodeIndex": "AccountsClass",
           "size": {
@@ -34,20 +34,8 @@
         },
         {
           "location": {
-            "x": 578.8,
-            "y": 0
-          },
-          "nodeIndex": "BalanceSheet",
-          "size": {
-            "height": 176,
-            "width": 234
-          },
-          "zIndex": 11
-        },
-        {
-          "location": {
             "x": 1557.075,
-            "y": 422.653125
+            "y": 427.653125
           },
           "nodeIndex": "BalanceSheetByMonth",
           "size": {
@@ -59,7 +47,7 @@
         {
           "location": {
             "x": 1786.5,
-            "y": 0
+            "y": 5
           },
           "nodeIndex": "BudgetSummary",
           "size": {
@@ -71,7 +59,7 @@
         {
           "location": {
             "x": 1595.9,
-            "y": 688.9
+            "y": 693.9
           },
           "nodeIndex": "BudgetSummaryByMonth",
           "size": {
@@ -83,7 +71,7 @@
         {
           "location": {
             "x": 1632.9,
-            "y": 1022
+            "y": 1027
           },
           "nodeIndex": "Contacts",
           "size": {
@@ -95,7 +83,7 @@
         {
           "location": {
             "x": 689.69999999999982,
-            "y": 981.3
+            "y": 986.3
           },
           "nodeIndex": "Dates",
           "size": {
@@ -107,7 +95,7 @@
         {
           "location": {
             "x": 1806.3,
-            "y": 234.8
+            "y": 239.8
           },
           "nodeIndex": "DatesByMonth",
           "size": {
@@ -119,7 +107,7 @@
         {
           "location": {
             "x": 1187.2,
-            "y": 664.3
+            "y": 669.3
           },
           "nodeIndex": "DatesByYear",
           "size": {
@@ -131,7 +119,7 @@
         {
           "location": {
             "x": 943.30000000000018,
-            "y": 0
+            "y": 5
           },
           "nodeIndex": "ExecutiveSummary",
           "size": {
@@ -143,7 +131,7 @@
         {
           "location": {
             "x": 2789.5,
-            "y": 876.6
+            "y": 881.6
           },
           "nodeIndex": "Organisation",
           "size": {
@@ -155,7 +143,7 @@
         {
           "location": {
             "x": 382.69999999999982,
-            "y": 243
+            "y": 248
           },
           "nodeIndex": "TrialBalance",
           "size": {
@@ -167,7 +155,7 @@
         {
           "location": {
             "x": 1439.5,
-            "y": 0
+            "y": 5
           },
           "nodeIndex": "ExecutiveSummaryType",
           "size": {
@@ -179,7 +167,7 @@
         {
           "location": {
             "x": 625.69999999999982,
-            "y": 465
+            "y": 470
           },
           "nodeIndex": "BalanceSheetReportIndented",
           "size": {
@@ -191,7 +179,7 @@
         {
           "location": {
             "x": 2142.6000000000004,
-            "y": 346
+            "y": 351
           },
           "nodeIndex": "AccType",
           "size": {
@@ -203,7 +191,7 @@
         {
           "location": {
             "x": 2088.8,
-            "y": 759
+            "y": 764
           },
           "nodeIndex": "Invoices",
           "size": {
@@ -215,7 +203,7 @@
         {
           "location": {
             "x": 0,
-            "y": 1020.5999999999999
+            "y": 1025.6
           },
           "nodeIndex": "Journals",
           "size": {
@@ -227,7 +215,7 @@
         {
           "location": {
             "x": 1141.5,
-            "y": 1071
+            "y": 1076
           },
           "nodeIndex": "AccountsReceivable",
           "size": {
@@ -239,7 +227,7 @@
         {
           "location": {
             "x": 2968,
-            "y": 102
+            "y": 107
           },
           "nodeIndex": "Items",
           "size": {
@@ -251,7 +239,7 @@
         {
           "location": {
             "x": 3106.3999999999996,
-            "y": 511.4
+            "y": 516.4
           },
           "nodeIndex": "SalesItems",
           "size": {
@@ -263,7 +251,7 @@
         {
           "location": {
             "x": 6798.3,
-            "y": 98
+            "y": 103
           },
           "nodeIndex": "InvertIconList",
           "size": {
@@ -275,7 +263,7 @@
         {
           "location": {
             "x": 7173.3,
-            "y": 24
+            "y": 29
           },
           "nodeIndex": "DataFiles",
           "size": {
@@ -286,20 +274,8 @@
         },
         {
           "location": {
-            "x": 7548.3,
-            "y": 0
-          },
-          "nodeIndex": "ProfitAndLossMultiPeriodTable",
-          "size": {
-            "height": 176,
-            "width": 234
-          },
-          "zIndex": 0
-        },
-        {
-          "location": {
             "x": 7945,
-            "y": 0
+            "y": 5
           },
           "nodeIndex": "AccountsTypes",
           "size": {
@@ -311,7 +287,7 @@
         {
           "location": {
             "x": 8688.7,
-            "y": 540.5
+            "y": 545.5
           },
           "nodeIndex": "AccountsTotals",
           "size": {
@@ -323,7 +299,7 @@
         {
           "location": {
             "x": 8292.1,
-            "y": 290.7
+            "y": 295.7
           },
           "nodeIndex": "AccountsTotalsTypes",
           "size": {
@@ -335,7 +311,7 @@
         {
           "location": {
             "x": 9085.4,
-            "y": 244.4
+            "y": 249.4
           },
           "nodeIndex": "Bills",
           "size": {
@@ -345,9 +321,81 @@
           "zIndex": 0
         },
         {
-          "location": {},
+          "location": {
+            "x": 9937.4,
+            "y": 638.5
+          },
           "nodeIndex": "Logo",
           "nodeLineageTag": "1b3e769b-ee62-4d2f-a25b-bc3d4fd3716c",
+          "size": {
+            "height": 104,
+            "width": 234
+          },
+          "zIndex": 0
+        },
+        {
+          "location": {
+            "x": 9663.4,
+            "y": 568.5
+          },
+          "nodeIndex": "CashFlowTotalsTypes",
+          "nodeLineageTag": "e422501b-595e-4676-adbe-4d280798d67f",
+          "size": {
+            "height": 224,
+            "width": 234
+          },
+          "zIndex": 0
+        },
+        {
+          "location": {
+            "x": 9379.4,
+            "y": 592.5
+          },
+          "nodeIndex": "CashFlowTotals",
+          "nodeLineageTag": "4e6b0ee2-45dd-4d1f-bb42-432a89fc5225",
+          "size": {
+            "height": 176,
+            "width": 234
+          },
+          "zIndex": 0
+        },
+        {
+          "location": {
+            "x": 7548.3,
+            "y": 5
+          },
+          "nodeIndex": "ProfitAndLoss",
+          "size": {
+            "height": 176,
+            "width": 234
+          },
+          "zIndex": 0
+        },
+        {
+          "location": {
+            "x": 370.79999999999995,
+            "y": 0
+          },
+          "nodeIndex": "BalanceSheetDetail",
+          "size": {
+            "height": 176,
+            "width": 234
+          },
+          "zIndex": 0
+        },
+        {
+          "location": {},
+          "nodeIndex": "BalanceSheet",
+          "nodeLineageTag": "27ab57b5-0f63-42b9-b810-0a5d41f4852d",
+          "size": {
+            "height": 176,
+            "width": 234
+          },
+          "zIndex": 0
+        },
+        {
+          "location": {},
+          "nodeIndex": "_MeasuresTable",
           "size": {
             "height": 104,
             "width": 234
@@ -497,18 +545,6 @@
         },
         {
           "location": {
-            "x": 290.14468885368848,
-            "y": 508.26800774767923
-          },
-          "nodeIndex": "ProfitAndLossMultiPeriodTable",
-          "size": {
-            "height": 248.879120126722,
-            "width": 231.20512879032742
-          },
-          "zIndex": 8
-        },
-        {
-          "location": {
             "x": 943.97252107713666,
             "y": 27.654456347923745
           },
@@ -566,6 +602,18 @@
             "width": 234
           },
           "zIndex": 2
+        },
+        {
+          "location": {
+            "x": 290.14468885368848,
+            "y": 508.26800774767923
+          },
+          "nodeIndex": "ProfitAndLoss",
+          "size": {
+            "height": 248.879120126722,
+            "width": 231.20512879032742
+          },
+          "zIndex": 0
         }
       ],
       "name": "ProfitAndLossMultiPeriod",
@@ -635,18 +683,6 @@
         },
         {
           "location": {
-            "x": 403,
-            "y": 0
-          },
-          "nodeIndex": "ProfitAndLossMultiPeriodTable",
-          "size": {
-            "height": 200,
-            "width": 234
-          },
-          "zIndex": 0
-        },
-        {
-          "location": {
             "x": 985,
             "y": 21
           },
@@ -687,18 +723,6 @@
             "y": 880
           },
           "nodeIndex": "BudgetSummaryByMonth",
-          "size": {
-            "height": 300,
-            "width": 234
-          },
-          "zIndex": 0
-        },
-        {
-          "location": {
-            "x": 864,
-            "y": 988.5
-          },
-          "nodeIndex": "BalanceSheet",
           "size": {
             "height": 300,
             "width": 234
@@ -824,6 +848,30 @@
             "width": 234
           },
           "zIndex": 0
+        },
+        {
+          "location": {
+            "x": 403,
+            "y": 0
+          },
+          "nodeIndex": "ProfitAndLoss",
+          "size": {
+            "height": 200,
+            "width": 234
+          },
+          "zIndex": 0
+        },
+        {
+          "location": {
+            "x": 864,
+            "y": 988.5
+          },
+          "nodeIndex": "BalanceSheetDetail",
+          "size": {
+            "height": 300,
+            "width": 234
+          },
+          "zIndex": 0
         }
       ],
       "name": "Datafiles",
@@ -907,8 +955,127 @@
       "showExtraHeaderInfo": false,
       "hideKeyFieldsWhenCollapsed": false,
       "tablesLocked": false
+    },
+    {
+      "ordinal": 7,
+      "scrollPosition": {
+        "x": 0,
+        "y": 0
+      },
+      "nodes": [
+        {
+          "location": {
+            "x": 0,
+            "y": 521.609277407816
+          },
+          "nodeIndex": "CashFlowTotalsTypes",
+          "nodeLineageTag": "e422501b-595e-4676-adbe-4d280798d67f",
+          "size": {
+            "height": 224,
+            "width": 234
+          },
+          "zIndex": 0
+        },
+        {
+          "location": {
+            "x": 727.63308638822627,
+            "y": 538.0109870045917
+          },
+          "nodeIndex": "CashFlowTotals",
+          "nodeLineageTag": "4e6b0ee2-45dd-4d1f-bb42-432a89fc5225",
+          "size": {
+            "height": 176,
+            "width": 234
+          },
+          "zIndex": 0
+        },
+        {
+          "location": {
+            "x": 318.78204923385408,
+            "y": 329.69352632486527
+          },
+          "nodeIndex": "AccountsTypes",
+          "nodeLineageTag": "ffe74c23-b262-494b-9a67-9f613d180b8b",
+          "size": {
+            "height": 128,
+            "width": 234
+          },
+          "zIndex": 0
+        },
+        {
+          "location": {
+            "x": -65.040904948168276,
+            "y": 197.8858331393742
+          },
+          "nodeIndex": "Accounts",
+          "nodeLineageTag": "291216f6-d528-445e-b37a-502ef422b975",
+          "size": {
+            "height": 300,
+            "width": 234
+          },
+          "zIndex": 0
+        },
+        {
+          "location": {
+            "x": 275.61171642852872,
+            "y": -19.578755414753431
+          },
+          "nodeIndex": "ProfitAndLoss",
+          "nodeLineageTag": "23198af4-b276-419d-aefb-b3218b91e987",
+          "size": {
+            "height": 200,
+            "width": 234
+          },
+          "zIndex": 0
+        },
+        {
+          "location": {
+            "x": 729.39620468309568,
+            "y": 0
+          },
+          "nodeIndex": "DatesByMonth",
+          "nodeLineageTag": "2e845829-cdf3-4cbb-8a34-7ec4b30dd63c",
+          "size": {
+            "height": 176,
+            "width": 234
+          },
+          "zIndex": 0
+        },
+        {
+          "location": {
+            "x": 635.11964895153733,
+            "y": 305.98961704489426
+          },
+          "nodeIndex": "DataFiles",
+          "nodeLineageTag": "116d4e07-04c8-4ecc-b549-ae26d28333f1",
+          "size": {
+            "height": 128,
+            "width": 234
+          },
+          "zIndex": 0
+        },
+        {
+          "location": {
+            "x": 1039.8803282256938,
+            "y": 214.22710279951096
+          },
+          "nodeIndex": "BalanceSheet",
+          "nodeLineageTag": "27ab57b5-0f63-42b9-b810-0a5d41f4852d",
+          "size": {
+            "height": 176,
+            "width": 234
+          },
+          "zIndex": 0
+        }
+      ],
+      "name": "CashFlow",
+      "zoomValue": 79.553182037699784,
+      "pinKeyFieldsToTop": false,
+      "showExtraHeaderInfo": false,
+      "hideKeyFieldsWhenCollapsed": false,
+      "tablesLocked": false
     }
   ],
-  "selectedDiagram": "ProfitAndLossMultiPeriod",
+  "selectedDiagram": "CashFlow",
   "defaultDiagram": "All tables"
 }

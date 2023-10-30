@@ -4,7 +4,7 @@
     "annotations": [
       {
         "name": "PBIDesktopVersion",
-        "value": "2.121.942.0 (23.09)"
+        "value": "2.122.746.0 (23.10)"
       },
       {
         "name": "__PBI_TimeIntelligenceEnabled",
@@ -12,7 +12,7 @@
       },
       {
         "name": "PBI_QueryOrder",
-        "value": "[\"Accounts\",\"AccountsClass\",\"AccountsReceivable\",\"AccType\",\"Bills\",\"Contacts\",\"DataFiles\",\"Dates\",\"DatesByMonth\",\"DatesByYear\",\"Invoices\",\"Journals\",\"Organisation\",\"ExecutiveSummary\",\"ExecutiveSummaryType\",\"BalanceSheet\",\"fxFmonth\",\"BudgetsAmounts\",\"BudgetSummary\",\"BudgetSummaryByMonth\",\"TrialBalance\",\"BalanceSheetByMonth\",\"BalanceSheetReportIndented\",\"fxIndent\",\"odatalink\",\"Items\",\"SalesItems\",\"FinancialYear\",\"InvertIconList\",\"NumberOfMonths\",\"AccountsTypes\",\"AccountsTotals\",\"AccountsTotalsTypes\",\"ProfitAndLossMultiPeriodTable\",\"fxConvertToDataUri\",\"Logo\"]"
+        "value": "[\"Accounts\",\"AccountsClass\",\"AccountsReceivable\",\"AccType\",\"Bills\",\"Contacts\",\"DataFiles\",\"Dates\",\"DatesByMonth\",\"DatesByYear\",\"Invoices\",\"Journals\",\"Organisation\",\"ExecutiveSummary\",\"ExecutiveSummaryType\",\"BalanceSheetDetail\",\"fxFmonth\",\"BudgetsAmounts\",\"BudgetSummary\",\"BudgetSummaryByMonth\",\"TrialBalance\",\"BalanceSheetByMonth\",\"BalanceSheetReportIndented\",\"fxIndent\",\"odatalink\",\"Items\",\"SalesItems\",\"FinancialYear\",\"InvertIconList\",\"NumberOfMonths\",\"AccountsTypes\",\"AccountsTotals\",\"AccountsTotalsTypes\",\"ProfitAndLoss\",\"Logo\",\"CashFlowTotalsTypes\",\"CashFlowTotals\",\"BalanceSheet\",\"_MeasuresTable\"]"
       },
       {
         "name": "PBI_ProTooling",
@@ -5217,7 +5217,7 @@
               "balance_sheet": {
                 "Definition": {
                   "Binding": {
-                    "ConceptualEntity": "BalanceSheet"
+                    "ConceptualEntity": "BalanceSheetDetail"
                   }
                 },
                 "State": "Generated",
@@ -5345,7 +5345,7 @@
               "balance_sheet.account_ID": {
                 "Definition": {
                   "Binding": {
-                    "ConceptualEntity": "BalanceSheet",
+                    "ConceptualEntity": "BalanceSheetDetail",
                     "ConceptualProperty": "AccountID"
                   }
                 },
@@ -5411,7 +5411,7 @@
               "balance_sheet.account_line_type": {
                 "Definition": {
                   "Binding": {
-                    "ConceptualEntity": "BalanceSheet",
+                    "ConceptualEntity": "BalanceSheetDetail",
                     "ConceptualProperty": "AccountLineType"
                   }
                 },
@@ -5534,7 +5534,7 @@
               "balance_sheet.account_name": {
                 "Definition": {
                   "Binding": {
-                    "ConceptualEntity": "BalanceSheet",
+                    "ConceptualEntity": "BalanceSheetDetail",
                     "ConceptualProperty": "AccountName"
                   }
                 },
@@ -5607,7 +5607,7 @@
               "balance_sheet.amount": {
                 "Definition": {
                   "Binding": {
-                    "ConceptualEntity": "BalanceSheet",
+                    "ConceptualEntity": "BalanceSheetDetail",
                     "ConceptualProperty": "Amount"
                   }
                 },
@@ -5663,7 +5663,7 @@
               "balance_sheet.balance_total": {
                 "Definition": {
                   "Binding": {
-                    "ConceptualEntity": "BalanceSheet",
+                    "ConceptualEntity": "BalanceSheetDetail",
                     "ConceptualProperty": "BalanceTotal"
                   }
                 },
@@ -5736,7 +5736,7 @@
               "balance_sheet.balance_type": {
                 "Definition": {
                   "Binding": {
-                    "ConceptualEntity": "BalanceSheet",
+                    "ConceptualEntity": "BalanceSheetDetail",
                     "ConceptualProperty": "BalanceType"
                   }
                 },
@@ -5869,7 +5869,7 @@
               "balance_sheet.class": {
                 "Definition": {
                   "Binding": {
-                    "ConceptualEntity": "BalanceSheet",
+                    "ConceptualEntity": "BalanceSheetDetail",
                     "ConceptualProperty": "Class"
                   }
                 },
@@ -5955,7 +5955,7 @@
               "balance_sheet.class_description": {
                 "Definition": {
                   "Binding": {
-                    "ConceptualEntity": "BalanceSheet",
+                    "ConceptualEntity": "BalanceSheetDetail",
                     "ConceptualProperty": "ClassDescription"
                   }
                 },
@@ -6078,7 +6078,7 @@
               "balance_sheet.code": {
                 "Definition": {
                   "Binding": {
-                    "ConceptualEntity": "BalanceSheet",
+                    "ConceptualEntity": "BalanceSheetDetail",
                     "ConceptualProperty": "Code"
                   }
                 },
@@ -6094,7 +6094,7 @@
               "balance_sheet.date": {
                 "Definition": {
                   "Binding": {
-                    "ConceptualEntity": "BalanceSheet",
+                    "ConceptualEntity": "BalanceSheetDetail",
                     "ConceptualProperty": "Date"
                   }
                 },
@@ -6121,7 +6121,7 @@
               "balance_sheet.dr_cr_sign": {
                 "Definition": {
                   "Binding": {
-                    "ConceptualEntity": "BalanceSheet",
+                    "ConceptualEntity": "BalanceSheetDetail",
                     "ConceptualProperty": "DrCrSign"
                   }
                 },
@@ -6256,7 +6256,7 @@
               "balance_sheet.line_type": {
                 "Definition": {
                   "Binding": {
-                    "ConceptualEntity": "BalanceSheet",
+                    "ConceptualEntity": "BalanceSheetDetail",
                     "ConceptualProperty": "LineType"
                   }
                 },
@@ -6379,7 +6379,7 @@
               "balance_sheet.order": {
                 "Definition": {
                   "Binding": {
-                    "ConceptualEntity": "BalanceSheet",
+                    "ConceptualEntity": "BalanceSheetDetail",
                     "ConceptualProperty": "Order"
                   }
                 },
@@ -10203,6 +10203,27 @@
                       "State": "Suggested",
                       "Type": "Noun",
                       "Weight": 0.582
+                    }
+                  }
+                ]
+              },
+              "cashflowtotals.cashflowtotalname": {
+                "Definition": {
+                  "Binding": {
+                    "ConceptualEntity": "CashFlowTotals",
+                    "ConceptualProperty": "CashFlowTotalName"
+                  }
+                },
+                "State": "Generated",
+                "Terms": [
+                  {
+                    "Account": {
+                      "Source": {
+                        "Agent": "PowerBI.VisualColumnRename",
+                        "Type": "External"
+                      },
+                      "State": "Suggested",
+                      "Weight": 0.9
                     }
                   }
                 ]
@@ -14212,6 +14233,16 @@
                     "mmm yyyy": {
                       "State": "Generated",
                       "Weight": 0.97
+                    }
+                  },
+                  {
+                    "Month": {
+                      "Source": {
+                        "Agent": "PowerBI.VisualColumnRename",
+                        "Type": "External"
+                      },
+                      "State": "Suggested",
+                      "Weight": 0.9
                     }
                   }
                 ]
@@ -24787,7 +24818,7 @@
               "profit_and_loss_multi_period_table": {
                 "Definition": {
                   "Binding": {
-                    "ConceptualEntity": "ProfitAndLossMultiPeriodTable"
+                    "ConceptualEntity": "ProfitAndLoss"
                   }
                 },
                 "State": "Generated",
@@ -24927,7 +24958,7 @@
               "profit_and_loss_multi_period_table.account_ID": {
                 "Definition": {
                   "Binding": {
-                    "ConceptualEntity": "ProfitAndLossMultiPeriodTable",
+                    "ConceptualEntity": "ProfitAndLoss",
                     "ConceptualProperty": "AccountID"
                   }
                 },
@@ -24993,7 +25024,7 @@
               "profit_and_loss_multi_period_table.amount": {
                 "Definition": {
                   "Binding": {
-                    "ConceptualEntity": "ProfitAndLossMultiPeriodTable",
+                    "ConceptualEntity": "ProfitAndLoss",
                     "ConceptualProperty": "Amount"
                   }
                 },
@@ -25049,7 +25080,7 @@
               "profit_and_loss_multi_period_table.data_file_ID": {
                 "Definition": {
                   "Binding": {
-                    "ConceptualEntity": "ProfitAndLossMultiPeriodTable",
+                    "ConceptualEntity": "ProfitAndLoss",
                     "ConceptualProperty": "DataFileID"
                   }
                 },
@@ -25187,7 +25218,7 @@
               "profit_and_loss_multi_period_table.date": {
                 "Definition": {
                   "Binding": {
-                    "ConceptualEntity": "ProfitAndLossMultiPeriodTable",
+                    "ConceptualEntity": "ProfitAndLoss",
                     "ConceptualProperty": "Date"
                   }
                 },
@@ -25214,7 +25245,7 @@
               "profit_and_loss_multi_period_table.movement": {
                 "Definition": {
                   "Binding": {
-                    "ConceptualEntity": "ProfitAndLossMultiPeriodTable",
+                    "ConceptualEntity": "ProfitAndLoss",
                     "ConceptualProperty": "Movement"
                   }
                 },
@@ -29137,7 +29168,7 @@
               },
               "balance_sheet_has_account": {
                 "Binding": {
-                  "ConceptualEntity": "BalanceSheet"
+                  "ConceptualEntity": "BalanceSheetDetail"
                 },
                 "Phrasings": [
                   {
@@ -29181,7 +29212,7 @@
               },
               "balance_sheet_has_account_line_type": {
                 "Binding": {
-                  "ConceptualEntity": "BalanceSheet"
+                  "ConceptualEntity": "BalanceSheetDetail"
                 },
                 "Phrasings": [
                   {
@@ -29213,7 +29244,7 @@
               },
               "balance_sheet_has_account_name": {
                 "Binding": {
-                  "ConceptualEntity": "BalanceSheet"
+                  "ConceptualEntity": "BalanceSheetDetail"
                 },
                 "Phrasings": [
                   {
@@ -29245,7 +29276,7 @@
               },
               "balance_sheet_has_amount": {
                 "Binding": {
-                  "ConceptualEntity": "BalanceSheet"
+                  "ConceptualEntity": "BalanceSheetDetail"
                 },
                 "Phrasings": [
                   {
@@ -29277,7 +29308,7 @@
               },
               "balance_sheet_has_balance_total": {
                 "Binding": {
-                  "ConceptualEntity": "BalanceSheet"
+                  "ConceptualEntity": "BalanceSheetDetail"
                 },
                 "Phrasings": [
                   {
@@ -29309,7 +29340,7 @@
               },
               "balance_sheet_has_balance_type": {
                 "Binding": {
-                  "ConceptualEntity": "BalanceSheet"
+                  "ConceptualEntity": "BalanceSheetDetail"
                 },
                 "Phrasings": [
                   {
@@ -29341,7 +29372,7 @@
               },
               "balance_sheet_has_class": {
                 "Binding": {
-                  "ConceptualEntity": "BalanceSheet"
+                  "ConceptualEntity": "BalanceSheetDetail"
                 },
                 "Phrasings": [
                   {
@@ -29373,7 +29404,7 @@
               },
               "balance_sheet_has_class_description": {
                 "Binding": {
-                  "ConceptualEntity": "BalanceSheet"
+                  "ConceptualEntity": "BalanceSheetDetail"
                 },
                 "Phrasings": [
                   {
@@ -29405,7 +29436,7 @@
               },
               "balance_sheet_has_code": {
                 "Binding": {
-                  "ConceptualEntity": "BalanceSheet"
+                  "ConceptualEntity": "BalanceSheetDetail"
                 },
                 "Phrasings": [
                   {
@@ -29437,7 +29468,7 @@
               },
               "balance_sheet_has_date": {
                 "Binding": {
-                  "ConceptualEntity": "BalanceSheet"
+                  "ConceptualEntity": "BalanceSheetDetail"
                 },
                 "Phrasings": [
                   {
@@ -29469,7 +29500,7 @@
               },
               "balance_sheet_has_dr_cr_sign": {
                 "Binding": {
-                  "ConceptualEntity": "BalanceSheet"
+                  "ConceptualEntity": "BalanceSheetDetail"
                 },
                 "Phrasings": [
                   {
@@ -29501,7 +29532,7 @@
               },
               "balance_sheet_has_line_type": {
                 "Binding": {
-                  "ConceptualEntity": "BalanceSheet"
+                  "ConceptualEntity": "BalanceSheetDetail"
                 },
                 "Phrasings": [
                   {
@@ -29533,7 +29564,7 @@
               },
               "balance_sheet_has_order": {
                 "Binding": {
-                  "ConceptualEntity": "BalanceSheet"
+                  "ConceptualEntity": "BalanceSheetDetail"
                 },
                 "Phrasings": [
                   {
@@ -36323,7 +36354,7 @@
               },
               "profit_and_loss_multi_period_table_has_account": {
                 "Binding": {
-                  "ConceptualEntity": "ProfitAndLossMultiPeriodTable"
+                  "ConceptualEntity": "ProfitAndLoss"
                 },
                 "Phrasings": [
                   {
@@ -36367,7 +36398,7 @@
               },
               "profit_and_loss_multi_period_table_has_amount": {
                 "Binding": {
-                  "ConceptualEntity": "ProfitAndLossMultiPeriodTable"
+                  "ConceptualEntity": "ProfitAndLoss"
                 },
                 "Phrasings": [
                   {
@@ -36399,7 +36430,7 @@
               },
               "profit_and_loss_multi_period_table_has_data_file": {
                 "Binding": {
-                  "ConceptualEntity": "ProfitAndLossMultiPeriodTable"
+                  "ConceptualEntity": "ProfitAndLoss"
                 },
                 "Phrasings": [
                   {
@@ -36443,7 +36474,7 @@
               },
               "profit_and_loss_multi_period_table_has_date": {
                 "Binding": {
-                  "ConceptualEntity": "ProfitAndLossMultiPeriodTable"
+                  "ConceptualEntity": "ProfitAndLoss"
                 },
                 "Phrasings": [
                   {
@@ -36475,7 +36506,7 @@
               },
               "profit_and_loss_multi_period_table_has_date_by_month": {
                 "Binding": {
-                  "ConceptualEntity": "ProfitAndLossMultiPeriodTable"
+                  "ConceptualEntity": "ProfitAndLoss"
                 },
                 "Phrasings": [
                   {
@@ -36519,7 +36550,7 @@
               },
               "profit_and_loss_multi_period_table_has_movement": {
                 "Binding": {
-                  "ConceptualEntity": "ProfitAndLossMultiPeriodTable"
+                  "ConceptualEntity": "ProfitAndLoss"
                 },
                 "Phrasings": [
                   {
@@ -37532,10 +37563,6 @@
           {
             "name": "PBI_ResultType",
             "value": "Text"
-          },
-          {
-            "name": "PBI_NavigationStepName",
-            "value": "Navigation"
           }
         ],
         "expression": "\"https://data.odatalink.com/Mik-All-857730/bellandwhistle/BellAn/\" meta [IsParameterQuery=true, Type=\"Text\", IsParameterQueryRequired=true]",
@@ -37585,47 +37612,12 @@
           {
             "name": "PBI_ResultType",
             "value": "Number"
-          },
-          {
-            "name": "PBI_NavigationStepName",
-            "value": "Navigation"
           }
         ],
         "description": "Number of Months for Balance Sheet Range 1 to 11",
         "expression": "5 meta [IsParameterQuery=true, List={1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11}, DefaultValue=3, Type=\"Number\", IsParameterQueryRequired=true]",
         "kind": "m",
         "lineageTag": "3b7e799f-2a45-4856-a340-d32525240279"
-      },
-      {
-        "name": "fxConvertToDataUri",
-        "annotations": [
-          {
-            "name": "PBI_NavigationStepName",
-            "value": "Navigation"
-          },
-          {
-            "name": "PBI_ResultType",
-            "value": "Function"
-          }
-        ],
-        "expression": [
-          "let",
-          "    Source = ( Logo) => let",
-          "",
-          "        FirstBytes = Binary.ToText(Binary.Range(Logo, 0, 3), BinaryEncoding.Base64),",
-          "        MimeType = ",
-          "        if FirstBytes = \"iVBO\" then \"image/png\"  // \"iVBOR\" is the base64 encoding of the first 4 bytes of a PNG",
-          "           else if FirstBytes = \"R0lG\" then \"image/gif\"  // \"R0lG\" is the base64 encoding of the first 4 bytes of a GIF",
-          "           else if FirstBytes =\"/9j/\"  then \"image/jpg\"   ",
-          "              else error \"Unsupported or unknown file format\",",
-          "            LogoData = \"data:\" & MimeType & \";base64,\" & Binary.ToText(Logo, BinaryEncoding.Base64)          ",
-          "    in",
-          "       LogoData",
-          "in",
-          "    Source"
-        ],
-        "kind": "m",
-        "lineageTag": "4d6a01d4-5608-477a-ac0a-a3d5d54344d0"
       }
     ],
     "queryGroups": [
@@ -37775,7 +37767,7 @@
       {
         "name": "7b7d4d76-f4de-4b22-adf9-b77d0b1b1b55",
         "fromColumn": "AccountID",
-        "fromTable": "BalanceSheet",
+        "fromTable": "BalanceSheetDetail",
         "toColumn": "AccountID",
         "toTable": "Accounts"
       },
@@ -37830,14 +37822,14 @@
       {
         "name": "c90335c6-51b9-4743-ad77-5b8d52679ba9",
         "fromColumn": "AccountID",
-        "fromTable": "ProfitAndLossMultiPeriodTable",
+        "fromTable": "ProfitAndLoss",
         "toColumn": "AccountID",
         "toTable": "Accounts"
       },
       {
         "name": "64e16099-2e30-4b3d-a46f-14c8a84188de",
         "fromColumn": "Date",
-        "fromTable": "ProfitAndLossMultiPeriodTable",
+        "fromTable": "ProfitAndLoss",
         "toColumn": "Date",
         "toTable": "DatesByMonth"
       },
@@ -37866,7 +37858,7 @@
       {
         "name": "6cbe9f18-b1d5-4238-bfaa-c3186e4e6f5b",
         "fromColumn": "DataFileID",
-        "fromTable": "ProfitAndLossMultiPeriodTable",
+        "fromTable": "ProfitAndLoss",
         "toColumn": "DataFileID",
         "toTable": "DataFiles"
       },
@@ -37908,7 +37900,7 @@
       {
         "name": "a71b030f-e324-4ce1-9294-790f7911f8da",
         "fromColumn": "DataFileID",
-        "fromTable": "BalanceSheet",
+        "fromTable": "BalanceSheetDetail",
         "toColumn": "DataFileID",
         "toTable": "DataFiles"
       },
@@ -37992,6 +37984,41 @@
         "fromTable": "DataFiles",
         "toColumn": "DataFileID",
         "toTable": "Organisation"
+      },
+      {
+        "name": "e6850507-5b0a-4989-9cbe-7cff4ff0ca6b",
+        "fromColumn": "AccountType",
+        "fromTable": "CashFlowTotalsTypes",
+        "toColumn": "AccountType",
+        "toTable": "AccountsTypes"
+      },
+      {
+        "name": "0ca60bc6-a3e8-40a4-b5a1-0fd1e621fb0b",
+        "fromColumn": "CashFlowTotal",
+        "fromTable": "CashFlowTotalsTypes",
+        "toColumn": "CashFlowTotal",
+        "toTable": "CashFlowTotals"
+      },
+      {
+        "name": "9bd377e9-a986-4fa2-b87a-c875baace994",
+        "fromColumn": "DataFileID",
+        "fromTable": "BalanceSheet",
+        "toColumn": "DataFileID",
+        "toTable": "DataFiles"
+      },
+      {
+        "name": "72624957-6570-4ae4-a253-08441dacfcd7",
+        "fromColumn": "Date",
+        "fromTable": "BalanceSheet",
+        "toColumn": "Date",
+        "toTable": "DatesByMonth"
+      },
+      {
+        "name": "fd73f3fe-efda-40c0-8e22-9ab3ed51fc7c",
+        "fromColumn": "AccountID",
+        "fromTable": "BalanceSheet",
+        "toColumn": "AccountID",
+        "toTable": "Accounts"
       }
     ],
     "sourceQueryCulture": "en-AU",
@@ -38273,6 +38300,21 @@
             "lineageTag": "cf99b48c-5636-4b0a-8cd2-338ef18b8b1b",
             "sourceColumn": "DataFileID",
             "summarizeBy": "none"
+          },
+          {
+            "name": "CodeAndName",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              }
+            ],
+            "dataType": "string",
+            "expression": "[Code] & \" \" & [Name]",
+            "isDataTypeInferred": true,
+            "lineageTag": "2b498ff1-2965-43fe-93da-757a8740bac6",
+            "summarizeBy": "none",
+            "type": "calculated"
           }
         ],
         "lineageTag": "291216f6-d528-445e-b37a-502ef422b975",
@@ -38511,6 +38553,38 @@
             "sortByColumn": "DatesByMonthID",
             "sourceColumn": "MMM-YYYY",
             "summarizeBy": "none"
+          },
+          {
+            "name": "DateLM",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              }
+            ],
+            "dataType": "dateTime",
+            "expression": "DATEADD(DatesByMonth[Date], -DAY(DatesByMonth[Date]), day)",
+            "formatString": "General Date",
+            "isDataTypeInferred": true,
+            "lineageTag": "b9c92a75-ba17-43a3-b8fc-385cb2b3f85a",
+            "summarizeBy": "none",
+            "type": "calculated"
+          },
+          {
+            "name": "DateLY",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              }
+            ],
+            "dataType": "dateTime",
+            "expression": "IF(DAY(DatesByMonth[Date]) = 29 && MONTH(DatesByMonth[Date]) = 2, BLANK(), DATEADD(DatesByMonth[Date], -1, year))",
+            "formatString": "General Date",
+            "isDataTypeInferred": true,
+            "lineageTag": "f81b8dd5-b486-4bb6-8b11-2c2fd8eda4a3",
+            "summarizeBy": "none",
+            "type": "calculated"
           }
         ],
         "lineageTag": "2e845829-cdf3-4cbb-8a34-7ec4b30dd63c",
@@ -38825,7 +38899,7 @@
         ]
       },
       {
-        "name": "BalanceSheet",
+        "name": "BalanceSheetDetail",
         "annotations": [
           {
             "name": "PBI_ResultType",
@@ -39039,13 +39113,13 @@
             ],
             "expression": [
               "",
-              "VAR IsFilteredDescription = ISFILTERED(BalanceSheet[ClassDescription])  // Class Description Second Level",
-              "VAR IsFilteredBalanceType = ISFILTERED(BalanceSheet[BalanceType]) // Top Level",
+              "VAR IsFilteredDescription = ISFILTERED(BalanceSheetDetail[ClassDescription])  // Class Description Second Level",
+              "VAR IsFilteredBalanceType = ISFILTERED(BalanceSheetDetail[BalanceType]) // Top Level",
               "VAR Result = SWITCH(TRUE(),",
               "   NOT(IsFilteredBalanceType),BLANK(),  // Blank Total",
-              "   NOT(IsFilteredDescription) && NOT(SELECTEDVALUE(BalanceSheet[BalanceType],\"Other\") = \"Equity\"),",
-              "               SUMX(BalanceSheet,BalanceSheet[Amount]*BalanceSheet[DrCrSign]), // Net Assets and (NOT BalanceType) Total Equity",
-              "   IsFilteredDescription, SUM(BalanceSheet[Amount]) // Class,Account Line Type. Account Name",
+              "   NOT(IsFilteredDescription) && NOT(SELECTEDVALUE(BalanceSheetDetail[BalanceType],\"Other\") = \"Equity\"),",
+              "               SUMX(BalanceSheetDetail,BalanceSheetDetail[Amount]*BalanceSheetDetail[DrCrSign]), // Net Assets and (NOT BalanceType) Total Equity",
+              "   IsFilteredDescription, SUM(BalanceSheetDetail[Amount]) // Class,Account Line Type. Account Name",
               ")",
               "RETURN Result"
             ],
@@ -39055,7 +39129,7 @@
         ],
         "partitions": [
           {
-            "name": "BalanceSheet-7f740f78-9d3e-496d-9a7c-5bc5b7a6bc42",
+            "name": "BalanceSheetDetail-7f740f78-9d3e-496d-9a7c-5bc5b7a6bc42",
             "mode": "import",
             "queryGroup": "Balance Sheet",
             "source": {
@@ -40094,10 +40168,6 @@
           {
             "name": "PBI_ResultType",
             "value": "Table"
-          },
-          {
-            "name": "PBI_NavigationStepName",
-            "value": "Navigation"
           }
         ],
         "columns": [
@@ -42883,7 +42953,7 @@
         ]
       },
       {
-        "name": "ProfitAndLossMultiPeriodTable",
+        "name": "ProfitAndLoss",
         "annotations": [
           {
             "name": "PBI_ResultType",
@@ -42969,7 +43039,7 @@
               "        SELECTEDVALUE(AccountsTotals[IsAccountClassification]) = FALSE",
               "        && (ISFILTERED(Accounts) = TRUE() || ISFILTERED(AccountsTypes) = TRUE()), ",
               "            BLANK(), ",
-              "            SUMX(AccountsTotalsTypes, CALCULATE(SUM(ProfitAndLossMultiPeriodTable[Amount])) * AccountsTotalsTypes[DrCrSign])",
+              "            SUMX(AccountsTotalsTypes, CALCULATE(SUM(ProfitAndLoss[Amount])) * AccountsTotalsTypes[DrCrSign])",
               "    )   "
             ],
             "formatString": "#,##0.00;(#,##0.00)",
@@ -42978,7 +43048,7 @@
         ],
         "partitions": [
           {
-            "name": "ProfitAndLossMultiPeriodTable-fbc8f7b6-eb00-4091-89fc-5fbb15e4def7",
+            "name": "ProfitAndLoss-fbc8f7b6-eb00-4091-89fc-5fbb15e4def7",
             "mode": "import",
             "queryGroup": "ProftAndLoss",
             "source": {
@@ -43565,6 +43635,32 @@
         ],
         "columns": [
           {
+            "name": "URL",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              }
+            ],
+            "dataType": "string",
+            "lineageTag": "1dc32eb1-7e3e-4beb-9fed-73d0cb6228c3",
+            "sourceColumn": "URL",
+            "summarizeBy": "none"
+          },
+          {
+            "name": "ImageType",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              }
+            ],
+            "dataType": "string",
+            "lineageTag": "fba6bbe3-1112-49c7-b2b1-eed44e79d68e",
+            "sourceColumn": "ImageType",
+            "summarizeBy": "none"
+          },
+          {
             "name": "Logo",
             "annotations": [
               {
@@ -43573,7 +43669,7 @@
               }
             ],
             "dataType": "string",
-            "lineageTag": "deddcd7d-866b-4ccb-a39e-67f1c6a10bc1",
+            "lineageTag": "66329f7c-82df-4cef-b769-8437aaf53b44",
             "sourceColumn": "Logo",
             "summarizeBy": "none"
           }
@@ -43588,30 +43684,590 @@
                 "let",
                 "    Source = OData.Feed(odatalink, null, [Implementation=\"2.0\"]),",
                 "    BrandingThemes_table = Table.Buffer(Source{[Name=\"BrandingThemes\",Signature=\"table\"]}[Data]),",
-                "    #\"Expanded DataFile\" = Table.ExpandRecordColumn(BrandingThemes_table, \"DataFile\", {\"DataFileID\"}, {\"DataFileID\"}),",
-                "    #\"Filtered Rows\" = Table.SelectRows(#\"Expanded DataFile\", each ([Name] = \"Standard\")),",
-                "    LogoUrl = #\"Filtered Rows\"{0}[LogoUrl],",
-                "    LogoData = ",
-                "        if LogoUrl <> \"\" ",
-                "        then ",
-                "            let ",
-                "                BaseUrl = \"https://in.xero.com\",",
-                "                Xerologo =Web.Contents(BaseUrl,               ",
-                "                [   ",
-                "                    RelativePath = \"logo\",",
-                "                    Query = [id = Text.AfterDelimiter(LogoUrl,\"=\")]",
-                "                ]),",
-                "                Xlogo=fxConvertToDataUri(Xerologo)",
-                "            in",
-                "                Xlogo",
-                "        else",
-                "            let",
-                "                XlogoEmpty = \"\"",
-                "            in",
-                "                XlogoEmpty,",
-                "    XeroLogo = #table({\"Logo\"}, {{LogoData}})",
+                "    Standard = Table.SelectRows(BrandingThemes_table, each ([Name] = \"Standard\")),",
+                "    GetImage = Source{[Name=\"GetImage\",Signature=\"function (URL as text) as table\"]}[Data],",
+                "    LogoUrl = Standard{0}[LogoUrl],",
+                "    XeroLogo = GetImage(LogoUrl),",
+                "    LogoTable = Table.RenameColumns(XeroLogo,{{\"Image\", \"Logo\"}})",
                 "in",
-                "   XeroLogo"
+                "    LogoTable"
+              ],
+              "type": "m"
+            }
+          }
+        ]
+      },
+      {
+        "name": "CashFlowTotalsTypes",
+        "annotations": [
+          {
+            "name": "PBI_ResultType",
+            "value": "Table"
+          }
+        ],
+        "columns": [
+          {
+            "name": "CashFlowTotal",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              }
+            ],
+            "dataType": "string",
+            "lineageTag": "a86cc148-4535-4f40-9a08-79015697f3e9",
+            "sourceColumn": "CashFlowTotal",
+            "summarizeBy": "none"
+          },
+          {
+            "name": "AccountType",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              }
+            ],
+            "dataType": "string",
+            "lineageTag": "fd3f9c30-ee58-41ce-a998-c0a80217d5cd",
+            "sourceColumn": "AccountType",
+            "summarizeBy": "none"
+          },
+          {
+            "name": "DrCrSign",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              },
+              {
+                "name": "PBI_FormatHint",
+                "value": "{\"isGeneralNumber\":true}"
+              }
+            ],
+            "dataType": "double",
+            "lineageTag": "62bb2f3e-0cfe-426a-985e-afd704dd4af7",
+            "sourceColumn": "DrCrSign",
+            "summarizeBy": "sum"
+          },
+          {
+            "name": "UseOpeningBalance",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              }
+            ],
+            "dataType": "boolean",
+            "formatString": "\"TRUE\";\"TRUE\";\"FALSE\"",
+            "lineageTag": "48634ac6-56f2-465a-8198-942fb9af387d",
+            "sourceColumn": "UseOpeningBalance",
+            "summarizeBy": "none"
+          },
+          {
+            "name": "UseMovement",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              }
+            ],
+            "dataType": "boolean",
+            "formatString": "\"TRUE\";\"TRUE\";\"FALSE\"",
+            "lineageTag": "a6f8f659-f428-4f1d-b92b-96e6d13ab087",
+            "sourceColumn": "UseMovement",
+            "summarizeBy": "none"
+          },
+          {
+            "name": "UseClosingBalance",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              }
+            ],
+            "dataType": "boolean",
+            "formatString": "\"TRUE\";\"TRUE\";\"FALSE\"",
+            "lineageTag": "b75c1657-94fb-4b97-af62-7278fdd6af60",
+            "sourceColumn": "UseClosingBalance",
+            "summarizeBy": "none"
+          }
+        ],
+        "lineageTag": "e422501b-595e-4676-adbe-4d280798d67f",
+        "partitions": [
+          {
+            "name": "CashFlowTotalsTypes",
+            "mode": "import",
+            "source": {
+              "expression": [
+                "let",
+                "    Source = Table.FromRecords(",
+                "     {",
+                "     [CashFlowTotal=\"OPENINGBANK\", AccountType=\"BANK\", DrCrSign=1, UseOpeningBalance=true, UseMovement=false, UseClosingBalance=false],",
+                "",
+                "     [CashFlowTotal=\"INCOME\", AccountType=\"REVENUE\", DrCrSign=1, UseOpeningBalance=false, UseMovement=true, UseClosingBalance=false],",
+                "     [CashFlowTotal=\"INCOME\", AccountType=\"SALES\", DrCrSign=1, UseOpeningBalance=false, UseMovement=true, UseClosingBalance=false],",
+                "",
+                "     [CashFlowTotal=\"DIRECTCOSTS\", AccountType=\"DIRECTCOSTS\", DrCrSign=-1, UseOpeningBalance=false, UseMovement=true, UseClosingBalance=false],",
+                "",
+                "     [CashFlowTotal=\"GROSSPROFIT\", AccountType=\"REVENUE\", DrCrSign=1, UseOpeningBalance=false, UseMovement=true, UseClosingBalance=false],",
+                "     [CashFlowTotal=\"GROSSPROFIT\", AccountType=\"SALES\", DrCrSign=1, UseOpeningBalance=false, UseMovement=true, UseClosingBalance=false],",
+                "     [CashFlowTotal=\"GROSSPROFIT\", AccountType=\"DIRECTCOSTS\", DrCrSign=-1, UseOpeningBalance=false, UseMovement=true, UseClosingBalance=false],",
+                "",
+                "     [CashFlowTotal=\"OTHERINCOME\", AccountType=\"OTHERINCOME\", DrCrSign=1, UseOpeningBalance=false, UseMovement=true, UseClosingBalance=false],",
+                "",
+                "     [CashFlowTotal=\"EXPENSES\", AccountType=\"EXPENSE\", DrCrSign=-1, UseOpeningBalance=false, UseMovement=true, UseClosingBalance=false],",
+                "     [CashFlowTotal=\"EXPENSES\", AccountType=\"OVERHEADS\", DrCrSign=-1, UseOpeningBalance=false, UseMovement=true, UseClosingBalance=false],",
+                "     [CashFlowTotal=\"EXPENSES\", AccountType=\"DEPRECIATN\", DrCrSign=-1, UseOpeningBalance=false, UseMovement=true, UseClosingBalance=false],",
+                "     [CashFlowTotal=\"EXPENSES\", AccountType=\"WAGESEXPENSE\", DrCrSign=-1, UseOpeningBalance=false, UseMovement=true, UseClosingBalance=false],",
+                "     [CashFlowTotal=\"EXPENSES\", AccountType=\"SUPERANNUATIONEXPENSE\", DrCrSign=-1, UseOpeningBalance=false, UseMovement=true, UseClosingBalance=false],",
+                "",
+                "     [CashFlowTotal=\"NETPROFIT\", AccountType=\"REVENUE\", DrCrSign=1, UseOpeningBalance=false, UseMovement=true, UseClosingBalance=false],",
+                "     [CashFlowTotal=\"NETPROFIT\", AccountType=\"SALES\", DrCrSign=1, UseOpeningBalance=false, UseMovement=true, UseClosingBalance=false],",
+                "     [CashFlowTotal=\"NETPROFIT\", AccountType=\"OTHERINCOME\", DrCrSign=1, UseOpeningBalance=false, UseMovement=true, UseClosingBalance=false],",
+                "     [CashFlowTotal=\"NETPROFIT\", AccountType=\"DIRECTCOSTS\", DrCrSign=-1, UseOpeningBalance=false, UseMovement=true, UseClosingBalance=false],",
+                "     [CashFlowTotal=\"NETPROFIT\", AccountType=\"EXPENSE\", DrCrSign=-1, UseOpeningBalance=false, UseMovement=true, UseClosingBalance=false],",
+                "     [CashFlowTotal=\"NETPROFIT\", AccountType=\"OVERHEADS\", DrCrSign=-1, UseOpeningBalance=false, UseMovement=true, UseClosingBalance=false],",
+                "     [CashFlowTotal=\"NETPROFIT\", AccountType=\"DEPRECIATN\", DrCrSign=-1, UseOpeningBalance=false, UseMovement=true, UseClosingBalance=false],",
+                "     [CashFlowTotal=\"NETPROFIT\", AccountType=\"WAGESEXPENSE\", DrCrSign=-1, UseOpeningBalance=false, UseMovement=true, UseClosingBalance=false],",
+                "     [CashFlowTotal=\"NETPROFIT\", AccountType=\"SUPERANNUATIONEXPENSE\", DrCrSign=-1, UseOpeningBalance=false, UseMovement=true, UseClosingBalance=false],",
+                "",
+                "     [CashFlowTotal=\"ASSETS\", AccountType=\"CURRENT\", DrCrSign=-1, UseOpeningBalance=false, UseMovement=true, UseClosingBalance=false],",
+                "     [CashFlowTotal=\"ASSETS\", AccountType=\"INVENTORY\", DrCrSign=-1, UseOpeningBalance=false, UseMovement=true, UseClosingBalance=false],",
+                "     [CashFlowTotal=\"ASSETS\", AccountType=\"PREPAYMENT\", DrCrSign=-1, UseOpeningBalance=false, UseMovement=true, UseClosingBalance=false],",
+                "     [CashFlowTotal=\"ASSETS\", AccountType=\"FIXED\", DrCrSign=-1, UseOpeningBalance=false, UseMovement=true, UseClosingBalance=false],",
+                "     [CashFlowTotal=\"ASSETS\", AccountType=\"NONCURRENT\", DrCrSign=-1, UseOpeningBalance=false, UseMovement=true, UseClosingBalance=false],",
+                "",
+                "     [CashFlowTotal=\"LIABILITIES\", AccountType=\"CURRLIAB\", DrCrSign=1, UseOpeningBalance=false, UseMovement=true, UseClosingBalance=false],",
+                "     [CashFlowTotal=\"LIABILITIES\", AccountType=\"LIABILITY\", DrCrSign=1, UseOpeningBalance=false, UseMovement=true, UseClosingBalance=false],",
+                "     [CashFlowTotal=\"LIABILITIES\", AccountType=\"TERMLIAB\", DrCrSign=1, UseOpeningBalance=false, UseMovement=true, UseClosingBalance=false],",
+                "     [CashFlowTotal=\"LIABILITIES\", AccountType=\"PAYGLIABILITY\", DrCrSign=1, UseOpeningBalance=false, UseMovement=true, UseClosingBalance=false],",
+                "     [CashFlowTotal=\"LIABILITIES\", AccountType=\"SUPERANNUATIONLIABILITY\", DrCrSign=1, UseOpeningBalance=false, UseMovement=true, UseClosingBalance=false],",
+                "",
+                "     [CashFlowTotal=\"NETASSETS\", AccountType=\"CURRENT\", DrCrSign=-1, UseOpeningBalance=false, UseMovement=true, UseClosingBalance=false],",
+                "     [CashFlowTotal=\"NETASSETS\", AccountType=\"INVENTORY\", DrCrSign=-1, UseOpeningBalance=false, UseMovement=true, UseClosingBalance=false],",
+                "     [CashFlowTotal=\"NETASSETS\", AccountType=\"PREPAYMENT\", DrCrSign=-1, UseOpeningBalance=false, UseMovement=true, UseClosingBalance=false],",
+                "     [CashFlowTotal=\"NETASSETS\", AccountType=\"FIXED\", DrCrSign=-1, UseOpeningBalance=false, UseMovement=true, UseClosingBalance=false],",
+                "     [CashFlowTotal=\"NETASSETS\", AccountType=\"NONCURRENT\", DrCrSign=-1, UseOpeningBalance=false, UseMovement=true, UseClosingBalance=false],",
+                "     [CashFlowTotal=\"NETASSETS\", AccountType=\"CURRLIAB\", DrCrSign=1, UseOpeningBalance=false, UseMovement=true, UseClosingBalance=false],",
+                "     [CashFlowTotal=\"NETASSETS\", AccountType=\"LIABILITY\", DrCrSign=1, UseOpeningBalance=false, UseMovement=true, UseClosingBalance=false],",
+                "     [CashFlowTotal=\"NETASSETS\", AccountType=\"TERMLIAB\", DrCrSign=1, UseOpeningBalance=false, UseMovement=true, UseClosingBalance=false],",
+                "     [CashFlowTotal=\"NETASSETS\", AccountType=\"PAYGLIABILITY\", DrCrSign=1, UseOpeningBalance=false, UseMovement=true, UseClosingBalance=false],",
+                "     [CashFlowTotal=\"NETASSETS\", AccountType=\"SUPERANNUATIONLIABILITY\", DrCrSign=1, UseOpeningBalance=false, UseMovement=true, UseClosingBalance=false],",
+                "",
+                "     [CashFlowTotal=\"EQUITY\", AccountType=\"EQUITY\", DrCrSign=1, UseOpeningBalance=false, UseMovement=true, UseClosingBalance=false],",
+                "",
+                "     [CashFlowTotal=\"CLOSINGBANK\", AccountType=\"BANK\", DrCrSign=1, UseOpeningBalance=false, UseMovement=false, UseClosingBalance=true],",
+                "",
+                "     [CashFlowTotal=\"OPENINGCASHBALANCE\", AccountType=\"BANK\", DrCrSign=1, UseOpeningBalance=true, UseMovement=false, UseClosingBalance=false],",
+                "",
+                "     [CashFlowTotal=\"NETCASHMOVEMENT\", AccountType=\"CURRENT\", DrCrSign=-1, UseOpeningBalance=false, UseMovement=true, UseClosingBalance=false],",
+                "     [CashFlowTotal=\"NETCASHMOVEMENT\", AccountType=\"INVENTORY\", DrCrSign=-1, UseOpeningBalance=false, UseMovement=true, UseClosingBalance=false],",
+                "     [CashFlowTotal=\"NETCASHMOVEMENT\", AccountType=\"PREPAYMENT\", DrCrSign=-1, UseOpeningBalance=false, UseMovement=true, UseClosingBalance=false],",
+                "     [CashFlowTotal=\"NETCASHMOVEMENT\", AccountType=\"FIXED\", DrCrSign=-1, UseOpeningBalance=false, UseMovement=true, UseClosingBalance=false],",
+                "     [CashFlowTotal=\"NETCASHMOVEMENT\", AccountType=\"NONCURRENT\", DrCrSign=-1, UseOpeningBalance=false, UseMovement=true, UseClosingBalance=false],",
+                "     [CashFlowTotal=\"NETCASHMOVEMENT\", AccountType=\"CURRLIAB\", DrCrSign=1, UseOpeningBalance=false, UseMovement=true, UseClosingBalance=false],",
+                "     [CashFlowTotal=\"NETCASHMOVEMENT\", AccountType=\"LIABILITY\", DrCrSign=1, UseOpeningBalance=false, UseMovement=true, UseClosingBalance=false],",
+                "     [CashFlowTotal=\"NETCASHMOVEMENT\", AccountType=\"TERMLIAB\", DrCrSign=1, UseOpeningBalance=false, UseMovement=true, UseClosingBalance=false],",
+                "     [CashFlowTotal=\"NETCASHMOVEMENT\", AccountType=\"PAYGLIABILITY\", DrCrSign=1, UseOpeningBalance=false, UseMovement=true, UseClosingBalance=false],",
+                "     [CashFlowTotal=\"NETCASHMOVEMENT\", AccountType=\"SUPERANNUATIONLIABILITY\", DrCrSign=1, UseOpeningBalance=false, UseMovement=true, UseClosingBalance=false],",
+                "     [CashFlowTotal=\"NETCASHMOVEMENT\", AccountType=\"EQUITY\", DrCrSign=1, UseOpeningBalance=false, UseMovement=true, UseClosingBalance=false],",
+                "",
+                "     [CashFlowTotal=\"CLOSINGCASHBALANCE\", AccountType=\"CURRENT\", DrCrSign=-1, UseOpeningBalance=false, UseMovement=true, UseClosingBalance=false],",
+                "     [CashFlowTotal=\"CLOSINGCASHBALANCE\", AccountType=\"INVENTORY\", DrCrSign=-1, UseOpeningBalance=false, UseMovement=true, UseClosingBalance=false],",
+                "     [CashFlowTotal=\"CLOSINGCASHBALANCE\", AccountType=\"PREPAYMENT\", DrCrSign=-1, UseOpeningBalance=false, UseMovement=true, UseClosingBalance=false],",
+                "     [CashFlowTotal=\"CLOSINGCASHBALANCE\", AccountType=\"FIXED\", DrCrSign=-1, UseOpeningBalance=false, UseMovement=true, UseClosingBalance=false],",
+                "     [CashFlowTotal=\"CLOSINGCASHBALANCE\", AccountType=\"NONCURRENT\", DrCrSign=-1, UseOpeningBalance=false, UseMovement=true, UseClosingBalance=false],",
+                "     [CashFlowTotal=\"CLOSINGCASHBALANCE\", AccountType=\"CURRLIAB\", DrCrSign=1, UseOpeningBalance=false, UseMovement=true, UseClosingBalance=false],",
+                "     [CashFlowTotal=\"CLOSINGCASHBALANCE\", AccountType=\"LIABILITY\", DrCrSign=1, UseOpeningBalance=false, UseMovement=true, UseClosingBalance=false],",
+                "     [CashFlowTotal=\"CLOSINGCASHBALANCE\", AccountType=\"TERMLIAB\", DrCrSign=1, UseOpeningBalance=false, UseMovement=true, UseClosingBalance=false],",
+                "     [CashFlowTotal=\"CLOSINGCASHBALANCE\", AccountType=\"PAYGLIABILITY\", DrCrSign=1, UseOpeningBalance=false, UseMovement=true, UseClosingBalance=false],",
+                "     [CashFlowTotal=\"CLOSINGCASHBALANCE\", AccountType=\"SUPERANNUATIONLIABILITY\", DrCrSign=1, UseOpeningBalance=false, UseMovement=true, UseClosingBalance=false],",
+                "     [CashFlowTotal=\"CLOSINGCASHBALANCE\", AccountType=\"EQUITY\", DrCrSign=1, UseOpeningBalance=false, UseMovement=true, UseClosingBalance=false],",
+                "     [CashFlowTotal=\"CLOSINGCASHBALANCE\", AccountType=\"BANK\", DrCrSign=1, UseOpeningBalance=true, UseMovement=false, UseClosingBalance=false],",
+                "",
+                "     [CashFlowTotal=\"OUTOFBALANCE\", AccountType=\"CURRENT\", DrCrSign=-1, UseOpeningBalance=false, UseMovement=true, UseClosingBalance=false],",
+                "     [CashFlowTotal=\"OUTOFBALANCE\", AccountType=\"INVENTORY\", DrCrSign=-1, UseOpeningBalance=false, UseMovement=true, UseClosingBalance=false],",
+                "     [CashFlowTotal=\"OUTOFBALANCE\", AccountType=\"PREPAYMENT\", DrCrSign=-1, UseOpeningBalance=false, UseMovement=true, UseClosingBalance=false],",
+                "     [CashFlowTotal=\"OUTOFBALANCE\", AccountType=\"FIXED\", DrCrSign=-1, UseOpeningBalance=false, UseMovement=true, UseClosingBalance=false],",
+                "     [CashFlowTotal=\"OUTOFBALANCE\", AccountType=\"NONCURRENT\", DrCrSign=-1, UseOpeningBalance=false, UseMovement=true, UseClosingBalance=false],",
+                "     [CashFlowTotal=\"OUTOFBALANCE\", AccountType=\"CURRLIAB\", DrCrSign=1, UseOpeningBalance=false, UseMovement=true, UseClosingBalance=false],",
+                "     [CashFlowTotal=\"OUTOFBALANCE\", AccountType=\"LIABILITY\", DrCrSign=1, UseOpeningBalance=false, UseMovement=true, UseClosingBalance=false],",
+                "     [CashFlowTotal=\"OUTOFBALANCE\", AccountType=\"TERMLIAB\", DrCrSign=1, UseOpeningBalance=false, UseMovement=true, UseClosingBalance=false],",
+                "     [CashFlowTotal=\"OUTOFBALANCE\", AccountType=\"PAYGLIABILITY\", DrCrSign=1, UseOpeningBalance=false, UseMovement=true, UseClosingBalance=false],",
+                "     [CashFlowTotal=\"OUTOFBALANCE\", AccountType=\"SUPERANNUATIONLIABILITY\", DrCrSign=1, UseOpeningBalance=false, UseMovement=true, UseClosingBalance=false],",
+                "     [CashFlowTotal=\"OUTOFBALANCE\", AccountType=\"EQUITY\", DrCrSign=1, UseOpeningBalance=false, UseMovement=true, UseClosingBalance=false],",
+                "     [CashFlowTotal=\"OUTOFBALANCE\", AccountType=\"BANK\", DrCrSign=1, UseOpeningBalance=true, UseMovement=false, UseClosingBalance=false],",
+                "     [CashFlowTotal=\"OUTOFBALANCE\", AccountType=\"BANK\", DrCrSign=-1, UseOpeningBalance=false, UseMovement=false, UseClosingBalance=true]",
+                "     }, ",
+                "     type table[CashFlowTotal=text, AccountType=text, DrCrSign=number, UseOpeningBalance=logical, UseMovement=logical, UseClosingBalance=logical]",
+                "),",
+                "    #\"Renamed Columns\" = Table.RenameColumns(Source,{{\"CashFlowTotal\", \"CashFlowTotal\"}})",
+                "in",
+                "    #\"Renamed Columns\""
+              ],
+              "type": "m"
+            }
+          }
+        ]
+      },
+      {
+        "name": "CashFlowTotals",
+        "annotations": [
+          {
+            "name": "PBI_ResultType",
+            "value": "Table"
+          }
+        ],
+        "columns": [
+          {
+            "name": "CashFlowTotal",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              }
+            ],
+            "dataType": "string",
+            "lineageTag": "2a1bebd3-f576-432b-bf58-c49e370aedff",
+            "sourceColumn": "CashFlowTotal",
+            "summarizeBy": "none"
+          },
+          {
+            "name": "CashFlowTotalName",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              }
+            ],
+            "changedProperties": [
+              {
+                "property": "SortByColumn"
+              }
+            ],
+            "dataType": "string",
+            "lineageTag": "431b1d71-633d-4878-86a4-ba164d276448",
+            "sortByColumn": "Order",
+            "sourceColumn": "CashFlowTotalName",
+            "summarizeBy": "none"
+          },
+          {
+            "name": "IsAccountClassification",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              }
+            ],
+            "dataType": "boolean",
+            "formatString": "\"TRUE\";\"TRUE\";\"FALSE\"",
+            "lineageTag": "3a93a3b0-779f-426b-8711-462c0070b12e",
+            "sourceColumn": "IsAccountClassification",
+            "summarizeBy": "none"
+          },
+          {
+            "name": "Order",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              },
+              {
+                "name": "PBI_FormatHint",
+                "value": "{\"isGeneralNumber\":true}"
+              }
+            ],
+            "dataType": "double",
+            "lineageTag": "c9effd7e-8ff2-4b03-8064-5e2bfd8aca74",
+            "sourceColumn": "Order",
+            "summarizeBy": "none"
+          }
+        ],
+        "lineageTag": "4e6b0ee2-45dd-4d1f-bb42-432a89fc5225",
+        "partitions": [
+          {
+            "name": "CashFlowTotals",
+            "mode": "import",
+            "source": {
+              "expression": [
+                "let",
+                "    Source = Table.FromRecords(",
+                "     {",
+                "     [CashFlowTotal=\"OPENINGBANK\", CashFlowTotalName=\"Opening Bank Balance\", IsAccountClassification=true, Order=0],",
+                "     [CashFlowTotal=\"INCOME\", CashFlowTotalName=\"Income\", IsAccountClassification=true, Order=1],",
+                "     [CashFlowTotal=\"DIRECTCOSTS\", CashFlowTotalName=\"Cost Of Sales\", IsAccountClassification=true, Order=2],",
+                "     [CashFlowTotal=\"GROSSPROFIT\", CashFlowTotalName=\"Gross Profit / (Loss)\", IsAccountClassification=false, Order=3],",
+                "     [CashFlowTotal=\"OTHERINCOME\", CashFlowTotalName=\"Other Income\", IsAccountClassification=true, Order=4],",
+                "     [CashFlowTotal=\"EXPENSES\", CashFlowTotalName=\"Operating Expenses\", IsAccountClassification=true, Order=5],",
+                "     [CashFlowTotal=\"NETPROFIT\", CashFlowTotalName=\"Net Profit\", IsAccountClassification=false, Order=6],",
+                "     [CashFlowTotal=\"ASSETS\", CashFlowTotalName=\"Assets\", IsAccountClassification=true, Order=7],",
+                "     [CashFlowTotal=\"LIABILITIES\", CashFlowTotalName=\"Liabilities\", IsAccountClassification=true, Order=8],",
+                "     [CashFlowTotal=\"NETASSETS\", CashFlowTotalName=\"Net Assets\", IsAccountClassification=false, Order=9],",
+                "     [CashFlowTotal=\"EQUITY\", CashFlowTotalName=\"Equity\", IsAccountClassification=true, Order=10],",
+                "     [CashFlowTotal=\"CLOSINGBANK\", CashFlowTotalName=\"Closing Bank Balance\", IsAccountClassification=true, Order=11],",
+                "     [CashFlowTotal=\"OPENINGCASHBALANCE\", CashFlowTotalName=\"Opening Cash Balance\", IsAccountClassification=false, Order=12],",
+                "     [CashFlowTotal=\"NETCASHMOVEMENT\", CashFlowTotalName=\"Net Cash Movement\", IsAccountClassification=false, Order=13],",
+                "     [CashFlowTotal=\"CLOSINGCASHBALANCE\", CashFlowTotalName=\"Closing Cash Balance\", IsAccountClassification=false, Order=14],",
+                "     [CashFlowTotal=\"OUTOFBALANCE\", CashFlowTotalName=\"Out of Balance\", IsAccountClassification=false, Order=15]",
+                "     }, ",
+                "     type table[CashFlowTotal=text, CashFlowTotalName=text, IsAccountClassification=logical, Order=number]",
+                ")",
+                "in",
+                "    Source"
+              ],
+              "type": "m"
+            }
+          }
+        ]
+      },
+      {
+        "name": "BalanceSheet",
+        "annotations": [
+          {
+            "name": "PBI_ResultType",
+            "value": "Table"
+          }
+        ],
+        "columns": [
+          {
+            "name": "DataFileID",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              }
+            ],
+            "dataType": "string",
+            "lineageTag": "eb60ae62-0945-4a9f-a686-dce89f35151a",
+            "sourceColumn": "DataFileID",
+            "summarizeBy": "none"
+          },
+          {
+            "name": "Date",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              },
+              {
+                "name": "UnderlyingDateTimeDataType",
+                "value": "Date"
+              }
+            ],
+            "dataType": "dateTime",
+            "formatString": "Long Date",
+            "lineageTag": "9dba5800-579e-4664-aa0b-1eec1529503c",
+            "sourceColumn": "Date",
+            "summarizeBy": "none"
+          },
+          {
+            "name": "AccountID",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              }
+            ],
+            "dataType": "string",
+            "lineageTag": "721cd831-b666-4d85-9e6c-523295aebd85",
+            "sourceColumn": "AccountID",
+            "summarizeBy": "none"
+          },
+          {
+            "name": "Amount",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              },
+              {
+                "name": "PBI_FormatHint",
+                "value": "{\"isGeneralNumber\":true}"
+              }
+            ],
+            "dataType": "double",
+            "lineageTag": "629662b1-41e4-4089-8084-774f322700cf",
+            "sourceColumn": "Amount",
+            "summarizeBy": "sum"
+          }
+        ],
+        "lineageTag": "27ab57b5-0f63-42b9-b810-0a5d41f4852d",
+        "partitions": [
+          {
+            "name": "BalanceSheet",
+            "mode": "import",
+            "source": {
+              "expression": [
+                "let",
+                "    Source = OData.Feed(odatalink, null, [Implementation=\"2.0\"]),",
+                "    #\"BalanceSheetMultiPeriodTable_function\" = Source{[Name=\"BalanceSheetMultiPeriodTable\",Signature=\"function (FromDate as nullable date, ToDate as nullable date, Period as nullable text, PaymentsOnly as nullable logical, StandardLayout as nullable logical) as table\"]}[Data],",
+                "    Invoke_BalanceSheet = #\"BalanceSheetMultiPeriodTable_function\"(null, null, null, null, null),",
+                "    FilterRows = Table.SelectRows(Invoke_BalanceSheet, each ([AccountID] <> null) and ([Amount] <> 0)),",
+                "    AddClassReport = Table.AddColumn(FilterRows, \"ClassReport\", each (if [Amount] = null then null ",
+                "else ",
+                "(if Text.Contains([AccountLineType], \"bank\",Comparer.OrdinalIgnoreCase) then \"ASSET\" ",
+                "else",
+                "(if Text.Contains([AccountLineType], \"asset\",Comparer.OrdinalIgnoreCase) then \"ASSET\" ",
+                "else",
+                "(if Text.Contains([AccountLineType], \"liab\",Comparer.OrdinalIgnoreCase) then \"LIABILITY\"",
+                " else",
+                "(if Text.Contains([AccountLineType], \"equity\",Comparer.OrdinalIgnoreCase) then \"EQUITY\" ",
+                "else \"NONE\")))))),",
+                "    RemoveColumns = Table.SelectColumns(AddClassReport,{\"DataFileID\", \"Date\", \"AccountID\", \"Amount\", \"ClassReport\"}),",
+                "    MergeAccounts = Table.NestedJoin(RemoveColumns, {\"DataFileID\", \"AccountID\"}, Accounts, {\"DataFileID\", \"AccountID\"}, \"Accounts\", JoinKind.LeftOuter),",
+                "    ExpandAccounts = Table.ExpandTableColumn(MergeAccounts, \"Accounts\", {\"Class\"}, {\"ClassAccount\"}),",
+                "    MergeClassReport = Table.NestedJoin(ExpandAccounts, {\"ClassReport\"}, AccountsClass, {\"Class\"}, \"AccountsClass\", JoinKind.LeftOuter),",
+                "    ExpandClassReport = Table.ExpandTableColumn(MergeClassReport, \"AccountsClass\", {\"DrCrSign\"}, {\"ClassReportDrCrSign\"}),",
+                "    MergeClassAccount = Table.NestedJoin(ExpandClassReport, {\"ClassAccount\"}, AccountsClass, {\"Class\"}, \"AccountsClass\", JoinKind.LeftOuter),",
+                "    ExpandClassAccount = Table.ExpandTableColumn(MergeClassAccount, \"AccountsClass\", {\"DrCrSign\"}, {\"ClassDrCrSign\"}),",
+                "    AddAmountCorrected = Table.AddColumn(ExpandClassAccount, \"AmountCorrected\", each (if [ClassReportDrCrSign]<>[ClassDrCrSign] then -[Amount] else [Amount]) ,Number.Type),",
+                "    RemoveColumnsCorrected = Table.SelectColumns(AddAmountCorrected,{\"DataFileID\", \"Date\", \"AccountID\", \"AmountCorrected\"}),",
+                "    RenameAmount = Table.RenameColumns(RemoveColumnsCorrected,{{\"AmountCorrected\", \"Amount\"}})",
+                "in",
+                "    RenameAmount"
+              ],
+              "type": "m"
+            }
+          }
+        ]
+      },
+      {
+        "name": "_MeasuresTable",
+        "annotations": [
+          {
+            "name": "PBI_ResultType",
+            "value": "Table"
+          }
+        ],
+        "lineageTag": "7eed255a-d37e-4856-81ef-bf4207c680bf",
+        "measures": [
+          {
+            "name": "CFBSOpening",
+            "expression": [
+              "",
+              "    IF(",
+              "        SELECTEDVALUE(CashFlowTotals[IsAccountClassification]) = FALSE",
+              "        && (ISFILTERED(Accounts) = TRUE() || ISFILTERED(AccountsTypes) = TRUE()), ",
+              "            BLANK(), ",
+              "            CALCULATE(SUMX(CashFlowTotalsTypes, ",
+              "                CALCULATE(SUM(BalanceSheet[Amount]), FILTER(ALL(DatesByMonth), (DatesByMonth[Date] = MAX(DatesByMonth[DateLM])))) * CashFlowTotalsTypes[DrCrSign])",
+              "                , FILTER(CashFlowTotalsTypes, CashFlowTotalsTypes[UseOpeningBalance] = TRUE))",
+              "    )"
+            ],
+            "lineageTag": "870dc474-dbee-4d6a-a3c6-b4867d27ddbd"
+          },
+          {
+            "name": "CFBSClosing",
+            "annotations": [
+              {
+                "name": "PBI_FormatHint",
+                "value": "{\"isGeneralNumber\":true}"
+              }
+            ],
+            "expression": [
+              "",
+              "    IF(",
+              "        SELECTEDVALUE(CashFlowTotals[IsAccountClassification]) = FALSE",
+              "        && (ISFILTERED(Accounts) = TRUE() || ISFILTERED(AccountsTypes) = TRUE()), ",
+              "            BLANK(), ",
+              "            CALCULATE(SUMX(CashFlowTotalsTypes, CALCULATE(SUM(BalanceSheet[Amount])) * CashFlowTotalsTypes[DrCrSign])",
+              "            , FILTER(CashFlowTotalsTypes, CashFlowTotalsTypes[UseClosingBalance] = TRUE))",
+              "    )"
+            ],
+            "lineageTag": "036777d9-9989-4927-896c-a084ecce151e"
+          },
+          {
+            "name": "CFBSMovement",
+            "annotations": [
+              {
+                "name": "PBI_FormatHint",
+                "value": "{\"isGeneralNumber\":true}"
+              }
+            ],
+            "expression": [
+              "",
+              "    IF(",
+              "        SELECTEDVALUE(CashFlowTotals[IsAccountClassification]) = FALSE",
+              "        && (ISFILTERED(Accounts) = TRUE() || ISFILTERED(AccountsTypes) = TRUE()), ",
+              "            BLANK(), ",
+              "            CALCULATE(SUMX(CashFlowTotalsTypes, CALCULATE(SUM(BalanceSheet[Amount])) * CashFlowTotalsTypes[DrCrSign])",
+              "            , FILTER(CashFlowTotalsTypes, CashFlowTotalsTypes[UseMovement] = TRUE)",
+              "    ) - IF(",
+              "        SELECTEDVALUE(CashFlowTotals[IsAccountClassification]) = FALSE",
+              "        && (ISFILTERED(Accounts) = TRUE() || ISFILTERED(AccountsTypes) = TRUE()), ",
+              "            BLANK(), ",
+              "            CALCULATE(SUMX(CashFlowTotalsTypes, ",
+              "                CALCULATE(SUM(BalanceSheet[Amount]), FILTER(ALL(DatesByMonth), (DatesByMonth[Date] = MAX(DatesByMonth[DateLM])))) * CashFlowTotalsTypes[DrCrSign])",
+              "                , FILTER(CashFlowTotalsTypes, CashFlowTotalsTypes[UseMovement] = TRUE))",
+              "    ))"
+            ],
+            "lineageTag": "1fe31e1f-5e6e-4792-afe1-fd2fdebec013"
+          },
+          {
+            "name": "CFPLMovement",
+            "annotations": [
+              {
+                "name": "PBI_FormatHint",
+                "value": "{\"isGeneralNumber\":true}"
+              }
+            ],
+            "expression": [
+              "",
+              "    IF(",
+              "        SELECTEDVALUE(CashFlowTotals[IsAccountClassification]) = FALSE",
+              "        && (ISFILTERED(Accounts) = TRUE() || ISFILTERED(AccountsTypes) = TRUE()), ",
+              "            BLANK(), ",
+              "            CALCULATE(SUMX(CashFlowTotalsTypes, CALCULATE(SUM(ProfitAndLoss[Amount])) * CashFlowTotalsTypes[DrCrSign]), FILTER(CashFlowTotalsTypes, CashFlowTotalsTypes[UseMovement] = TRUE))",
+              "    )"
+            ],
+            "lineageTag": "0c3dd170-13ee-4619-a6a0-585ac5097620"
+          },
+          {
+            "name": "CFAmount",
+            "annotations": [
+              {
+                "name": "PBI_FormatHint",
+                "value": "{\"isCustom\":true}"
+              }
+            ],
+            "expression": [
+              "",
+              "   VAR varAmount = 0",
+              "      + [CFBSOpening]",
+              "      + [CFBSMovement]",
+              "      + [CFPLMovement]",
+              "      + [CFBSClosing]",
+              "",
+              "   VAR varNetAmount = IF(varAmount <> 0, varAmount, BLANK())",
+              "",
+              "   RETURN varNetAmount"
+            ],
+            "formatString": "#,##0;(#,##0)",
+            "lineageTag": "bc5bfe08-e131-4d29-8cdc-14ab3a18c72d"
+          },
+          {
+            "name": "Net Cash Movement",
+            "annotations": [
+              {
+                "name": "PBI_FormatHint",
+                "value": "{\"isGeneralNumber\":true}"
+              }
+            ],
+            "expression": "_MeasuresTable[CFBSMovement] + _MeasuresTable[CFPLMovement]",
+            "lineageTag": "754e44d6-347d-4484-b0a3-03fbf7259e6b"
+          }
+        ],
+        "partitions": [
+          {
+            "name": "_MeasuresTable",
+            "mode": "import",
+            "source": {
+              "expression": [
+                "let",
+                "    Source = Table.FromRows(Json.Document(Binary.Decompress(Binary.FromText(\"i44FAA==\", BinaryEncoding.Base64), Compression.Deflate)), let _t = ((type nullable text) meta [Serialized.Text = true]) in type table [Column1 = _t]),",
+                "    #\"Removed Columns\" = Table.RemoveColumns(Source,{\"Column1\"})",
+                "in",
+                "    #\"Removed Columns\""
               ],
               "type": "m"
             }
