@@ -4,7 +4,7 @@
     "annotations": [
       {
         "name": "PBIDesktopVersion",
-        "value": "2.122.746.0 (23.10)"
+        "value": "2.122.1066.0 (23.10)"
       },
       {
         "name": "__PBI_TimeIntelligenceEnabled",
@@ -38029,10 +38029,6 @@
           {
             "name": "PBI_ResultType",
             "value": "Table"
-          },
-          {
-            "name": "PBI_NavigationStepName",
-            "value": "Navigation"
           }
         ],
         "columns": [
@@ -43624,10 +43620,6 @@
       {
         "name": "Logo",
         "annotations": [
-          {
-            "name": "PBI_NavigationStepName",
-            "value": "Navigation"
-          },
           {
             "name": "PBI_ResultType",
             "value": "Table"
