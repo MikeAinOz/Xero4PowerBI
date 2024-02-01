@@ -4,7 +4,7 @@
     "annotations": [
       {
         "name": "PBIDesktopVersion",
-        "value": "2.122.1066.0 (23.10)"
+        "value": "2.124.1805.0 (23.12)"
       },
       {
         "name": "__PBI_TimeIntelligenceEnabled",
@@ -38029,6 +38029,10 @@
           {
             "name": "PBI_ResultType",
             "value": "Table"
+          },
+          {
+            "name": "PBI_NavigationStepName",
+            "value": "Navigation"
           }
         ],
         "columns": [
@@ -39842,6 +39846,19 @@
             "dataType": "string",
             "lineageTag": "16430e2d-dfba-4028-9af3-2273adf0be0f",
             "sourceColumn": "DataFileID",
+            "summarizeBy": "none"
+          },
+          {
+            "name": "CompanyNumber",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              }
+            ],
+            "dataType": "string",
+            "lineageTag": "e7efb64b-dfdf-447a-8b43-ca01d9ed844e",
+            "sourceColumn": "CompanyNumber",
             "summarizeBy": "none"
           }
         ],
@@ -43623,6 +43640,10 @@
           {
             "name": "PBI_ResultType",
             "value": "Table"
+          },
+          {
+            "name": "PBI_NavigationStepName",
+            "value": "Navigation"
           }
         ],
         "columns": [
@@ -43676,9 +43697,8 @@
                 "let",
                 "    Source = OData.Feed(odatalink, null, [Implementation=\"2.0\"]),",
                 "    BrandingThemes_table = Table.Buffer(Source{[Name=\"BrandingThemes\",Signature=\"table\"]}[Data]),",
-                "    Standard = Table.SelectRows(BrandingThemes_table, each ([Name] = \"Standard\")),",
                 "    GetImage = Source{[Name=\"GetImage\",Signature=\"function (URL as text) as table\"]}[Data],",
-                "    LogoUrl = Standard{0}[LogoUrl],",
+                "    LogoUrl = Table.First(BrandingThemes_table)[LogoUrl],",
                 "    XeroLogo = GetImage(LogoUrl),",
                 "    LogoTable = Table.RenameColumns(XeroLogo,{{\"Image\", \"Logo\"}})",
                 "in",
