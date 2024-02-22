@@ -4,7 +4,7 @@
     "annotations": [
       {
         "name": "PBIDesktopVersion",
-        "value": "2.124.1805.0 (23.12)"
+        "value": "2.124.2028.0 (23.12)"
       },
       {
         "name": "__PBI_TimeIntelligenceEnabled",
@@ -43639,7 +43639,7 @@
         "annotations": [
           {
             "name": "PBI_ResultType",
-            "value": "Table"
+            "value": "Exception"
           },
           {
             "name": "PBI_NavigationStepName",
