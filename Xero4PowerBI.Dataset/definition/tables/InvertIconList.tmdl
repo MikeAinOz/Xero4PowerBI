@@ -1,0 +1,29 @@
+table InvertIconList
+	isHidden
+	lineageTag: c81a99c5-9000-4e23-a737-08c40ac79e9f
+
+	column InvertIconList
+		dataType: string
+		isHidden
+		lineageTag: 8fa7766d-c1dc-4830-bb05-a4ae26b885be
+		summarizeBy: none
+		sourceColumn: InvertIconList
+
+		changedProperty = IsHidden
+
+		annotation SummarizationSetBy = Automatic
+
+	partition InvertIconList-6fb36f38-62f3-465a-8a63-ea78cba6340e = m
+		mode: import
+		queryGroup: 'Executive Summary'
+		source =
+				let
+				    Source = Table.FromRows(Json.Document(Binary.Decompress(Binary.FromText("i45Wck4szlAoLkjNK1GK1YlWcsksSk0uUUjOLy4pBgu4VgDlilMhHMey1KLE9FSFlNSkkvyiYoWUxEpUieSi1JRMJKlYAA==", BinaryEncoding.Base64), Compression.Deflate)), let _t = ((type nullable text) meta [Serialized.Text = true]) in type table [Description = _t]),
+				    InvertList = Table.ToList(Source)
+				in
+				    InvertList
+
+	changedProperty = IsHidden
+
+	annotation PBI_ResultType = List
+

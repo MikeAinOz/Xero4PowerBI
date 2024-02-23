@@ -1,0 +1,32 @@
+table AccountsTypes
+	lineageTag: ffe74c23-b262-494b-9a67-9f613d180b8b
+
+	column AccountType
+		dataType: string
+		lineageTag: bf950649-eef4-487c-b5e2-822e86106c12
+		summarizeBy: none
+		sourceColumn: AccountType
+
+		annotation SummarizationSetBy = Automatic
+
+	column AccountTypeName
+		dataType: string
+		lineageTag: 5c7198df-a6fd-47f0-99ab-5916a7d984ae
+		summarizeBy: none
+		sourceColumn: AccountTypeName
+
+		annotation SummarizationSetBy = Automatic
+
+	partition AccountsTypes-78464774-ed3b-40c6-8929-91ce93de0de3 = m
+		mode: import
+		queryGroup: ProftAndLoss
+		source =
+				let
+				    Source = OData.Feed(odatalink, null, [Implementation="2.0"]),
+				    AccountsTypes_table = Source{[Name="AccountsTypes",Signature="table"]}[Data],
+				    #"Removed Other Columns" = Table.SelectColumns(AccountsTypes_table,{"AccountType", "AccountTypeName"})
+				in
+				    #"Removed Other Columns"
+
+	annotation PBI_ResultType = Table
+

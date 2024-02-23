@@ -1,0 +1,157 @@
+table BalanceSheetDetail
+	lineageTag: 17a991be-4cad-4015-a092-5733d97d935c
+
+	measure BalanceTotal =
+			
+			VAR IsFilteredDescription = ISFILTERED(BalanceSheetDetail[ClassDescription])  // Class Description Second Level
+			VAR IsFilteredBalanceType = ISFILTERED(BalanceSheetDetail[BalanceType]) // Top Level
+			VAR Result = SWITCH(TRUE(),
+			   NOT(IsFilteredBalanceType),BLANK(),  // Blank Total
+			   NOT(IsFilteredDescription) && NOT(SELECTEDVALUE(BalanceSheetDetail[BalanceType],"Other") = "Equity"),
+			               SUMX(BalanceSheetDetail,BalanceSheetDetail[Amount]*BalanceSheetDetail[DrCrSign]), // Net Assets and (NOT BalanceType) Total Equity
+			   IsFilteredDescription, SUM(BalanceSheetDetail[Amount]) // Class,Account Line Type. Account Name
+			)
+			RETURN Result
+		formatString: #,##0;(#,##0)
+		lineageTag: 92d3ddee-b87a-4a42-a1b5-671893243819
+
+		changedProperty = FormatString
+
+		annotation PBI_FormatHint = {"isCustom":true}
+
+	column Date
+		dataType: dateTime
+		formatString: d/mm/yyyy
+		lineageTag: 85002be9-f183-4f9f-b3ed-57bd32ad5838
+		summarizeBy: none
+		sourceColumn: Date
+
+		changedProperty = FormatString
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation UnderlyingDateTimeDataType = Date
+
+		annotation PBI_FormatHint = {"isDateTimeCustom":true}
+
+	column LineType
+		dataType: string
+		lineageTag: 6d7c8729-62f0-4158-a7b0-64a33b59a667
+		summarizeBy: none
+		sourceColumn: LineType
+
+		annotation SummarizationSetBy = Automatic
+
+	column AccountID
+		dataType: string
+		lineageTag: 2321afae-f78e-4629-b96a-521ba51af6ce
+		summarizeBy: none
+		sourceColumn: AccountID
+
+		annotation SummarizationSetBy = Automatic
+
+	column AccountName
+		dataType: string
+		lineageTag: 37c4d204-d5e6-4284-852a-23d600298ecb
+		summarizeBy: none
+		sourceColumn: AccountName
+
+		annotation SummarizationSetBy = Automatic
+
+	column AccountLineType
+		dataType: string
+		lineageTag: 15230b2c-d7c1-492c-9245-df0899bbfcfb
+		summarizeBy: none
+		sourceColumn: AccountLineType
+
+		annotation SummarizationSetBy = Automatic
+
+	column Amount
+		dataType: double
+		lineageTag: cb66154d-8e14-4d46-8896-734fe8c9764c
+		summarizeBy: sum
+		sourceColumn: Amount
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column Code
+		dataType: string
+		lineageTag: 3fd500f3-570a-4054-bea5-e3a526661423
+		summarizeBy: none
+		sourceColumn: Code
+
+		annotation SummarizationSetBy = Automatic
+
+	column Class
+		dataType: string
+		lineageTag: 50e1250a-202c-42f6-9d46-acaac044065b
+		summarizeBy: none
+		sourceColumn: Class
+
+		annotation SummarizationSetBy = Automatic
+
+	column BalanceType
+		dataType: string
+		lineageTag: f11f3d24-a09c-4d95-b804-3a9bd26dd750
+		summarizeBy: none
+		sourceColumn: BalanceType
+
+		annotation SummarizationSetBy = Automatic
+
+	column ClassDescription
+		dataType: string
+		lineageTag: 347efbbb-4d49-47aa-bc75-8d51ae58db8d
+		summarizeBy: none
+		sourceColumn: ClassDescription
+
+		annotation SummarizationSetBy = Automatic
+
+	column DrCrSign
+		dataType: int64
+		formatString: 0
+		lineageTag: fa0b16ac-345b-4b0d-9cbd-c4b908d0ff7c
+		summarizeBy: sum
+		sourceColumn: DrCrSign
+
+		annotation SummarizationSetBy = Automatic
+
+	column Order
+		dataType: string
+		lineageTag: edd144e9-664e-440f-8044-b60eae1fed41
+		summarizeBy: none
+		sourceColumn: Order
+
+		annotation SummarizationSetBy = Automatic
+
+	column DataFileID
+		dataType: string
+		lineageTag: c4c1dd48-6f0f-4271-b4c1-19c5bf2a6ea7
+		summarizeBy: none
+		sourceColumn: DataFileID
+
+		annotation SummarizationSetBy = Automatic
+
+	partition BalanceSheetDetail-7f740f78-9d3e-496d-9a7c-5bc5b7a6bc42 = m
+		mode: import
+		queryGroup: 'Balance Sheet'
+		source =
+				let
+				    Source = OData.Feed(odatalink, null, [Implementation="2.0"]),
+				    #"BalanceSheet_function (Date as nullable date, PaymentsOnly as nullable logical, StandardLayout as nullable logical) as table" = Source{[Name="BalanceSheet",Signature="function (Date as nullable date, PaymentsOnly as nullable logical, StandardLayout as nullable logical) as table"]}[Data],
+				    #"Invoked FunctionBalanceSheet_function (Date as nullable date, PaymentsOnly as nullable logical, StandardLayout as nullable logical) as table1" = #"BalanceSheet_function (Date as nullable date, PaymentsOnly as nullable logical, StandardLayout as nullable logical) as table"(null, null, null),
+				    #"Removed Columns" = Table.RemoveColumns(#"Invoked FunctionBalanceSheet_function (Date as nullable date, PaymentsOnly as nullable logical, StandardLayout as nullable logical) as table1",{"PaymentsOnly", "StandardLayout", "UpdatedDateUTC"}),
+				    #"Expanded Lines" = Table.ExpandTableColumn(#"Removed Columns", "Lines", {"LineType", "AccountID", "AccountName", "AccountLineType", "Amount"}, {"LineType", "AccountID", "AccountName", "AccountLineType", "Amount"}),
+				    #"Filtered Rows" = Table.SelectRows(#"Expanded Lines", each ([LineType] = "Detail")),
+				    #"Merged Queries1" = Table.NestedJoin(#"Filtered Rows", {"AccountID"}, Accounts, {"AccountID"}, "Accounts", JoinKind.LeftOuter),
+				    #"Expanded Accounts" = Table.ExpandTableColumn(#"Merged Queries1", "Accounts", {"Code", "Class"}, {"Code", "Class"}),
+				    #"Merged Queries" = Table.NestedJoin(#"Expanded Accounts", {"Class"}, AccountsClass, {"Class"}, "AccountsClass", JoinKind.LeftOuter),
+				    #"Expanded AccountsClass" = Table.ExpandTableColumn(#"Merged Queries", "AccountsClass", {"BalanceType", "Description", "DrCrSign", "Order"}, {"BalanceType", "Description", "DrCrSign", "Order"}),
+				    #"Renamed Columns" = Table.RenameColumns(#"Expanded AccountsClass",{{"Description", "ClassDescription"}}),
+				    #"Expanded DataFile" = Table.ExpandRecordColumn(#"Renamed Columns", "DataFile", {"DataFileID"}, {"DataFileID"})
+				in
+				    #"Expanded DataFile"
+
+	annotation PBI_ResultType = Table
+

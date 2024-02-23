@@ -1,0 +1,254 @@
+table AccountsReceivable
+	lineageTag: c29a2b83-58bf-4446-8d04-c10664a9c6ad
+
+	column InvoiceID
+		dataType: string
+		lineageTag: b8132874-5048-47eb-ab7c-114597bf0d2a
+		summarizeBy: none
+		sourceColumn: InvoiceID
+
+		annotation SummarizationSetBy = Automatic
+
+	column Type
+		dataType: string
+		lineageTag: 532e2406-002b-4387-aebf-c84f11644784
+		summarizeBy: none
+		sourceColumn: Type
+
+		annotation SummarizationSetBy = Automatic
+
+	column InvoiceNumber
+		dataType: string
+		lineageTag: 19693c24-d2ae-484d-b83a-d230e7c6317c
+		summarizeBy: none
+		sourceColumn: InvoiceNumber
+
+		annotation SummarizationSetBy = Automatic
+
+	column Reference
+		dataType: string
+		lineageTag: e425428e-8985-484b-b47b-fbd239cda7dc
+		summarizeBy: none
+		sourceColumn: Reference
+
+		annotation SummarizationSetBy = Automatic
+
+	column Status
+		dataType: string
+		lineageTag: 20cec3a7-e211-4ffb-936b-8224cd40f7c7
+		summarizeBy: none
+		sourceColumn: Status
+
+		annotation SummarizationSetBy = Automatic
+
+	column Date
+		dataType: dateTime
+		formatString: Short Date
+		lineageTag: 61d962e5-ba08-4ea9-82f6-c76994971f06
+		summarizeBy: none
+		sourceColumn: Date
+
+		changedProperty = FormatString
+
+		annotation SummarizationSetBy = Automatic
+
+	column DueDate
+		dataType: dateTime
+		formatString: Short Date
+		lineageTag: 587cc28d-cb77-4c42-ae70-bb6b92e4cde9
+		summarizeBy: none
+		sourceColumn: DueDate
+
+		changedProperty = FormatString
+
+		annotation SummarizationSetBy = Automatic
+
+	column ContactID
+		dataType: string
+		lineageTag: c3b979a7-a5ea-425c-aba9-1df0019c36fd
+		summarizeBy: none
+		sourceColumn: ContactID
+
+		annotation SummarizationSetBy = Automatic
+
+	column Name
+		dataType: string
+		lineageTag: 71d980f7-1100-42ff-93f1-a61532a08c5b
+		summarizeBy: none
+		sourceColumn: Name
+
+		annotation SummarizationSetBy = Automatic
+
+	column LineAmountTypes
+		dataType: string
+		lineageTag: 5ec89d4d-1ed0-4ef6-82c7-d2c094422aaa
+		summarizeBy: none
+		sourceColumn: LineAmountTypes
+
+		annotation SummarizationSetBy = Automatic
+
+	column SubTotal
+		dataType: double
+		lineageTag: aba1e9bd-62f7-4c2b-a7da-e3f1cfff7039
+		summarizeBy: sum
+		sourceColumn: SubTotal
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column TotalTax
+		dataType: double
+		lineageTag: 071f7ba2-a6cd-4923-a549-975b06c8da8b
+		summarizeBy: sum
+		sourceColumn: TotalTax
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column Total
+		dataType: double
+		lineageTag: 93acb5e2-3d6b-44e6-881a-dfe07960645b
+		summarizeBy: sum
+		sourceColumn: Total
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column AmountDue
+		dataType: double
+		lineageTag: 3638e7c8-85a5-4b3a-ac79-b08ff53c596e
+		summarizeBy: sum
+		sourceColumn: AmountDue
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column AmountPaid
+		dataType: double
+		lineageTag: 8557f457-bd82-4a01-8e8d-42a750814b98
+		summarizeBy: sum
+		sourceColumn: AmountPaid
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column AmountCredited
+		dataType: double
+		lineageTag: c87d103a-8cbf-4b4d-9797-96e84cccea11
+		summarizeBy: sum
+		sourceColumn: AmountCredited
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column CurrencyCode
+		dataType: string
+		lineageTag: f2da258f-b499-48f9-83ff-c1f17d9b4299
+		summarizeBy: none
+		sourceColumn: CurrencyCode
+
+		annotation SummarizationSetBy = Automatic
+
+	column CurrencyRate
+		dataType: double
+		lineageTag: 4d7b1f5e-d314-4c23-9953-2b5418982623
+		summarizeBy: sum
+		sourceColumn: CurrencyRate
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column HasAttachments
+		dataType: boolean
+		formatString: """TRUE"";""TRUE"";""FALSE"""
+		lineageTag: db4e2d1c-5750-4733-805b-d36969caf3eb
+		summarizeBy: none
+		sourceColumn: HasAttachments
+
+		annotation SummarizationSetBy = Automatic
+
+	column SentToContact
+		dataType: boolean
+		formatString: """TRUE"";""TRUE"";""FALSE"""
+		lineageTag: 041192d8-aefe-478c-aae0-8f80245aa9a5
+		summarizeBy: none
+		sourceColumn: SentToContact
+
+		annotation SummarizationSetBy = Automatic
+
+	column CISDeduction
+		dataType: double
+		lineageTag: c0cef59e-4fcb-406e-895d-894d1a128db0
+		summarizeBy: sum
+		sourceColumn: CISDeduction
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column RepeatingInvoiceID
+		dataType: string
+		lineageTag: 64451e8c-a37d-4805-9e3e-9cf5dfbebda5
+		summarizeBy: none
+		sourceColumn: RepeatingInvoiceID
+
+		annotation SummarizationSetBy = Automatic
+
+	column BrandingThemeID
+		dataType: string
+		lineageTag: 7ab1a59b-52fc-42d8-bc9f-4bdc5880db16
+		summarizeBy: none
+		sourceColumn: BrandingThemeID
+
+		annotation SummarizationSetBy = Automatic
+
+	column Url
+		dataType: string
+		lineageTag: 98337c52-9fad-42c7-b796-bdce9f08ca5e
+		summarizeBy: none
+		sourceColumn: Url
+
+		annotation SummarizationSetBy = Automatic
+
+	column UpdatedDateUTC
+		dataType: dateTime
+		formatString: Short Date
+		lineageTag: 36d1e999-c0ea-462f-ac7e-4cc51185c811
+		summarizeBy: none
+		sourceColumn: UpdatedDateUTC
+
+		changedProperty = FormatString
+
+		annotation SummarizationSetBy = Automatic
+
+	column DataFileID
+		dataType: string
+		lineageTag: 638e422a-ce9b-4825-b917-41a16965d0e0
+		summarizeBy: none
+		sourceColumn: DataFileID
+
+		annotation SummarizationSetBy = Automatic
+
+	partition AccountsReceivable-596ceea7-8db7-4320-81f2-4f2af3e5016e = m
+		mode: import
+		source =
+				let
+				    Source = OData.Feed(odatalink, null, [Implementation="2.0"]),
+				    InvoicesExpanded_table = Source{[Name="InvoicesExpanded",Signature="table"]}[Data],
+				    #"Filtered Rows1" = Table.SelectRows(InvoicesExpanded_table, each true),
+				    #"Filtered Rows" = Table.SelectRows(#"Filtered Rows1", each ([Type] = "ACCREC") and ([Status] = "AUTHORISED")),
+				    #"Expanded Contact" = Table.ExpandRecordColumn(#"Filtered Rows", "Contact", {"ContactID", "Name"}, {"ContactID", "Name"}),
+				    #"Removed Columns" = Table.RemoveColumns(#"Expanded Contact",{"ExpectedPaymentDate", "PlannedPaymentDate", "FullyPaidOnDate"}),
+				    #"Expanded DataFile" = Table.ExpandRecordColumn(#"Removed Columns", "DataFile", {"DataFileID"}, {"DataFileID"})
+				in
+				    #"Expanded DataFile"
+
+	annotation PBI_ResultType = Table
+

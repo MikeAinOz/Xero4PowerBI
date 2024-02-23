@@ -1,0 +1,129 @@
+table AccountsClass
+	isHidden
+	lineageTag: afc3944e-0571-4cc9-9cbb-12a9b490eac9
+
+	column Class
+		dataType: string
+		isHidden
+		lineageTag: 73b7687c-b2e5-4735-8217-71b91a37c665
+		summarizeBy: none
+		sourceColumn: Class
+
+		changedProperty = IsHidden
+
+		annotation SummarizationSetBy = Automatic
+
+	column Description
+		dataType: string
+		isHidden
+		lineageTag: 64c80f64-b9e9-406d-8d73-e681de24b078
+		summarizeBy: none
+		sourceColumn: Description
+
+		changedProperty = IsHidden
+
+		annotation SummarizationSetBy = Automatic
+
+	column Order
+		dataType: string
+		isHidden
+		lineageTag: f7b52008-5ad1-459f-88bd-8e1d8ef2dbeb
+		summarizeBy: none
+		sourceColumn: Order
+
+		changedProperty = IsHidden
+
+		annotation SummarizationSetBy = Automatic
+
+	column IsProfitLoss
+		dataType: string
+		isHidden
+		lineageTag: bcf89945-53e3-4955-bfa1-72b8db5e6a96
+		summarizeBy: none
+		sourceColumn: IsProfitLoss
+
+		changedProperty = IsHidden
+
+		annotation SummarizationSetBy = Automatic
+
+	column IsBalanceSheet
+		dataType: string
+		isHidden
+		lineageTag: 93babdac-db7a-47d9-b0e4-2505dd7c32c4
+		summarizeBy: none
+		sourceColumn: IsBalanceSheet
+
+		changedProperty = IsHidden
+
+		annotation SummarizationSetBy = Automatic
+
+	column IsDebit
+		dataType: string
+		isHidden
+		lineageTag: e647b2c4-affc-4a0e-a187-9f763e80dfde
+		summarizeBy: none
+		sourceColumn: IsDebit
+
+		changedProperty = IsHidden
+
+		annotation SummarizationSetBy = Automatic
+
+	column IsCredit
+		dataType: string
+		isHidden
+		lineageTag: 4dd52fbd-31fd-48a3-872e-bf1c55ff66d8
+		summarizeBy: none
+		sourceColumn: IsCredit
+
+		changedProperty = IsHidden
+
+		annotation SummarizationSetBy = Automatic
+
+	column DrCrSign
+		dataType: int64
+		isHidden
+		formatString: 0
+		lineageTag: e6c8cfad-e38a-4a9b-9fb3-e4d2ca5cdb95
+		summarizeBy: none
+		sourceColumn: DrCrSign
+
+		changedProperty = IsHidden
+
+		annotation SummarizationSetBy = Automatic
+
+	column ProfitLossSign
+		dataType: int64
+		isHidden
+		formatString: 0
+		lineageTag: 82dd3acb-2fb3-44e5-b762-64ac3dcdd87d
+		summarizeBy: none
+		sourceColumn: ProfitLossSign
+
+		changedProperty = IsHidden
+
+		annotation SummarizationSetBy = Automatic
+
+	column BalanceType
+		dataType: string
+		isHidden
+		lineageTag: f5a54c67-a267-4f16-ba05-34c2d833e4cf
+		summarizeBy: none
+		sourceColumn: BalanceType
+
+		changedProperty = IsHidden
+
+		annotation SummarizationSetBy = Automatic
+
+	partition AccountsClass-8e220296-11ae-42ae-bb22-99067eabe79a = m
+		mode: import
+		source =
+				let
+				    Source = Table.FromRows(Json.Document(Binary.Decompress(Binary.FromText("i45WCnINc/ULdVXSUQpKLUvNK00tBjINgTgkCCzq5ugTjExDhXUNocqUYnWilVwjAlz9wNKuFQWpecVgQ4wwDUHjGsIMAhviGBzsGgLkOBYXp5aADDDG1InFAAMg9kstUYBqA5nk4+no5OnjGRIJlPLJTEzKzMksyQS7yQS3Y5A9hsVM18BQiIGuhaWZJZVAhinxZkH1xMYCAA==", BinaryEncoding.Base64), Compression.Deflate)), let _t = ((type nullable text) meta [Serialized.Text = true]) in type table [Class = _t, Description = _t, Order = _t, IsProfitLoss = _t, IsBalanceSheet = _t, IsDebit = _t, IsCredit = _t, DrCrSign = _t, ProfitLossSign = _t, BalanceType = _t]),
+				    #"Changed Type" = Table.TransformColumnTypes(Source,{{"DrCrSign", Int64.Type}, {"ProfitLossSign", Int64.Type}})
+				in
+				    #"Changed Type"
+
+	changedProperty = IsHidden
+
+	annotation PBI_ResultType = Table
+

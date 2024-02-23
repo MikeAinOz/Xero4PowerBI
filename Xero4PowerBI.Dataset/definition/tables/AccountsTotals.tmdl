@@ -1,0 +1,80 @@
+table AccountsTotals
+	lineageTag: 709fa02f-a15e-4fc6-8438-003e5e1d19a9
+
+	column AccountTotal
+		dataType: string
+		lineageTag: 96e6ae88-2da3-4fee-830d-7fd0c77aacce
+		summarizeBy: none
+		sourceColumn: AccountTotal
+
+		annotation SummarizationSetBy = Automatic
+
+	column AccountTotalName
+		dataType: string
+		lineageTag: 94d7e559-ad94-4fde-ac18-1e8f32097a17
+		summarizeBy: none
+		sourceColumn: AccountTotalName
+		sortByColumn: Order
+
+		changedProperty = SortByColumn
+
+		annotation SummarizationSetBy = Automatic
+
+	column IsProfitLoss
+		dataType: boolean
+		formatString: """TRUE"";""TRUE"";""FALSE"""
+		lineageTag: 639ec65d-8452-4f0a-9144-dfe2c133bf6f
+		summarizeBy: none
+		sourceColumn: IsProfitLoss
+
+		annotation SummarizationSetBy = Automatic
+
+	column IsBalanceSheet
+		dataType: boolean
+		formatString: """TRUE"";""TRUE"";""FALSE"""
+		lineageTag: d6515145-40b4-48f7-b043-ffddc202eb61
+		summarizeBy: none
+		sourceColumn: IsBalanceSheet
+
+		annotation SummarizationSetBy = Automatic
+
+	column IsAccountClassification
+		dataType: boolean
+		formatString: """TRUE"";""TRUE"";""FALSE"""
+		lineageTag: 1918f15c-9094-480e-a0eb-f3cb7905bf3a
+		summarizeBy: none
+		sourceColumn: IsAccountClassification
+
+		annotation SummarizationSetBy = Automatic
+
+	column Order
+		dataType: double
+		lineageTag: b2c39eff-d04e-4bd4-9911-52c3a4066473
+		summarizeBy: none
+		sourceColumn: Order
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column VarianceImpactSign
+		dataType: int64
+		formatString: 0
+		lineageTag: 385edd07-013e-4571-a401-fece3a813943
+		summarizeBy: none
+		sourceColumn: VarianceImpactSign
+
+		annotation SummarizationSetBy = Automatic
+
+	partition AccountsTotals-5ba58c24-5ad6-4769-ac2d-62de85d728de = m
+		mode: import
+		queryGroup: ProftAndLoss
+		source =
+				let
+				    Source = OData.Feed(odatalink, null, [Implementation="2.0"]),
+				    Accounts_table = Table.Buffer(Source{[Name="AccountsTotals",Signature="table"]}[Data])
+				in
+				    Accounts_table
+
+	annotation PBI_ResultType = Table
+

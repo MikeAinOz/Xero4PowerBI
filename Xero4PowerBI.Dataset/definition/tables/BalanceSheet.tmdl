@@ -1,0 +1,74 @@
+table BalanceSheet
+	lineageTag: 27ab57b5-0f63-42b9-b810-0a5d41f4852d
+
+	column DataFileID
+		dataType: string
+		lineageTag: eb60ae62-0945-4a9f-a686-dce89f35151a
+		summarizeBy: none
+		sourceColumn: DataFileID
+
+		annotation SummarizationSetBy = Automatic
+
+	column Date
+		dataType: dateTime
+		formatString: Long Date
+		lineageTag: 9dba5800-579e-4664-aa0b-1eec1529503c
+		summarizeBy: none
+		sourceColumn: Date
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation UnderlyingDateTimeDataType = Date
+
+	column AccountID
+		dataType: string
+		lineageTag: 721cd831-b666-4d85-9e6c-523295aebd85
+		summarizeBy: none
+		sourceColumn: AccountID
+
+		annotation SummarizationSetBy = Automatic
+
+	column Amount
+		dataType: double
+		lineageTag: 629662b1-41e4-4089-8084-774f322700cf
+		summarizeBy: sum
+		sourceColumn: Amount
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	partition BalanceSheet = m
+		mode: import
+		source = ```
+				let
+				    Source = OData.Feed(odatalink, null, [Implementation="2.0"]),
+				    #"BalanceSheetMultiPeriodTable_function" = Source{[Name="BalanceSheetMultiPeriodTable",Signature="function (FromDate as nullable date, ToDate as nullable date, Period as nullable text, PaymentsOnly as nullable logical, StandardLayout as nullable logical) as table"]}[Data],
+				    Invoke_BalanceSheet = #"BalanceSheetMultiPeriodTable_function"(null, null, null, null, null),
+				    FilterRows = Table.SelectRows(Invoke_BalanceSheet, each ([AccountID] <> null) and ([Amount] <> 0)),
+				    AddClassReport = Table.AddColumn(FilterRows, "ClassReport", each (if [Amount] = null then null 
+				else 
+				(if Text.Contains([AccountLineType], "bank",Comparer.OrdinalIgnoreCase) then "ASSET" 
+				else
+				(if Text.Contains([AccountLineType], "asset",Comparer.OrdinalIgnoreCase) then "ASSET" 
+				else
+				(if Text.Contains([AccountLineType], "liab",Comparer.OrdinalIgnoreCase) then "LIABILITY"
+				 else
+				(if Text.Contains([AccountLineType], "equity",Comparer.OrdinalIgnoreCase) then "EQUITY" 
+				else "NONE")))))),
+				    RemoveColumns = Table.SelectColumns(AddClassReport,{"DataFileID", "Date", "AccountID", "Amount", "ClassReport"}),
+				    MergeAccounts = Table.NestedJoin(RemoveColumns, {"DataFileID", "AccountID"}, Accounts, {"DataFileID", "AccountID"}, "Accounts", JoinKind.LeftOuter),
+				    ExpandAccounts = Table.ExpandTableColumn(MergeAccounts, "Accounts", {"Class"}, {"ClassAccount"}),
+				    MergeClassReport = Table.NestedJoin(ExpandAccounts, {"ClassReport"}, AccountsClass, {"Class"}, "AccountsClass", JoinKind.LeftOuter),
+				    ExpandClassReport = Table.ExpandTableColumn(MergeClassReport, "AccountsClass", {"DrCrSign"}, {"ClassReportDrCrSign"}),
+				    MergeClassAccount = Table.NestedJoin(ExpandClassReport, {"ClassAccount"}, AccountsClass, {"Class"}, "AccountsClass", JoinKind.LeftOuter),
+				    ExpandClassAccount = Table.ExpandTableColumn(MergeClassAccount, "AccountsClass", {"DrCrSign"}, {"ClassDrCrSign"}),
+				    AddAmountCorrected = Table.AddColumn(ExpandClassAccount, "AmountCorrected", each (if [ClassReportDrCrSign]<>[ClassDrCrSign] then -[Amount] else [Amount]) ,Number.Type),
+				    RemoveColumnsCorrected = Table.SelectColumns(AddAmountCorrected,{"DataFileID", "Date", "AccountID", "AmountCorrected"}),
+				    RenameAmount = Table.RenameColumns(RemoveColumnsCorrected,{{"AmountCorrected", "Amount"}})
+				in
+				    RenameAmount
+				```
+
+	annotation PBI_ResultType = Table
+

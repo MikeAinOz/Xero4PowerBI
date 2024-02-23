@@ -1,0 +1,77 @@
+table DatesByMonth
+	lineageTag: 2e845829-cdf3-4cbb-8a34-7ec4b30dd63c
+
+	column DatesByMonthID
+		dataType: string
+		lineageTag: e2f02278-cb75-49be-9855-bb5423485157
+		summarizeBy: none
+		sourceColumn: DatesByMonthID
+
+		annotation SummarizationSetBy = Automatic
+
+	column FinancialYear
+		dataType: string
+		lineageTag: 60a322ca-4676-4260-8103-ff6bb4d3bbfe
+		summarizeBy: none
+		sourceColumn: FinancialYear
+
+		annotation SummarizationSetBy = Automatic
+
+	column Date
+		dataType: dateTime
+		formatString: Short Date
+		lineageTag: acea3756-1513-4165-844a-0e29e6b0f397
+		summarizeBy: none
+		sourceColumn: Date
+
+		changedProperty = FormatString
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation UnderlyingDateTimeDataType = Date
+
+	column MMM-YYYY
+		dataType: string
+		lineageTag: 5c5e1372-6e35-4cd0-a7aa-98f82f40555d
+		summarizeBy: none
+		sourceColumn: MMM-YYYY
+		sortByColumn: DatesByMonthID
+
+		changedProperty = SortByColumn
+
+		annotation SummarizationSetBy = Automatic
+
+	column DateLM = DATEADD(DatesByMonth[Date], -DAY(DatesByMonth[Date]), day)
+		dataType: dateTime
+		formatString: General Date
+		lineageTag: b9c92a75-ba17-43a3-b8fc-385cb2b3f85a
+		summarizeBy: none
+		isDataTypeInferred
+
+		annotation SummarizationSetBy = Automatic
+
+	column DateLY = IF(DAY(DatesByMonth[Date]) = 29 && MONTH(DatesByMonth[Date]) = 2, BLANK(), DATEADD(DatesByMonth[Date], -1, year))
+		dataType: dateTime
+		formatString: General Date
+		lineageTag: f81b8dd5-b486-4bb6-8b11-2c2fd8eda4a3
+		summarizeBy: none
+		isDataTypeInferred
+
+		annotation SummarizationSetBy = Automatic
+
+	partition DatesByMonth-557d0ee1-5d4e-4e6b-be2a-3a690b9d8d44 = m
+		mode: import
+		source =
+				let
+				    Source = OData.Feed(odatalink, null, [Implementation="2.0"]),
+				    DatesByMonth_table = Source{[Name="DatesByMonth",Signature="table"]}[Data],
+				    #"Removed Other Columns" = Table.SelectColumns(DatesByMonth_table,{"DatesByMonthID", "FinancialYear", "LastDate", "DisplayStrings"}),
+				    #"Extracted Date" = Table.TransformColumns(#"Removed Other Columns",{{"LastDate", DateTime.Date, type date}}),
+				    #"Renamed Columns" = Table.RenameColumns(#"Extracted Date",{{"LastDate", "Date"}}),
+				    #"Expanded DisplayStrings" = Table.ExpandRecordColumn(#"Renamed Columns", "DisplayStrings", {"MMM-YYYY"}, {"MMM-YYYY"}),
+				    #"Changed Type" = Table.TransformColumnTypes(#"Expanded DisplayStrings",{{"FinancialYear", type text}})
+				in
+				    #"Changed Type"
+
+	annotation PBI_ResultType = Table
+

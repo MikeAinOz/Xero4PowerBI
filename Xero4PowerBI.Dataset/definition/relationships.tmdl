@@ -1,0 +1,198 @@
+relationship 52f8b629-898d-4d02-9bb7-fa2ea78bae38
+	fromColumn: Dates.DatesByMonthID
+	toColumn: DatesByMonth.DatesByMonthID
+
+relationship 6219393f-4af7-4783-bd0d-8bb9ae8fc594
+	fromColumn: Dates.FinancialYear
+	toColumn: DatesByYear.FinancialYear
+
+relationship 76dec918-a144-4d7a-81f1-34a251adc9a0
+	fromColumn: BalanceSheetByMonth.FinancialYear
+	toColumn: DatesByYear.FinancialYear
+
+relationship 59cda0f3-073b-4ce4-aece-f677e4fffe11
+	fromColumn: ExecutiveSummary.Type
+	toColumn: ExecutiveSummaryType.Type
+
+relationship 7a1b5fdd-f7cd-4c41-ad0d-068dae529c05
+	fromColumn: Accounts.Class
+	toColumn: AccountsClass.Class
+
+relationship 4f44348b-670a-47b1-854b-57d0a3a5d145
+	fromColumn: TrialBalance.AccountID
+	toColumn: Accounts.AccountID
+
+relationship 7702ede8-e58b-4fd0-a951-f191aabdb98d
+	isActive: false
+	fromColumn: Journals.JournalDate
+	toColumn: Dates.Date
+
+relationship b6f8a986-2c16-448d-abec-d31a7e553f3e
+	fromColumn: Journals.AccountID
+	toColumn: Accounts.AccountID
+
+relationship 2faed863-07b0-463d-bca0-c3eb170ccda4
+	crossFilteringBehavior: bothDirections
+	fromCardinality: one
+	fromColumn: BalanceSheetReportIndented.Index
+	toColumn: TrialBalance.Index
+
+relationship 4b07fd85-6741-4e9a-b90c-5b243eaac25c
+	fromColumn: Invoices.Type
+	toColumn: AccType.Type
+
+relationship a17e38a3-d9b0-4d91-a6ae-68917a0374c3
+	fromColumn: AccountsReceivable.DueDate
+	toColumn: Dates.Date
+
+relationship 7d43bba7-a0e5-4d44-b4b6-edf71c95bcd6
+	fromColumn: Invoices.DueDate
+	toColumn: Dates.Date
+
+relationship 7b7d4d76-f4de-4b22-adf9-b77d0b1b1b55
+	fromColumn: BalanceSheetDetail.AccountID
+	toColumn: Accounts.AccountID
+
+relationship 773c4256-4d6e-490f-b3c2-3b8bee39874b
+	fromColumn: BudgetSummary.AccountID
+	toColumn: Accounts.AccountID
+
+relationship a7fad2ea-90c4-41f1-8822-06807bd93f6b
+	fromColumn: BudgetSummaryByMonth.AccountID
+	toColumn: Accounts.AccountID
+
+relationship d98df79c-2086-4d1b-a726-e1cbfe033519
+	fromColumn: Invoices.ContactID
+	toColumn: Contacts.ContactID
+
+relationship 3df1655e-9adc-4fc2-a8f9-037f12f5eea8
+	fromColumn: SalesItems.Date
+	toColumn: Dates.Date
+
+relationship 8edb57c7-3a08-421a-8005-8b889e68e448
+	fromColumn: AccountsReceivable.ContactID
+	toColumn: Contacts.ContactID
+
+relationship b203595c-f8ab-4ffb-a130-0319fdc7822a
+	fromColumn: BalanceSheetByMonth.AccountID
+	toColumn: Accounts.AccountID
+
+	annotation PBI_IsFromSource = FS
+
+relationship c90335c6-51b9-4743-ad77-5b8d52679ba9
+	fromColumn: ProfitAndLoss.AccountID
+	toColumn: Accounts.AccountID
+
+relationship 64e16099-2e30-4b3d-a46f-14c8a84188de
+	fromColumn: ProfitAndLoss.Date
+	toColumn: DatesByMonth.Date
+
+relationship 005fd6af-c81f-4908-a42c-0d1568149ec7
+	fromColumn: Accounts.Type
+	toColumn: AccountsTypes.AccountType
+
+relationship cfd61364-3aa4-4cd3-94a0-bad46d631239
+	crossFilteringBehavior: bothDirections
+	fromColumn: AccountsTotalsTypes.AccountType
+	toColumn: AccountsTypes.AccountType
+
+relationship 48d56407-6f6b-4f9c-98c3-5e80680f6f08
+	fromColumn: AccountsTotalsTypes.AccountTotal
+	toColumn: AccountsTotals.AccountTotal
+
+relationship 6cbe9f18-b1d5-4238-bfaa-c3186e4e6f5b
+	fromColumn: ProfitAndLoss.DataFileID
+	toColumn: DataFiles.DataFileID
+
+relationship 1232023f-6d5c-45d7-8608-6c95e8782bda
+	fromColumn: Bills.ContactID
+	toColumn: Contacts.ContactID
+
+relationship cb42355d-5085-45f5-a98d-0660f224d92b
+	fromColumn: BudgetSummaryByMonth.Date
+	toColumn: DatesByMonth.Date
+
+relationship b9e7abec-12a8-4e5c-b3fd-8b991d2bd933
+	fromColumn: Journals.DataFileID
+	toColumn: DataFiles.DataFileID
+
+relationship 74577465-9b18-48e8-a8ba-2dfa0e497fcf
+	fromColumn: BudgetSummary.DataFileID
+	toColumn: DataFiles.DataFileID
+
+relationship e55f43cf-e03c-42d9-8a24-6d6c9aeaa8cb
+	fromColumn: BudgetSummaryByMonth.DataFileID
+	toColumn: DataFiles.DataFileID
+
+relationship a71b030f-e324-4ce1-9294-790f7911f8da
+	fromColumn: BalanceSheetDetail.DataFileID
+	toColumn: DataFiles.DataFileID
+
+relationship 245de09a-35e3-4316-b610-1b0e9b56ab38
+	fromColumn: BalanceSheetByMonth.DataFileID
+	toColumn: DataFiles.DataFileID
+
+relationship 4fd71215-f2f7-49d1-a814-cfd9029190b7
+	fromColumn: BalanceSheetReportIndented.DataFileID
+	toColumn: DataFiles.DataFileID
+
+relationship f3614fee-ee11-41b9-9584-3b0c46156a5e
+	fromColumn: Bills.DataFileID
+	toColumn: DataFiles.DataFileID
+
+relationship 0988709b-1d62-422c-a931-3bb5a2e0d25c
+	isActive: false
+	fromColumn: Contacts.DataFileID
+	toColumn: DataFiles.DataFileID
+
+relationship f82bb903-0fdb-4320-a2a9-2ca37c4cb089
+	fromColumn: ExecutiveSummary.DataFileID
+	toColumn: DataFiles.DataFileID
+
+relationship 985e6243-a815-4edc-a97b-8a8f4a8b1eb3
+	fromColumn: Invoices.DataFileID
+	toColumn: DataFiles.DataFileID
+
+relationship 166a4c35-4188-4684-8933-95e73323542a
+	fromColumn: Items.DataFileID
+	toColumn: DataFiles.DataFileID
+
+relationship 3c9485ec-f3d7-415a-a170-13cc1d4a623d
+	fromColumn: SalesItems.DataFileID
+	toColumn: DataFiles.DataFileID
+
+relationship 0abc4dd3-18cd-4305-bfad-a2605f41db4e
+	isActive: false
+	fromColumn: TrialBalance.DataFileID
+	toColumn: DataFiles.DataFileID
+
+relationship 92e41f0f-e42b-41c1-94fe-9fa80abf8550
+	fromColumn: Journals.EomDate
+	toColumn: DatesByMonth.Date
+
+relationship 9217a1d6-ecd9-4b4a-816b-8d80d4aad38e
+	crossFilteringBehavior: bothDirections
+	fromCardinality: one
+	fromColumn: DataFiles.DataFileID
+	toColumn: Organisation.DataFileID
+
+relationship e6850507-5b0a-4989-9cbe-7cff4ff0ca6b
+	fromColumn: CashFlowTotalsTypes.AccountType
+	toColumn: AccountsTypes.AccountType
+
+relationship 0ca60bc6-a3e8-40a4-b5a1-0fd1e621fb0b
+	fromColumn: CashFlowTotalsTypes.CashFlowTotal
+	toColumn: CashFlowTotals.CashFlowTotal
+
+relationship 9bd377e9-a986-4fa2-b87a-c875baace994
+	fromColumn: BalanceSheet.DataFileID
+	toColumn: DataFiles.DataFileID
+
+relationship 72624957-6570-4ae4-a253-08441dacfcd7
+	fromColumn: BalanceSheet.Date
+	toColumn: DatesByMonth.Date
+
+relationship fd73f3fe-efda-40c0-8e22-9ab3ed51fc7c
+	fromColumn: BalanceSheet.AccountID
+	toColumn: Accounts.AccountID
+

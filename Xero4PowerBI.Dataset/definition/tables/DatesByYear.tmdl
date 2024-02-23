@@ -1,0 +1,41 @@
+table DatesByYear
+	lineageTag: 101593e3-648d-4115-ac3b-cadb58b40f36
+
+	column FinancialYear
+		dataType: int64
+		formatString: 0
+		lineageTag: 48b50020-aea2-4205-811e-d64de9ee828f
+		summarizeBy: none
+		sourceColumn: FinancialYear
+
+		annotation SummarizationSetBy = Automatic
+
+	column FirstDate
+		dataType: dateTime
+		formatString: General Date
+		lineageTag: d073f5bc-994c-404a-9424-9ddd29ebdc4c
+		summarizeBy: none
+		sourceColumn: FirstDate
+
+		annotation SummarizationSetBy = Automatic
+
+	column LastDate
+		dataType: dateTime
+		formatString: General Date
+		lineageTag: 8052910d-1dfa-4032-b231-b0b90151cb37
+		summarizeBy: none
+		sourceColumn: LastDate
+
+		annotation SummarizationSetBy = Automatic
+
+	partition DatesByYear-c09370b1-e191-4191-b236-196f363412dd = m
+		mode: import
+		source =
+				let
+				    Source = OData.Feed(odatalink, null, [Implementation="2.0"]),
+				    DatesByYear_table = Source{[Name="DatesByYear",Signature="table"]}[Data]
+				in
+				    DatesByYear_table
+
+	annotation PBI_ResultType = Table
+

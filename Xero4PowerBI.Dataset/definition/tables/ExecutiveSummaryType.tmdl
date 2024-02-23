@@ -1,0 +1,45 @@
+table ExecutiveSummaryType
+	isHidden
+	lineageTag: 4acf658f-d2dd-45be-9ac7-16420fb77321
+
+	column Type
+		dataType: string
+		isHidden
+		lineageTag: addc1ada-d064-4f12-ad87-69edbe069398
+		summarizeBy: none
+		sourceColumn: Type
+		sortByColumn: Index
+
+		changedProperty = SortByColumn
+
+		changedProperty = IsHidden
+
+		annotation SummarizationSetBy = Automatic
+
+	column Index
+		dataType: double
+		isHidden
+		lineageTag: 8e0c1473-a159-478c-933b-bd46520c625f
+		summarizeBy: none
+		sourceColumn: Index
+
+		changedProperty = IsHidden
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	partition ExecutiveSummaryType-0373626a-e38c-47d2-860e-c56af0fb61fe = m
+		mode: import
+		queryGroup: 'Executive Summary'
+		source =
+				let
+				    Source = ExecutiveSummary,
+				    #"Grouped Rows" = Table.Group(Source, {"Type"}, {{"Index", each List.Max([Index]), type number}})
+				in
+				    #"Grouped Rows"
+
+	changedProperty = IsHidden
+
+	annotation PBI_ResultType = Table
+

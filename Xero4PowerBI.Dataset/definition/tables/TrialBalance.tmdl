@@ -1,0 +1,155 @@
+table TrialBalance
+	lineageTag: eaadb409-4b9b-4fd3-b1ab-3d2900387c90
+
+	column Date
+		dataType: dateTime
+		formatString: Short Date
+		lineageTag: 70e011ae-28bf-462f-b957-7793fbb1b79e
+		summarizeBy: none
+		sourceColumn: Date
+
+		changedProperty = FormatString
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation UnderlyingDateTimeDataType = Date
+
+	column UpdatedDateUTC
+		dataType: dateTime
+		formatString: General Date
+		lineageTag: 0d67a8e8-9206-4b0c-b23c-5e5a78b18282
+		summarizeBy: none
+		sourceColumn: UpdatedDateUTC
+
+		annotation SummarizationSetBy = Automatic
+
+	column LineType
+		dataType: string
+		lineageTag: 5f796e92-d8a1-454c-8033-66bd0d4a005b
+		summarizeBy: none
+		sourceColumn: LineType
+
+		annotation SummarizationSetBy = Automatic
+
+	column AccountID
+		dataType: string
+		lineageTag: c8133efe-98a7-44a3-9c0c-50d2916a60c9
+		summarizeBy: none
+		sourceColumn: AccountID
+
+		annotation SummarizationSetBy = Automatic
+
+	column AccountName
+		dataType: string
+		lineageTag: b027fbbe-0948-4af4-8992-fb3c787e0db2
+		summarizeBy: none
+		sourceColumn: AccountName
+		sortByColumn: Index
+
+		changedProperty = SortByColumn
+
+		annotation SummarizationSetBy = Automatic
+
+	column AccountLineType
+		dataType: string
+		lineageTag: df05c5f7-57bd-4203-b8a1-782f10ef7a44
+		summarizeBy: none
+		sourceColumn: AccountLineType
+
+		annotation SummarizationSetBy = Automatic
+
+	column DebitAmount
+		dataType: double
+		lineageTag: 572cf117-250d-4a64-868e-204c1cf97a68
+		summarizeBy: sum
+		sourceColumn: DebitAmount
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column CreditAmount
+		dataType: double
+		lineageTag: 28bf68b9-dae6-4b72-a5a3-e03490ed7300
+		summarizeBy: sum
+		sourceColumn: CreditAmount
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column DebitAmountYTD
+		dataType: double
+		lineageTag: 7a6da823-c76f-4071-a2c3-3b3bc8dee21f
+		summarizeBy: sum
+		sourceColumn: DebitAmountYTD
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column CreditAmountYTD
+		dataType: double
+		lineageTag: c0e66950-b368-495d-8421-54d2a0b2a5e3
+		summarizeBy: sum
+		sourceColumn: CreditAmountYTD
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column Index
+		dataType: int64
+		formatString: 0
+		lineageTag: 6ac6a6bc-85a0-440c-b2f8-d1f9cca886ef
+		summarizeBy: none
+		sourceColumn: Index
+
+		annotation SummarizationSetBy = Automatic
+
+	column Code
+		dataType: string
+		lineageTag: 8aa8d40b-2b48-4863-8c0f-4eda45557ba8
+		summarizeBy: none
+		sourceColumn: Code
+
+		annotation SummarizationSetBy = Automatic
+
+	column Name
+		dataType: string
+		lineageTag: 87ec699e-6848-4b84-9cf7-e1be1fd4570c
+		summarizeBy: none
+		sourceColumn: Name
+
+		annotation SummarizationSetBy = Automatic
+
+	column DataFileID
+		dataType: string
+		lineageTag: bc28989c-bbcd-4ac4-82d6-019634dc6016
+		summarizeBy: none
+		sourceColumn: DataFileID
+
+		annotation SummarizationSetBy = Automatic
+
+	partition TrialBalance-0cd1fd2b-c4d5-463c-901b-256b235659f6 = m
+		mode: import
+		queryGroup: 'Trial Balance'
+		source =
+				let
+				    Source = OData.Feed(odatalink, null, [Implementation="2.0"]),
+				    #"TrialBalance_function (Date as nullable date, PaymentsOnly as nullable logical) as table" = Source{[Name="TrialBalance",Signature="function (Date as nullable date, PaymentsOnly as nullable logical) as table"]}[Data],
+				    #"Invoked FunctionTrialBalance_function (Date as nullable date, PaymentsOnly as nullable logical) as table1" = #"TrialBalance_function (Date as nullable date, PaymentsOnly as nullable logical) as table"(null, null),
+				    #"Removed Columns" = Table.RemoveColumns(#"Invoked FunctionTrialBalance_function (Date as nullable date, PaymentsOnly as nullable logical) as table1",{"PaymentsOnly"}),
+				    #"Expanded Lines" = Table.ExpandTableColumn(#"Removed Columns", "Lines", {"LineType", "AccountID", "AccountName", "AccountLineType", "DebitAmount", "CreditAmount", "DebitAmountYTD", "CreditAmountYTD"}, {"LineType", "AccountID", "AccountName", "AccountLineType", "DebitAmount", "CreditAmount", "DebitAmountYTD", "CreditAmountYTD"}),
+				    #"Filtered Rows" = Table.SelectRows(#"Expanded Lines", each ([LineType] <> "Header")),
+				    #"Merged Queries" = Table.NestedJoin(#"Filtered Rows", {"AccountID"}, Accounts, {"AccountID"}, "Accounts", JoinKind.LeftOuter),
+				    #"Expanded Accounts" = Table.ExpandTableColumn(#"Merged Queries", "Accounts", {"Code", "Name"}, {"Code", "Name"}),
+				    #"Replaced Value" = Table.ReplaceValue(#"Expanded Accounts",null,"Total",Replacer.ReplaceValue,{"Code"}),
+				    #"Sorted Rows" = Table.Sort(#"Replaced Value",{{"Code", Order.Ascending}}),
+				    #"Added Index" = Table.AddIndexColumn(#"Sorted Rows", "Index", 0, 1, Int64.Type),
+				    #"Expanded DataFile" = Table.ExpandRecordColumn(#"Added Index", "DataFile", {"DataFileID"}, {"DataFileID"})
+				in
+				    #"Expanded DataFile"
+
+	annotation PBI_ResultType = Table
+

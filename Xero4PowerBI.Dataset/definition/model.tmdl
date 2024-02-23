@@ -1,0 +1,74 @@
+model Model
+	culture: en-AU
+	defaultPowerBIDataSourceVersion: powerBI_V3
+	sourceQueryCulture: en-AU
+	dataAccessOptions
+		legacyRedirects
+		returnErrorValuesAsNull
+
+queryGroup 'Executive Summary'
+
+	annotation PBI_QueryGroupOrder = 0
+
+queryGroup 'Balance Sheet'
+
+	annotation PBI_QueryGroupOrder = 2
+
+queryGroup ProftAndLoss
+
+	annotation PBI_QueryGroupOrder = 3
+
+queryGroup 'Trial Balance'
+
+	annotation PBI_QueryGroupOrder = 4
+
+queryGroup 'Balance Sheet\fxIndent'
+
+	annotation PBI_QueryGroupOrder = 0
+
+queryGroup Budgets
+
+	annotation PBI_QueryGroupOrder = 5
+
+annotation PBIDesktopVersion = 2.126.927.0 (24.02)
+
+annotation __PBI_TimeIntelligenceEnabled = 0
+
+annotation PBI_QueryOrder = ["Accounts","AccountsClass","AccountsReceivable","AccType","Bills","Contacts","DataFiles","Dates","DatesByMonth","DatesByYear","Invoices","Journals","Organisation","ExecutiveSummary","ExecutiveSummaryType","BalanceSheetDetail","fxFmonth","BudgetsAmounts","BudgetSummary","BudgetSummaryByMonth","TrialBalance","BalanceSheetByMonth","BalanceSheetReportIndented","fxIndent","odatalink","Items","SalesItems","FinancialYear","InvertIconList","NumberOfMonths","AccountsTypes","AccountsTotals","AccountsTotalsTypes","ProfitAndLoss","Logo","CashFlowTotalsTypes","CashFlowTotals","BalanceSheet","_MeasuresTable"]
+
+annotation PBI_ProTooling = ["DevMode"]
+
+ref table Accounts
+ref table Dates
+ref table DatesByMonth
+ref table DatesByYear
+ref table ExecutiveSummary
+ref table BalanceSheetDetail
+ref table BalanceSheetByMonth
+ref table Contacts
+ref table Journals
+ref table Organisation
+ref table BudgetSummary
+ref table BudgetSummaryByMonth
+ref table TrialBalance
+ref table ExecutiveSummaryType
+ref table AccountsClass
+ref table BalanceSheetReportIndented
+ref table Invoices
+ref table AccType
+ref table AccountsReceivable
+ref table Items
+ref table SalesItems
+ref table InvertIconList
+ref table DataFiles
+ref table ProfitAndLoss
+ref table AccountsTypes
+ref table AccountsTotals
+ref table AccountsTotalsTypes
+ref table Bills
+ref table Logo
+ref table CashFlowTotalsTypes
+ref table CashFlowTotals
+ref table BalanceSheet
+ref table _MeasuresTable
+

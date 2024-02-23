@@ -1,0 +1,129 @@
+table SalesItems
+	lineageTag: edd77247-1091-4901-9bf5-02752b4954c5
+
+	column InvoiceID
+		dataType: string
+		lineageTag: 43c75462-4ff2-48ed-8feb-bd4a534ec7b6
+		summarizeBy: none
+		sourceColumn: InvoiceID
+
+		annotation SummarizationSetBy = Automatic
+
+	column LineItemID
+		dataType: string
+		lineageTag: 02665ddc-fd96-4a5a-8643-4aad0162ae49
+		summarizeBy: none
+		sourceColumn: LineItemID
+
+		annotation SummarizationSetBy = Automatic
+
+	column Quantity
+		dataType: double
+		lineageTag: 1020473b-8e4b-4d0b-870f-eeca12e613b1
+		summarizeBy: sum
+		sourceColumn: Quantity
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column UnitAmount
+		dataType: double
+		lineageTag: e45bcb43-35f8-422d-a20f-92ae36095b22
+		summarizeBy: sum
+		sourceColumn: UnitAmount
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column LineAmount
+		dataType: double
+		lineageTag: 386f41b4-bfba-4097-8144-f15356d74ecc
+		summarizeBy: sum
+		sourceColumn: LineAmount
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column TaxAmount
+		dataType: double
+		lineageTag: 3bba4ca4-e276-4800-a225-f2e97298ab2c
+		summarizeBy: sum
+		sourceColumn: TaxAmount
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column ItemCode
+		dataType: string
+		lineageTag: 7a7a4414-e5e5-47d6-8672-bf5a892ca588
+		summarizeBy: none
+		sourceColumn: ItemCode
+
+		annotation SummarizationSetBy = Automatic
+
+	column CostPrice
+		dataType: double
+		lineageTag: de3900f4-3274-4dbd-a8b3-a34808085a57
+		summarizeBy: sum
+		sourceColumn: CostPrice
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column CostAmount
+		dataType: double
+		lineageTag: 89746550-09fb-4234-9c2b-077a2c7a1682
+		summarizeBy: sum
+		sourceColumn: CostAmount
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column Date
+		dataType: dateTime
+		formatString: Short Date
+		lineageTag: fd303eb9-af40-4bed-a727-706ea767ea24
+		summarizeBy: none
+		sourceColumn: Date
+
+		changedProperty = FormatString
+
+		changedProperty = DataType
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation UnderlyingDateTimeDataType = Date
+
+	column DataFileID
+		dataType: string
+		lineageTag: e3143b4d-702c-4d50-bf17-2dab8201d730
+		summarizeBy: none
+		sourceColumn: DataFileID
+
+		annotation SummarizationSetBy = Automatic
+
+	partition SalesItems-360b90e4-805e-4915-9c19-0567a28ee28e = m
+		mode: import
+		source =
+				let
+				    Source = OData.Feed(odatalink, null, [Implementation="2.0"]),
+				    InvoicesExpanded_table = Source{[Name="InvoicesExpanded",Signature="table"]}[Data],
+				    InvoicesExpanded = Table.SelectRows(InvoicesExpanded_table, each ([Type] = "ACCREC") and ([Status] = "AUTHORISED" or [Status] = "PAID")),
+				    #"Expanded LineItems" = Table.ExpandTableColumn(InvoicesExpanded, "LineItems", {"LineItemID", "Quantity", "UnitAmount", "LineAmount", "TaxAmount", "ItemCode"}, {"LineItemID", "Quantity", "UnitAmount", "LineAmount", "TaxAmount", "ItemCode"}),
+				    #"Removed Columns" = Table.RemoveColumns(#"Expanded LineItems",{"Type", "InvoiceNumber", "Reference", "Status", "DueDate", "ExpectedPaymentDate", "PlannedPaymentDate", "FullyPaidOnDate", "Contact", "LineAmountTypes", "SubTotal", "TotalTax", "Total", "AmountDue", "AmountPaid", "AmountCredited", "CurrencyCode", "CurrencyRate", "HasAttachments", "SentToContact", "CISDeduction", "RepeatingInvoiceID", "BrandingThemeID", "Url", "UpdatedDateUTC"}),
+				    #"Merged Queries" = Table.NestedJoin(#"Removed Columns", {"ItemCode"}, Items, {"Code"}, "Items", JoinKind.LeftOuter),
+				    #"Expanded Items" = Table.ExpandTableColumn(#"Merged Queries", "Items", {"CostPrice"}, {"CostPrice"}),
+				    #"Added CostAmount" = Table.AddColumn(#"Expanded Items", "CostAmount", each [Quantity]*[CostPrice]),
+				    #"Changed Type" = Table.TransformColumnTypes(#"Added CostAmount",{{"CostAmount", type number}}),
+				    #"Expanded DataFile" = Table.ExpandRecordColumn(#"Changed Type", "DataFile", {"DataFileID"}, {"DataFileID"})
+				in
+				    #"Expanded DataFile"
+
+	annotation PBI_ResultType = Table
+

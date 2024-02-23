@@ -1,0 +1,262 @@
+table Organisation
+	lineageTag: da99621c-2f45-4ac2-b4e0-d505ad17c8e1
+
+	column OrganisationID
+		dataType: string
+		lineageTag: 7a1ff0f8-7ed0-494c-b154-88af5daf86a9
+		summarizeBy: none
+		sourceColumn: OrganisationID
+
+		annotation SummarizationSetBy = Automatic
+
+	column Name
+		dataType: string
+		lineageTag: 4d9790b7-5328-4250-aa88-57b1d00e83d9
+		summarizeBy: none
+		sourceColumn: Name
+
+		annotation SummarizationSetBy = Automatic
+
+	column LegalName
+		dataType: string
+		lineageTag: eb063e14-37e2-4352-bada-aa9d1c7e6458
+		summarizeBy: none
+		sourceColumn: LegalName
+
+		annotation SummarizationSetBy = Automatic
+
+	column OrganisationType
+		dataType: string
+		lineageTag: 750dcd1b-5078-4cf1-89c2-8f500be16d4f
+		summarizeBy: none
+		sourceColumn: OrganisationType
+
+		annotation SummarizationSetBy = Automatic
+
+	column OrganisationEntityType
+		dataType: string
+		lineageTag: 3f3de60a-928b-49b5-83f3-663100190398
+		summarizeBy: none
+		sourceColumn: OrganisationEntityType
+
+		annotation SummarizationSetBy = Automatic
+
+	column OrganisationStatus
+		dataType: string
+		lineageTag: 89c98778-dd2c-4ab7-ae94-a41a232d6397
+		summarizeBy: none
+		sourceColumn: OrganisationStatus
+
+		annotation SummarizationSetBy = Automatic
+
+	column LineOfBusiness
+		dataType: string
+		lineageTag: 902d9319-ceb2-4edb-a1fb-9a0ce2e99136
+		summarizeBy: none
+		sourceColumn: LineOfBusiness
+
+		annotation SummarizationSetBy = Automatic
+
+	column CountryCode
+		dataType: string
+		lineageTag: 8ed1cd3e-e2bc-449f-a936-09f85230c5e0
+		summarizeBy: none
+		sourceColumn: CountryCode
+
+		annotation SummarizationSetBy = Automatic
+
+	column BaseCurrency
+		dataType: string
+		lineageTag: ee23917d-08e4-40c5-9b9b-87f8b9341688
+		summarizeBy: none
+		sourceColumn: BaseCurrency
+
+		annotation SummarizationSetBy = Automatic
+
+	column Timezone
+		dataType: string
+		lineageTag: ee03ae07-4890-4e37-93fd-1b7ca9a01b66
+		summarizeBy: none
+		sourceColumn: Timezone
+
+		annotation SummarizationSetBy = Automatic
+
+	column ShortCode
+		dataType: string
+		lineageTag: 9017563e-0cf5-4773-89b2-7e5d1b509b7e
+		summarizeBy: none
+		sourceColumn: ShortCode
+
+		annotation SummarizationSetBy = Automatic
+
+	column TaxNumber
+		dataType: string
+		lineageTag: b7a05403-4714-4bf6-a008-a296e694c589
+		summarizeBy: none
+		sourceColumn: TaxNumber
+
+		annotation SummarizationSetBy = Automatic
+
+	column PaysTax
+		dataType: boolean
+		formatString: """TRUE"";""TRUE"";""FALSE"""
+		lineageTag: 68c1f640-57e5-4040-8b2a-ad6d9e899900
+		summarizeBy: none
+		sourceColumn: PaysTax
+
+		annotation SummarizationSetBy = Automatic
+
+	column Version
+		dataType: string
+		lineageTag: f27aaeb3-66c1-4e9a-8c38-3cc86c8a8cfc
+		summarizeBy: none
+		sourceColumn: Version
+
+		annotation SummarizationSetBy = Automatic
+
+	column Edition
+		dataType: string
+		lineageTag: 35b3323d-e95a-41c3-818c-ea24ca91d975
+		summarizeBy: none
+		sourceColumn: Edition
+
+		annotation SummarizationSetBy = Automatic
+
+	column Class
+		dataType: string
+		lineageTag: b8480089-fed6-4879-9f56-c18bf4605488
+		summarizeBy: none
+		sourceColumn: Class
+
+		annotation SummarizationSetBy = Automatic
+
+	column RegistrationNumber
+		dataType: string
+		lineageTag: 9fd51668-386b-4ad9-bf0a-9d1db51520d9
+		summarizeBy: none
+		sourceColumn: RegistrationNumber
+
+		annotation SummarizationSetBy = Automatic
+
+	column EmployerIdentificationNumber
+		dataType: string
+		lineageTag: c523cf5b-d9c7-4640-a033-6bfc4b435cbd
+		summarizeBy: none
+		sourceColumn: EmployerIdentificationNumber
+
+		annotation SummarizationSetBy = Automatic
+
+	column IsDemoCompany
+		dataType: boolean
+		formatString: """TRUE"";""TRUE"";""FALSE"""
+		lineageTag: 4be3af57-f3aa-40c3-9789-89b0d67edda3
+		summarizeBy: none
+		sourceColumn: IsDemoCompany
+
+		annotation SummarizationSetBy = Automatic
+
+	column FinancialYearEndDay
+		dataType: int64
+		formatString: 0
+		lineageTag: 46f71174-0cb5-4e6c-b128-7d30624bb4ac
+		summarizeBy: sum
+		sourceColumn: FinancialYearEndDay
+
+		annotation SummarizationSetBy = Automatic
+
+	column FinancialYearEndMonth
+		dataType: int64
+		formatString: 0
+		lineageTag: 8e92e973-304a-452e-b16f-b70de4a6d6b5
+		summarizeBy: sum
+		sourceColumn: FinancialYearEndMonth
+
+		annotation SummarizationSetBy = Automatic
+
+	column SalesTaxBasis
+		dataType: string
+		lineageTag: 5fa7f887-aca5-4cb6-b2c8-2d9e2624046c
+		summarizeBy: none
+		sourceColumn: SalesTaxBasis
+
+		annotation SummarizationSetBy = Automatic
+
+	column SalesTaxPeriod
+		dataType: string
+		lineageTag: f7438b08-c2cf-4fed-a530-ff148c9ea2c3
+		summarizeBy: none
+		sourceColumn: SalesTaxPeriod
+
+		annotation SummarizationSetBy = Automatic
+
+	column DefaultSalesTax
+		dataType: string
+		lineageTag: 8fb199fb-7420-4ccf-830e-b9e981e35d76
+		summarizeBy: none
+		sourceColumn: DefaultSalesTax
+
+		annotation SummarizationSetBy = Automatic
+
+	column DefaultPurchasesTax
+		dataType: string
+		lineageTag: c6fbb90d-d8a9-4c22-92f2-61fe2cc0f765
+		summarizeBy: none
+		sourceColumn: DefaultPurchasesTax
+
+		annotation SummarizationSetBy = Automatic
+
+	column PeriodLockDate
+		dataType: dateTime
+		formatString: General Date
+		lineageTag: 87212290-98a3-459d-985b-6c7655a61790
+		summarizeBy: none
+		sourceColumn: PeriodLockDate
+
+		annotation SummarizationSetBy = Automatic
+
+	column EndOfYearLockDate
+		dataType: dateTime
+		formatString: General Date
+		lineageTag: 2a7bf323-233b-4027-9387-8f5382002a3e
+		summarizeBy: none
+		sourceColumn: EndOfYearLockDate
+
+		annotation SummarizationSetBy = Automatic
+
+	column APIKey
+		dataType: string
+		lineageTag: 610e1c83-6699-42e1-a82f-6eb7e8f8b412
+		summarizeBy: none
+		sourceColumn: APIKey
+
+		annotation SummarizationSetBy = Automatic
+
+	column CreatedDateUTC
+		dataType: dateTime
+		formatString: General Date
+		lineageTag: 42c44ed0-d21f-49fd-b977-ef325104a6b3
+		summarizeBy: none
+		sourceColumn: CreatedDateUTC
+
+		annotation SummarizationSetBy = Automatic
+
+	column DataFileID
+		dataType: string
+		lineageTag: 55ab89e3-d887-4733-b531-1ebe3dad1b58
+		summarizeBy: none
+		sourceColumn: DataFileID
+
+		annotation SummarizationSetBy = Automatic
+
+	partition Organisation-02bcf88d-9f7d-42ac-ad93-1b0190840a03 = m
+		mode: import
+		source =
+				let
+				    Source = OData.Feed(odatalink, null, [Implementation="2.0"]),
+				    Organisation_table = Source{[Name="Organisation",Signature="table"]}[Data],
+				    #"Expanded DataFile" = Table.ExpandRecordColumn(Organisation_table, "DataFile", {"DataFileID"}, {"DataFileID"})
+				in
+				    #"Expanded DataFile"
+
+	annotation PBI_ResultType = Table
+

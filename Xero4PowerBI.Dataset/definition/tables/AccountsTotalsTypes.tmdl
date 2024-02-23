@@ -1,0 +1,41 @@
+table AccountsTotalsTypes
+	lineageTag: 9e00fd59-2d2d-4c7a-8c48-c0a8c5508dda
+
+	column AccountTotal
+		dataType: string
+		lineageTag: 0d902561-eda5-482e-bb12-13bd4c4cd1e9
+		summarizeBy: none
+		sourceColumn: AccountTotal
+
+		annotation SummarizationSetBy = Automatic
+
+	column AccountType
+		dataType: string
+		lineageTag: bf42eb2f-5538-4f68-8ba4-5c973baca48d
+		summarizeBy: none
+		sourceColumn: AccountType
+
+		annotation SummarizationSetBy = Automatic
+
+	column DrCrSign
+		dataType: int64
+		formatString: 0
+		lineageTag: f357a979-6630-4b6d-929b-e5fad71eb483
+		summarizeBy: sum
+		sourceColumn: DrCrSign
+
+		annotation SummarizationSetBy = Automatic
+
+	partition AccountsTotalsTypes-ccc58759-ee4b-4c80-b1b7-1571824ef43e = m
+		mode: import
+		queryGroup: ProftAndLoss
+		source =
+				let
+				    Source = AccountsTotals,
+				    #"Removed Other Columns" = Table.SelectColumns(Source,{"AccountTotal", "AccountsTypes"}),
+				    #"Expanded AccountsTypes" = Table.ExpandTableColumn(#"Removed Other Columns", "AccountsTypes", {"AccountType", "DrCrSign"}, {"AccountType", "DrCrSign"})
+				in
+				    #"Expanded AccountsTypes"
+
+	annotation PBI_ResultType = Table
+

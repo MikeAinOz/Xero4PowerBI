@@ -1,0 +1,44 @@
+table Logo
+	lineageTag: 028fdf14-3aa8-4ff4-90f5-5e27c8543f80
+
+	column URL
+		dataType: string
+		lineageTag: 1dc32eb1-7e3e-4beb-9fed-73d0cb6228c3
+		summarizeBy: none
+		sourceColumn: URL
+
+		annotation SummarizationSetBy = Automatic
+
+	column ImageType
+		dataType: string
+		lineageTag: fba6bbe3-1112-49c7-b2b1-eed44e79d68e
+		summarizeBy: none
+		sourceColumn: ImageType
+
+		annotation SummarizationSetBy = Automatic
+
+	column Logo
+		dataType: string
+		lineageTag: 66329f7c-82df-4cef-b769-8437aaf53b44
+		summarizeBy: none
+		sourceColumn: Logo
+
+		annotation SummarizationSetBy = Automatic
+
+	partition Logo = m
+		mode: import
+		source =
+				let
+				    Source = OData.Feed(odatalink, null, [Implementation="2.0"]),
+				    BrandingThemes_table = Table.Buffer(Source{[Name="BrandingThemes",Signature="table"]}[Data]),
+				    GetImage = Source{[Name="GetImage",Signature="function (URL as text) as table"]}[Data],
+				    LogoUrl = Table.First(BrandingThemes_table)[LogoUrl],
+				    XeroLogo = GetImage(LogoUrl),
+				    LogoTable = Table.RenameColumns(XeroLogo,{{"Image", "Logo"}})
+				in
+				    LogoTable
+
+	annotation PBI_ResultType = Exception
+
+	annotation PBI_NavigationStepName = Navigation
+

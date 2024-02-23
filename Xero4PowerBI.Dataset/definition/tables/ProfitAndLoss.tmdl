@@ -1,0 +1,70 @@
+table ProfitAndLoss
+	lineageTag: 23198af4-b276-419d-aefb-b3218b91e987
+
+	measure Movement = ```
+			
+			    IF(
+			        SELECTEDVALUE(AccountsTotals[IsAccountClassification]) = FALSE
+			        && (ISFILTERED(Accounts) = TRUE() || ISFILTERED(AccountsTypes) = TRUE()), 
+			            BLANK(), 
+			            SUMX(AccountsTotalsTypes, CALCULATE(SUM(ProfitAndLoss[Amount])) * AccountsTotalsTypes[DrCrSign])
+			    )   
+			```
+		formatString: #,##0.00;(#,##0.00)
+		lineageTag: 495cc3ad-a61d-4ede-a634-178cc8c65aec
+
+		annotation PBI_FormatHint = {"isCustom":true}
+
+	column DataFileID
+		dataType: string
+		lineageTag: 72b1ffb4-d7b9-4f6e-b56f-ba956c2f4e9a
+		summarizeBy: none
+		sourceColumn: DataFileID
+
+		annotation SummarizationSetBy = Automatic
+
+	column Date
+		dataType: dateTime
+		formatString: Long Date
+		lineageTag: d7bc4777-0eb0-410e-9903-8eada50c5e19
+		summarizeBy: none
+		sourceColumn: Date
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation UnderlyingDateTimeDataType = Date
+
+	column AccountID
+		dataType: string
+		lineageTag: 867feb9f-ea5e-48cd-a97d-cf3ae015bf65
+		summarizeBy: none
+		sourceColumn: AccountID
+
+		annotation SummarizationSetBy = Automatic
+
+	column Amount
+		dataType: double
+		lineageTag: 1c56e288-a0ca-4243-a045-009c5033c252
+		summarizeBy: sum
+		sourceColumn: Amount
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	partition ProfitAndLoss-fbc8f7b6-eb00-4091-89fc-5fbb15e4def7 = m
+		mode: import
+		queryGroup: ProftAndLoss
+		source =
+				let
+				    Source = OData.Feed(odatalink, null, [Implementation="2.0"]),
+				    #"ProfitAndLossMultiPeriodTable_function (FromDate as nullable date, ToDate as nullable date, Period as nullable text, PaymentsOnly as nullable logical, StandardLayout as nullable logical) as table" = Source{[Name="ProfitAndLossMultiPeriodTable",Signature="function (FromDate as nullable date, ToDate as nullable date, Period as nullable text, PaymentsOnly as nullable logical, StandardLayout as nullable logical) as table"]}[Data],
+				    #"Invoked FunctionProfitAndLossMultiPeriodTable_function (FromDate as nullable date, ToDate as nullable date, Period as nullable text, PaymentsOnly as nullable logical, StandardLayout as nullable logical) as table1" = #"ProfitAndLossMultiPeriodTable_function (FromDate as nullable date, ToDate as nullable date, Period as nullable text, PaymentsOnly as nullable logical, StandardLayout as nullable logical) as table"(null, null, null, null, null),
+				    #"Removed Other Columns" = Table.SelectColumns(#"Invoked FunctionProfitAndLossMultiPeriodTable_function (FromDate as nullable date, ToDate as nullable date, Period as nullable text, PaymentsOnly as nullable logical, StandardLayout as nullable logical) as table1",{"DataFileID", "ToDate", "AccountID", "Amount"}),
+				    #"Filtered Rows" = Table.SelectRows(#"Removed Other Columns", each ([AccountID] <> null) and ([Amount] <> 0)),
+				    #"Renamed Columns" = Table.RenameColumns(#"Filtered Rows",{{"ToDate", "Date"}})
+				in
+				    #"Renamed Columns"
+
+	annotation PBI_ResultType = Table
+

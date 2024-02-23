@@ -1,0 +1,78 @@
+expression BudgetsAmounts =
+		let
+		    Source = OData.Feed(odatalink, null, [Implementation="2.0"]),
+		    #"BudgetsAmounts_function (BudgetID as text, FromDate as nullable date, ToDate as nullable date) as table" = Source{[Name="BudgetsAmounts",Signature="function (BudgetID as text, FromDate as nullable date, ToDate as nullable date) as table"]}[Data]
+		in
+		    #"BudgetsAmounts_function (BudgetID as text, FromDate as nullable date, ToDate as nullable date) as table"
+	lineageTag: 627f3e3a-5fe1-429d-b674-da5a2020da45
+	queryGroup: Budgets
+
+	annotation PBI_ResultType = Function
+
+	annotation PBI_NavigationStepName = Navigation
+
+expression fxIndent = ```
+		let
+		    Source = (pLineType as text, pAccountName as text, 
+		        pAccountLineType as text ) => let
+		               Indent = if List.Contains(
+		                        {"Assets" 
+		                        ,"Liabilities" 
+		                        ,"Total Assets" 
+		                        ,"Total Liabilities" 
+		                        ,"Equity"
+		                        ,"Total Equity"
+		                        ,"Net Assets"}
+		                        ,pAccountName) 
+		                            then 0 
+		                        else 
+		                        if (pLineType = "Detail" 
+		                                    and pAccountLineType <> "Equity")
+		                            then 2 
+		                            else 1,
+		                nbsp = Text.Repeat(Character.FromNumber(160),Indent*2) 
+		                            & pAccountName
+		    in
+		        nbsp
+		in
+		    Source
+		```
+	lineageTag: 85db3f36-b273-43fe-8d2e-2832ddcfff2b
+	queryGroup: 'Balance Sheet\fxIndent'
+
+	annotation PBI_NavigationStepName = Navigation
+
+expression odatalink = "https://data.odatalink.com/Mik-All-857730/bellandwhistle/BellAn/" meta [IsParameterQuery=true, Type="Text", IsParameterQueryRequired=true]
+	lineageTag: a5afbc33-9337-4ecb-8b6c-3c4873236314
+
+	annotation PBI_ResultType = Text
+
+expression FinancialYear = 2024 meta [IsParameterQuery=true, Type="Number", IsParameterQueryRequired=true]
+	lineageTag: d9236e19-338a-4e49-8233-bdfcd6097819
+
+	annotation PBI_ResultType = Number
+
+expression fxFmonth = ```
+		let
+		    Source = (month as number) => let
+		               fmonth = if month < 7
+		                            then month + 6
+		                        else 
+		                         month -6,
+		                tfmonth = Number.ToText(fmonth,"d2")      
+		            in
+		              tfmonth
+		in
+		    Source
+		```
+	lineageTag: f91abb5c-4124-47a9-9c32-842f8b9817f5
+	queryGroup: Budgets
+
+	annotation PBI_NavigationStepName = Navigation
+
+/// Number of Months for Balance Sheet Range 1 to 11
+expression NumberOfMonths = 5 meta [IsParameterQuery=true, List={1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11}, DefaultValue=3, Type="Number", IsParameterQueryRequired=true]
+	lineageTag: 3b7e799f-2a45-4856-a340-d32525240279
+
+	annotation PBI_ResultType = Number
+

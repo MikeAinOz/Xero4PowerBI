@@ -1,0 +1,31 @@
+table DataFiles
+	lineageTag: 116d4e07-04c8-4ecc-b549-ae26d28333f1
+
+	column DataFileID
+		dataType: string
+		lineageTag: e23463ab-187f-4285-aacb-12741d9d5268
+		summarizeBy: none
+		sourceColumn: DataFileID
+
+		annotation SummarizationSetBy = Automatic
+
+	column DataFileName
+		dataType: string
+		lineageTag: db7ca710-9c2c-407c-a8a4-07f280dc0d75
+		summarizeBy: none
+		sourceColumn: DataFileName
+
+		annotation SummarizationSetBy = Automatic
+
+	partition DataFiles-0a70039a-26a4-40eb-8a48-aa0d14c83e2a = m
+		mode: import
+		source =
+				let
+				    Source = OData.Feed(odatalink, null, [Implementation="2.0"]),
+				    DataFiles_table = Source{[Name="DataFiles",Signature="table"]}[Data],
+				    #"Removed Other Columns" = Table.SelectColumns(DataFiles_table,{"DataFileID", "DataFileName"})
+				in
+				    #"Removed Other Columns"
+
+	annotation PBI_ResultType = Table
+

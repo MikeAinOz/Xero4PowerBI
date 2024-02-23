@@ -1,0 +1,179 @@
+table BalanceSheetByMonth
+	lineageTag: 78706822-70bc-4043-8831-2ada3b9a2934
+
+	measure BalanceByMonthTotal =
+			
+			VAR IsFilteredDescription = ISFILTERED(BalanceSheetByMonth[ClassDescription])  // Class Description Second Level
+			VAR IsFilteredBalanceType = ISFILTERED(BalanceSheetByMonth[BalanceType]) // Top Level
+			VAR Result = SWITCH(TRUE(),
+			   NOT(IsFilteredBalanceType),BLANK(),  // Blank Total
+			   NOT(IsFilteredDescription) && NOT(SELECTEDVALUE(BalanceSheetByMonth[BalanceType],"Other") = "Equity"),
+			               SUMX(BalanceSheetByMonth,BalanceSheetByMonth[Amount]*BalanceSheetByMonth[DrCrSign]), // Net Assets and (NOT BalanceType) Total Equity
+			   IsFilteredDescription, SUM(BalanceSheetByMonth[Amount]) // Class,Account Line Type. Account Name
+			)
+			RETURN Result
+		formatString: #,##0;(#,##0)
+		lineageTag: e50ffdca-bff4-4bb9-a699-3d19ffbf4e06
+
+		annotation PBI_FormatHint = {"isCustom":true}
+
+	column FinancialYear
+		dataType: int64
+		formatString: 0
+		lineageTag: 41c748f5-0b34-45a6-8a40-856f45df5f1d
+		summarizeBy: none
+		sourceColumn: FinancialYear
+
+		annotation SummarizationSetBy = Automatic
+
+	column LineType
+		dataType: string
+		lineageTag: 87916c55-5399-4fbe-b4d9-786fd829f377
+		summarizeBy: none
+		sourceColumn: LineType
+
+		annotation SummarizationSetBy = Automatic
+
+	column AccountID
+		dataType: string
+		lineageTag: 2bd316f0-eae5-4d5c-8cec-b6b50d82e4b2
+		summarizeBy: none
+		sourceColumn: AccountID
+
+		annotation SummarizationSetBy = Automatic
+
+	column AccountName
+		dataType: string
+		lineageTag: 0b8b8f63-6961-47ea-b80c-33baf746d665
+		summarizeBy: none
+		sourceColumn: AccountName
+
+		annotation SummarizationSetBy = Automatic
+
+	column AccountLineType
+		dataType: string
+		lineageTag: 4991966d-7688-4082-924a-02cf290abee9
+		summarizeBy: none
+		sourceColumn: AccountLineType
+
+		annotation SummarizationSetBy = Automatic
+
+	column Date
+		dataType: dateTime
+		formatString: Long Date
+		lineageTag: 33b84948-b00f-4ce9-ad19-cd2a2ec6609f
+		summarizeBy: none
+		sourceColumn: Date
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation UnderlyingDateTimeDataType = Date
+
+	column Amount
+		dataType: double
+		lineageTag: 3140d5bb-b909-4784-9bd1-803d240f5f1f
+		summarizeBy: sum
+		sourceColumn: Amount
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column Code
+		dataType: string
+		lineageTag: e9010a29-4d1b-42bd-bfd6-9cfd3eef91c4
+		summarizeBy: none
+		sourceColumn: Code
+
+		annotation SummarizationSetBy = Automatic
+
+	column Class
+		dataType: string
+		lineageTag: e85d140c-c25d-4247-8f8b-42d1a7903e2d
+		summarizeBy: none
+		sourceColumn: Class
+
+		annotation SummarizationSetBy = Automatic
+
+	column ClassDescription
+		dataType: string
+		lineageTag: 86d58839-0ec4-443a-92f4-e2da88dcaebb
+		summarizeBy: none
+		sourceColumn: ClassDescription
+
+		annotation SummarizationSetBy = Automatic
+
+	column Order
+		dataType: string
+		lineageTag: b21ca9e6-7562-4399-b9a7-07a8f9436fd4
+		summarizeBy: none
+		sourceColumn: Order
+
+		annotation SummarizationSetBy = Automatic
+
+	column DrCrSign
+		dataType: int64
+		lineageTag: 8352e5e0-d68c-491b-8d8a-7c3e2f7c91ba
+		summarizeBy: sum
+		sourceColumn: DrCrSign
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column BalanceType
+		dataType: string
+		lineageTag: a2cdfdd8-8b4b-4894-81b6-40320c63b92a
+		summarizeBy: none
+		sourceColumn: BalanceType
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Month Year'
+		dataType: string
+		lineageTag: 71c41145-61fd-4422-99b8-32cd7fbdf52d
+		summarizeBy: none
+		sourceColumn: Month Year
+		sortByColumn: Date
+
+		changedProperty = SortByColumn
+
+		annotation SummarizationSetBy = Automatic
+
+	column DataFileID
+		dataType: string
+		lineageTag: 4422e8d1-ba3b-49a5-981d-61b19ec6cb53
+		summarizeBy: none
+		sourceColumn: DataFileID
+
+		annotation SummarizationSetBy = Automatic
+
+	partition BalanceSheetByMonth-bc331398-f94d-4378-9cc8-87e0fd9fe719 = m
+		mode: import
+		queryGroup: 'Balance Sheet'
+		source =
+				let
+				    EndDate = DateTime.Date(Date.EndOfMonth(DateTime.LocalNow())),
+				    StartDate = DateTime.Date(Date.EndOfMonth(Date.AddMonths(EndDate,NumberOfMonths * -1))),
+				   // EndDate = #date(2023,2,28),
+				    // StartDate = #date(2022,3,1),
+				    Source = OData.Feed(odatalink, null, [Implementation="2.0"]),
+				    #"BalanceSheetByMonth_function (FinancialYear as nullable number, PaymentsOnly as nullable logical, StandardLayout as nullable logical) as table" = Source{[Name="BalanceSheetByMonth",Signature="function (FinancialYear as nullable number, PaymentsOnly as nullable logical, StandardLayout as nullable logical) as table"]}[Data],
+				    #"Invoked FunctionBalanceSheetByMonth_function (FinancialYear as nullable number, PaymentsOnly as nullable logical, StandardLayout as nullable logical) as table1" = #"BalanceSheetByMonth_function (FinancialYear as nullable number, PaymentsOnly as nullable logical, StandardLayout as nullable logical) as table"(null, null, null),
+				    #"Removed Columns" = Table.RemoveColumns(#"Invoked FunctionBalanceSheetByMonth_function (FinancialYear as nullable number, PaymentsOnly as nullable logical, StandardLayout as nullable logical) as table1",{"PaymentsOnly", "StandardLayout", "UpdatedDateUTC"}),
+				    #"Expanded Lines" = Table.ExpandTableColumn(#"Removed Columns", "Lines", {"LineType", "AccountID", "AccountName", "AccountLineType", "Amounts"}, {"LineType", "AccountID", "AccountName", "AccountLineType", "Amounts"}),
+				    #"Expanded Amounts" = Table.ExpandTableColumn(#"Expanded Lines", "Amounts", {"Date", "Amount"}, {"Date", "Amount"}),
+				    #"Filtered Details" = Table.SelectRows(#"Expanded Amounts", each ([LineType] = "Detail")),
+				    #"Filtered Dates" = Table.SelectRows(#"Filtered Details", each [Date] >= StartDate and [Date] <= EndDate),
+				    #"Merged Queries" = Table.NestedJoin(#"Filtered Dates", {"AccountID"}, Accounts, {"AccountID"}, "Accounts", JoinKind.LeftOuter),
+				    #"Expanded Accounts" = Table.ExpandTableColumn(#"Merged Queries", "Accounts", {"Code", "Class"}, {"Code", "Class"}),
+				    #"Merged Queries1" = Table.NestedJoin(#"Expanded Accounts", {"Class"}, AccountsClass, {"Class"}, "AccountsClass", JoinKind.LeftOuter),
+				    #"Expanded AccountsClass" = Table.ExpandTableColumn(#"Merged Queries1", "AccountsClass", {"Description", "Order", "DrCrSign", "BalanceType"}, {"Description", "Order", "DrCrSign", "BalanceType"}),
+				    #"Renamed Columns" = Table.RenameColumns(#"Expanded AccountsClass",{{"Description", "ClassDescription"}}),
+				    #"Added Custom Column" = Table.AddColumn(#"Renamed Columns", "Month Year", each Text.Combine({Date.ToText([Date], "MMM"), "-", Date.ToText([Date], "yyyy")}), type text),
+				    #"Expanded DataFile" = Table.ExpandRecordColumn(#"Added Custom Column", "DataFile", {"DataFileID"}, {"DataFileID"})
+				in
+				    #"Expanded DataFile"
+
+	annotation PBI_ResultType = Table
+

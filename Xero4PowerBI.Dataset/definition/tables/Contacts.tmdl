@@ -1,0 +1,271 @@
+table Contacts
+	lineageTag: 9544aa37-389e-408a-8c63-7e0ba1c0db60
+
+	column ContactID
+		dataType: string
+		lineageTag: 3f0db565-d308-444e-9c30-2e92e3e80fad
+		summarizeBy: none
+		sourceColumn: ContactID
+
+		annotation SummarizationSetBy = Automatic
+
+	column ContactNumber
+		dataType: string
+		lineageTag: 2b61fab1-bece-46b0-8272-5af21bb83eb9
+		summarizeBy: none
+		sourceColumn: ContactNumber
+
+		annotation SummarizationSetBy = Automatic
+
+	column AccountNumber
+		dataType: string
+		lineageTag: 32b75aa0-aa55-49ab-a142-26ec2181d313
+		summarizeBy: none
+		sourceColumn: AccountNumber
+
+		annotation SummarizationSetBy = Automatic
+
+	column ContactStatus
+		dataType: string
+		lineageTag: 4d338485-7006-4827-9a6c-24a4f75d8a57
+		summarizeBy: none
+		sourceColumn: ContactStatus
+
+		annotation SummarizationSetBy = Automatic
+
+	column Name
+		dataType: string
+		lineageTag: 0effc96f-d0e9-41ec-a4fe-e934c3cf4dd2
+		summarizeBy: none
+		sourceColumn: Name
+
+		annotation SummarizationSetBy = Automatic
+
+	column FirstName
+		dataType: string
+		lineageTag: ef4b0499-7926-472d-9bad-5d2d5c62802e
+		summarizeBy: none
+		sourceColumn: FirstName
+
+		annotation SummarizationSetBy = Automatic
+
+	column LastName
+		dataType: string
+		lineageTag: c38a638d-0ead-4926-862a-6ffcf3ffb35d
+		summarizeBy: none
+		sourceColumn: LastName
+
+		annotation SummarizationSetBy = Automatic
+
+	column EmailAddress
+		dataType: string
+		lineageTag: 6c872f3c-2dab-47a1-890c-980c62deaf3a
+		summarizeBy: none
+		sourceColumn: EmailAddress
+
+		annotation SummarizationSetBy = Automatic
+
+	column SkypeUserName
+		dataType: string
+		lineageTag: b4ada470-ea25-49d3-9e04-921a078a304d
+		summarizeBy: none
+		sourceColumn: SkypeUserName
+
+		annotation SummarizationSetBy = Automatic
+
+	column Website
+		dataType: string
+		lineageTag: d488fd9a-f96f-4d91-b2ec-bb244c5d0429
+		summarizeBy: none
+		sourceColumn: Website
+
+		annotation SummarizationSetBy = Automatic
+
+	column BankAccountDetails
+		dataType: string
+		lineageTag: 273386d1-173b-4806-bf7d-789e2c18cd5b
+		summarizeBy: none
+		sourceColumn: BankAccountDetails
+
+		annotation SummarizationSetBy = Automatic
+
+	column TaxNumber
+		dataType: string
+		lineageTag: 73903c1d-5bf3-4c05-8a61-f5e89e9a6783
+		summarizeBy: none
+		sourceColumn: TaxNumber
+
+		annotation SummarizationSetBy = Automatic
+
+	column AccountsReceivableTaxType
+		dataType: string
+		lineageTag: 7a2a0cd8-d9d3-4621-b176-7bd310acd8bc
+		summarizeBy: none
+		sourceColumn: AccountsReceivableTaxType
+
+		annotation SummarizationSetBy = Automatic
+
+	column AccountsPayableTaxType
+		dataType: string
+		lineageTag: b3bc47c3-89b6-47c3-8ef8-46f3d3ac9a42
+		summarizeBy: none
+		sourceColumn: AccountsPayableTaxType
+
+		annotation SummarizationSetBy = Automatic
+
+	column UpdatedDateUTC
+		dataType: dateTime
+		formatString: General Date
+		lineageTag: 48221c05-344a-46ac-8cab-11f94663ca1a
+		summarizeBy: none
+		sourceColumn: UpdatedDateUTC
+
+		annotation SummarizationSetBy = Automatic
+
+	column IsSupplier
+		dataType: boolean
+		formatString: """TRUE"";""TRUE"";""FALSE"""
+		lineageTag: 6f200db7-2167-4aff-b0e4-f476a28e6e47
+		summarizeBy: none
+		sourceColumn: IsSupplier
+
+		annotation SummarizationSetBy = Automatic
+
+	column IsCustomer
+		dataType: boolean
+		formatString: """TRUE"";""TRUE"";""FALSE"""
+		lineageTag: 0c4cae7d-6799-4333-9fec-1e65b5d51252
+		summarizeBy: none
+		sourceColumn: IsCustomer
+
+		annotation SummarizationSetBy = Automatic
+
+	column DefaultCurrency
+		dataType: string
+		lineageTag: aec5b326-c4d1-4752-b23e-ca8c8e1388e1
+		summarizeBy: none
+		sourceColumn: DefaultCurrency
+
+		annotation SummarizationSetBy = Automatic
+
+	column HasAttachments
+		dataType: boolean
+		formatString: """TRUE"";""TRUE"";""FALSE"""
+		lineageTag: b33a5eef-460a-43b2-adf5-79ebb5a7b4a3
+		summarizeBy: none
+		sourceColumn: HasAttachments
+
+		annotation SummarizationSetBy = Automatic
+
+	column PhoneType
+		dataType: string
+		lineageTag: 79809fed-2017-432a-bb0d-703ba8c8b335
+		summarizeBy: none
+		sourceColumn: PhoneType
+
+		annotation SummarizationSetBy = Automatic
+
+	column PhoneNumber
+		dataType: string
+		lineageTag: 84b6f0de-61c8-4b6a-89bd-a0095e643db7
+		summarizeBy: none
+		sourceColumn: PhoneNumber
+
+		annotation SummarizationSetBy = Automatic
+
+	column PhoneAreaCode
+		dataType: string
+		lineageTag: df43c7c6-0cb5-4a29-a7cd-e5eb567c0683
+		summarizeBy: none
+		sourceColumn: PhoneAreaCode
+
+		annotation SummarizationSetBy = Automatic
+
+	column PhoneCountryCode
+		dataType: string
+		lineageTag: b179a8a2-f58f-4bd8-b17a-99e10577cd42
+		summarizeBy: none
+		sourceColumn: PhoneCountryCode
+
+		annotation SummarizationSetBy = Automatic
+
+	column Discount
+		dataType: double
+		lineageTag: ab17b783-3457-4958-9df1-902832e1592c
+		summarizeBy: sum
+		sourceColumn: Discount
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column PurchasesDefaultAccountCode
+		dataType: string
+		lineageTag: ed5b96a0-a8ef-4e2c-b381-0fe1b6c18e05
+		summarizeBy: none
+		sourceColumn: PurchasesDefaultAccountCode
+
+		annotation SummarizationSetBy = Automatic
+
+	column PurchasesDefaultLineAmountType
+		dataType: string
+		lineageTag: 47906961-9d61-4f3d-9257-64c707e1dbf1
+		summarizeBy: none
+		sourceColumn: PurchasesDefaultLineAmountType
+
+		annotation SummarizationSetBy = Automatic
+
+	column SalesDefaultAccountCode
+		dataType: string
+		lineageTag: cdc01b9c-515c-4fbd-bf99-1968882da892
+		summarizeBy: none
+		sourceColumn: SalesDefaultAccountCode
+
+		annotation SummarizationSetBy = Automatic
+
+	column SalesDefaultLineAmountType
+		dataType: string
+		lineageTag: 65d5b79d-5076-463e-8a66-a219b8cb8086
+		summarizeBy: none
+		sourceColumn: SalesDefaultLineAmountType
+
+		annotation SummarizationSetBy = Automatic
+
+	column XeroNetworkKey
+		dataType: string
+		lineageTag: 4947fe98-2a03-4a1f-893b-c17cb8a702bd
+		summarizeBy: none
+		sourceColumn: XeroNetworkKey
+
+		annotation SummarizationSetBy = Automatic
+
+	column DataFileID
+		dataType: string
+		lineageTag: 16430e2d-dfba-4028-9af3-2273adf0be0f
+		summarizeBy: none
+		sourceColumn: DataFileID
+
+		annotation SummarizationSetBy = Automatic
+
+	column CompanyNumber
+		dataType: string
+		lineageTag: e7efb64b-dfdf-447a-8b43-ca01d9ed844e
+		summarizeBy: none
+		sourceColumn: CompanyNumber
+
+		annotation SummarizationSetBy = Automatic
+
+	partition Contacts-47b546b3-9302-42b6-9a76-cfecf0322b79 = m
+		mode: import
+		source =
+				let
+				    Source = OData.Feed(odatalink, null, [Implementation="2.0"]),
+				    Contacts_table = Table.Buffer(Source{[Name="ContactsExpanded",Signature="table"]}[Data]),
+				    #"Added Custom" = Table.AddColumn(Contacts_table, "DefaultPhone", each Table.SelectRows([Phones],each [PhoneType] = "DEFAULT")),
+				    #"Expanded Custom" = Table.ExpandTableColumn(#"Added Custom", "DefaultPhone", {"PhoneType", "PhoneNumber", "PhoneAreaCode", "PhoneCountryCode"}, {"PhoneType", "PhoneNumber", "PhoneAreaCode", "PhoneCountryCode"}),
+				    #"Expanded DataFile" = Table.ExpandRecordColumn(#"Expanded Custom", "DataFile", {"DataFileID"}, {"DataFileID"})
+				in
+				    #"Expanded DataFile"
+
+	annotation PBI_ResultType = Table
+

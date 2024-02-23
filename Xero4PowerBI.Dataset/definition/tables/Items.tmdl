@@ -1,0 +1,80 @@
+table Items
+	lineageTag: c2eaa113-99bf-48c4-9b82-118dedc348d6
+
+	column ItemID
+		dataType: string
+		lineageTag: ecd95125-46f1-4dbd-bd2a-6b5bf88c5839
+		summarizeBy: none
+		sourceColumn: ItemID
+
+		annotation SummarizationSetBy = Automatic
+
+	column Code
+		dataType: string
+		lineageTag: 21a74111-389c-429d-a72d-c961187e03af
+		summarizeBy: none
+		sourceColumn: Code
+
+		annotation SummarizationSetBy = Automatic
+
+	column Name
+		dataType: string
+		lineageTag: a2ac4300-cf02-49c7-b9ad-c6a1c4b1e168
+		summarizeBy: none
+		sourceColumn: Name
+
+		annotation SummarizationSetBy = Automatic
+
+	column Description
+		dataType: string
+		lineageTag: 3596d302-abbd-459a-8956-b37dd16eb9d5
+		summarizeBy: none
+		sourceColumn: Description
+
+		annotation SummarizationSetBy = Automatic
+
+	column CostPrice
+		dataType: double
+		lineageTag: 592e02b1-bcb7-4c70-af9f-3936f121a52a
+		summarizeBy: sum
+		sourceColumn: CostPrice
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column UnitPrice
+		dataType: double
+		lineageTag: f6578e9e-1b6d-4a8f-8374-8eb114fd3f71
+		summarizeBy: sum
+		sourceColumn: UnitPrice
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column DataFileID
+		dataType: string
+		lineageTag: 70c6bf7d-4c98-47f2-8e04-b7805a17304a
+		summarizeBy: none
+		sourceColumn: DataFileID
+
+		annotation SummarizationSetBy = Automatic
+
+	partition Items-4e2c287c-e86d-4ea4-9742-c004689b33df = m
+		mode: import
+		source =
+				let
+				    Source = OData.Feed(odatalink, null, [Implementation="2.0"]),
+				    Items_table = Source{[Name="Items",Signature="table"]}[Data],
+				    #"Removed Columns" = Table.RemoveColumns(Items_table,{"IsSold", "IsPurchased", "PurchaseDescription"}),
+				    #"Expanded PurchaseDetails" = Table.ExpandRecordColumn(#"Removed Columns", "PurchaseDetails", {"UnitPrice"}, {"UnitPrice"}),
+				    #"Renamed Columns" = Table.RenameColumns(#"Expanded PurchaseDetails",{{"UnitPrice", "CostPrice"}}),
+				    #"Expanded SalesDetails" = Table.ExpandRecordColumn(#"Renamed Columns", "SalesDetails", {"UnitPrice"}, {"UnitPrice"}),
+				    #"Removed Columns1" = Table.RemoveColumns(#"Expanded SalesDetails",{"IsTrackedAsInventory", "InventoryAssetAccountCode", "TotalCostPool", "QuantityOnHand", "UpdatedDateUTC"}),
+				    #"Expanded DataFile" = Table.ExpandRecordColumn(#"Removed Columns1", "DataFile", {"DataFileID"}, {"DataFileID"})
+				in
+				    #"Expanded DataFile"
+
+	annotation PBI_ResultType = Table
+

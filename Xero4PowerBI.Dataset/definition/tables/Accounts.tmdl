@@ -1,0 +1,190 @@
+table Accounts
+	lineageTag: 291216f6-d528-445e-b37a-502ef422b975
+
+	column AccountID
+		dataType: string
+		lineageTag: 4ef50ec1-d5a6-47f3-8747-16bbdc4629cc
+		summarizeBy: none
+		sourceColumn: AccountID
+
+		annotation SummarizationSetBy = Automatic
+
+	column Code
+		dataType: string
+		lineageTag: 182ef164-3112-4184-95c4-504bcb9c4a30
+		summarizeBy: none
+		sourceColumn: Code
+
+		annotation SummarizationSetBy = Automatic
+
+	column Name
+		dataType: string
+		lineageTag: e55dc7d0-4a53-455e-a0a4-38783d709c4a
+		summarizeBy: none
+		sourceColumn: Name
+
+		annotation SummarizationSetBy = Automatic
+
+	column Status
+		dataType: string
+		lineageTag: 7335d9ee-66ef-498c-9f0e-ff77cf25423c
+		summarizeBy: none
+		sourceColumn: Status
+
+		annotation SummarizationSetBy = Automatic
+
+	column Type
+		dataType: string
+		lineageTag: e4bd1e3f-e81e-40c7-9a72-37e08ad32799
+		summarizeBy: none
+		sourceColumn: Type
+
+		annotation SummarizationSetBy = Automatic
+
+	column TaxType
+		dataType: string
+		lineageTag: b2555e99-8f02-4bd1-badd-8a75515dafe6
+		summarizeBy: none
+		sourceColumn: TaxType
+
+		annotation SummarizationSetBy = Automatic
+
+	column Description
+		dataType: string
+		lineageTag: 19558260-ba84-4331-93ab-3705ad8b3dbc
+		summarizeBy: none
+		sourceColumn: Description
+
+		annotation SummarizationSetBy = Automatic
+
+	column Class
+		dataType: string
+		lineageTag: 1261fa0b-8f01-4564-afbb-8d0dbc4f45ea
+		summarizeBy: none
+		sourceColumn: Class
+
+		annotation SummarizationSetBy = Automatic
+
+	column SystemAccount
+		dataType: string
+		lineageTag: 6392688b-a7e2-446d-aec1-6b92629c3428
+		summarizeBy: none
+		sourceColumn: SystemAccount
+
+		annotation SummarizationSetBy = Automatic
+
+	column EnablePaymentsToAccount
+		dataType: boolean
+		formatString: """TRUE"";""TRUE"";""FALSE"""
+		lineageTag: f12fd2ce-5996-4f41-ad99-fa9594d75954
+		summarizeBy: none
+		sourceColumn: EnablePaymentsToAccount
+
+		annotation SummarizationSetBy = Automatic
+
+	column ShowInExpenseClaims
+		dataType: boolean
+		formatString: """TRUE"";""TRUE"";""FALSE"""
+		lineageTag: c752792c-e29a-4c61-b9da-5ab2e7e93414
+		summarizeBy: none
+		sourceColumn: ShowInExpenseClaims
+
+		annotation SummarizationSetBy = Automatic
+
+	column BankAccountNumber
+		dataType: string
+		lineageTag: b48ada06-9ac6-4a07-bd63-ad326582515d
+		summarizeBy: none
+		sourceColumn: BankAccountNumber
+
+		annotation SummarizationSetBy = Automatic
+
+	column BankAccountType
+		dataType: string
+		lineageTag: a21e18ef-4744-4172-a097-6dc6337f7a44
+		summarizeBy: none
+		sourceColumn: BankAccountType
+
+		annotation SummarizationSetBy = Automatic
+
+	column CurrencyCode
+		dataType: string
+		lineageTag: 14c5a60b-6794-4641-8433-b402bd4a5e51
+		summarizeBy: none
+		sourceColumn: CurrencyCode
+
+		annotation SummarizationSetBy = Automatic
+
+	column ReportingCode
+		dataType: string
+		lineageTag: d6fbb626-14ad-421a-b842-65c1d4564122
+		summarizeBy: none
+		sourceColumn: ReportingCode
+
+		annotation SummarizationSetBy = Automatic
+
+	column ReportingCodeName
+		dataType: string
+		lineageTag: da8b6e07-e740-41ce-ae2d-bfec99d5fce1
+		summarizeBy: none
+		sourceColumn: ReportingCodeName
+
+		annotation SummarizationSetBy = Automatic
+
+	column HasAttachments
+		dataType: boolean
+		formatString: """TRUE"";""TRUE"";""FALSE"""
+		lineageTag: b9351d44-5f61-4daf-bf84-a4cc6933ff5e
+		summarizeBy: none
+		sourceColumn: HasAttachments
+
+		annotation SummarizationSetBy = Automatic
+
+	column UpdatedDateUTC
+		dataType: dateTime
+		formatString: General Date
+		lineageTag: 42eb313e-27ac-4586-876a-0becd12ca99d
+		summarizeBy: none
+		sourceColumn: UpdatedDateUTC
+
+		annotation SummarizationSetBy = Automatic
+
+	column AddToWatchlist
+		dataType: boolean
+		formatString: """TRUE"";""TRUE"";""FALSE"""
+		lineageTag: ad81154e-3b19-4d67-bda4-d5fd00f8f74b
+		summarizeBy: none
+		sourceColumn: AddToWatchlist
+
+		annotation SummarizationSetBy = Automatic
+
+	column DataFileID
+		dataType: string
+		lineageTag: cf99b48c-5636-4b0a-8cd2-338ef18b8b1b
+		summarizeBy: none
+		sourceColumn: DataFileID
+
+		annotation SummarizationSetBy = Automatic
+
+	column CodeAndName = [Code] & " " & [Name]
+		dataType: string
+		lineageTag: 2b498ff1-2965-43fe-93da-757a8740bac6
+		summarizeBy: none
+		isDataTypeInferred
+
+		annotation SummarizationSetBy = Automatic
+
+	partition Accounts-9b84eadb-02ba-4735-84d8-de2453a569fe = m
+		mode: import
+		source =
+				let
+				    Source = OData.Feed(odatalink, null, [Implementation="2.0"]),
+				    Accounts_table = Table.Buffer(Source{[Name="Accounts",Signature="table"]}[Data]),
+				    #"Expanded DataFile" = Table.ExpandRecordColumn(Accounts_table, "DataFile", {"DataFileID"}, {"DataFileID"})
+				in
+				    #"Expanded DataFile"
+
+	annotation PBI_ResultType = Table
+
+	annotation PBI_NavigationStepName = Navigation
+

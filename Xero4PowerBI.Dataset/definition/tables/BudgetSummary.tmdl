@@ -1,0 +1,88 @@
+table BudgetSummary
+	lineageTag: 249004d0-d85e-4662-8040-666c5989fd19
+
+	column Date
+		dataType: dateTime
+		formatString: Long Date
+		lineageTag: c047edfc-0ea3-46bf-8c1a-5553bd7bb417
+		summarizeBy: none
+		sourceColumn: Date
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation UnderlyingDateTimeDataType = Date
+
+	column UpdatedDateUTC
+		dataType: dateTime
+		formatString: General Date
+		lineageTag: f95d14b9-28b6-48d4-ab14-772f3bf67ac5
+		summarizeBy: none
+		sourceColumn: UpdatedDateUTC
+
+		annotation SummarizationSetBy = Automatic
+
+	column LineType
+		dataType: string
+		lineageTag: 228b1488-5840-4e39-af99-cb15caf5a2de
+		summarizeBy: none
+		sourceColumn: LineType
+
+		annotation SummarizationSetBy = Automatic
+
+	column AccountID
+		dataType: string
+		lineageTag: a5fe96cb-27f5-43d0-a357-fc02b755ce16
+		summarizeBy: none
+		sourceColumn: AccountID
+
+		annotation SummarizationSetBy = Automatic
+
+	column AccountName
+		dataType: string
+		lineageTag: 3abbd684-5379-417d-b0da-951da12e5db2
+		summarizeBy: none
+		sourceColumn: AccountName
+
+		annotation SummarizationSetBy = Automatic
+
+	column AccountLineType
+		dataType: string
+		lineageTag: 949e8603-a76e-438e-89d0-c120acd90da8
+		summarizeBy: none
+		sourceColumn: AccountLineType
+
+		annotation SummarizationSetBy = Automatic
+
+	column Amount
+		dataType: double
+		lineageTag: cdf0a6c3-2cbc-425d-872e-c02481363525
+		summarizeBy: sum
+		sourceColumn: Amount
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column DataFileID
+		dataType: string
+		lineageTag: a57eefc7-de0b-46ee-be06-41a4d8b3723e
+		summarizeBy: none
+		sourceColumn: DataFileID
+
+		annotation SummarizationSetBy = Automatic
+
+	partition BudgetSummary-f2784beb-7632-4af2-8d63-15f3563bd39d = m
+		mode: import
+		queryGroup: Budgets
+		source =
+				let
+				    Source = OData.Feed(odatalink, null, [Implementation="2.0"]),
+				    #"BudgetSummary_function (Date as nullable date) as table" = Source{[Name="BudgetSummary",Signature="function (Date as nullable date) as table"]}[Data],
+				    #"Invoked FunctionBudgetSummary_function (Date as nullable date) as table1" = #"BudgetSummary_function (Date as nullable date) as table"(null),
+				    #"Expanded Lines" = Table.ExpandTableColumn(#"Invoked FunctionBudgetSummary_function (Date as nullable date) as table1", "Lines", {"LineType", "AccountID", "AccountName", "AccountLineType", "Amount"}, {"LineType", "AccountID", "AccountName", "AccountLineType", "Amount"}),
+				    #"Expanded DataFile" = Table.ExpandRecordColumn(#"Expanded Lines", "DataFile", {"DataFileID"}, {"DataFileID"})
+				in
+				    #"Expanded DataFile"
+
+	annotation PBI_ResultType = Table
+

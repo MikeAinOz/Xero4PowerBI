@@ -1,0 +1,84 @@
+table Dates
+	lineageTag: 0ebe45e9-ce25-4b92-b3e3-ee0453d9543c
+
+	column Date
+		dataType: dateTime
+		formatString: Short Date
+		lineageTag: 475cc744-be72-43e4-8f2c-97cda5b58b1b
+		summarizeBy: none
+		sourceColumn: Date
+
+		changedProperty = FormatString
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation UnderlyingDateTimeDataType = Date
+
+	column DatesByMonthID
+		dataType: string
+		lineageTag: 964d94b0-fcce-40e3-a815-92e0fa09129f
+		summarizeBy: none
+		sourceColumn: DatesByMonthID
+
+		annotation SummarizationSetBy = Automatic
+
+	column FinancialYear
+		dataType: int64
+		formatString: 0
+		lineageTag: 61ac1b2d-0e0a-4a32-bf26-59b901fbb817
+		summarizeBy: none
+		sourceColumn: FinancialYear
+
+		annotation SummarizationSetBy = Automatic
+
+	column FinancialMonth
+		dataType: int64
+		formatString: 0
+		lineageTag: 9f095c13-1bf4-4f40-81e4-e49792dacbf1
+		summarizeBy: none
+		sourceColumn: FinancialMonth
+
+		annotation SummarizationSetBy = User
+
+	column CalendarYear
+		dataType: int64
+		formatString: 0
+		lineageTag: d143ceff-9c56-443b-8766-253ecb4d19bd
+		summarizeBy: none
+		sourceColumn: CalendarYear
+
+		annotation SummarizationSetBy = User
+
+	column CalendarMonth
+		dataType: int64
+		formatString: 0
+		lineageTag: 752760a2-b904-4ef2-8ebc-5cc276db2bf6
+		summarizeBy: none
+		sourceColumn: CalendarMonth
+
+		annotation SummarizationSetBy = User
+
+	column Mth
+		dataType: string
+		lineageTag: 75e231f6-cdda-4cb1-b81a-6e0109db6573
+		summarizeBy: none
+		sourceColumn: Mth
+		sortByColumn: CalendarMonth
+
+		changedProperty = SortByColumn
+
+		annotation SummarizationSetBy = Automatic
+
+	partition Dates-4710e26d-fd4f-46bc-af88-2299a8194bcb = m
+		mode: import
+		source =
+				let
+				    Source = OData.Feed(odatalink, null, [Implementation="2.0"]),
+				    Dates_table = Source{[Name="Dates",Signature="table"]}[Data],
+				    #"Expanded DisplayStrings" = Table.ExpandRecordColumn(Dates_table, "DisplayStrings", {"MMM"}, {"MMM"}),
+				    #"Renamed Columns" = Table.RenameColumns(#"Expanded DisplayStrings",{{"MMM", "Mth"}})
+				in
+				    #"Renamed Columns"
+
+	annotation PBI_ResultType = Table
+

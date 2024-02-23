@@ -1,0 +1,108 @@
+table BalanceSheetReportIndented
+	lineageTag: c28ea98f-106a-4628-a4bb-e4b053b47d92
+
+	column Date
+		dataType: dateTime
+		formatString: Long Date
+		lineageTag: fb425f0b-0329-4671-9c88-2a68089b73b0
+		summarizeBy: none
+		sourceColumn: Date
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation UnderlyingDateTimeDataType = Date
+
+	column UpdatedDateUTC
+		dataType: dateTime
+		formatString: General Date
+		lineageTag: 6b52897c-9659-4bd3-9af1-4b119659bb73
+		summarizeBy: none
+		sourceColumn: UpdatedDateUTC
+
+		annotation SummarizationSetBy = Automatic
+
+	column LineType
+		dataType: string
+		lineageTag: c59a5b0c-8e42-465c-aaf3-d5aeaa346275
+		summarizeBy: none
+		sourceColumn: LineType
+
+		annotation SummarizationSetBy = Automatic
+
+	column AccountID
+		dataType: string
+		lineageTag: bdf17e2a-0db9-49e8-9090-c08999cb050a
+		summarizeBy: none
+		sourceColumn: AccountID
+
+		annotation SummarizationSetBy = Automatic
+
+	column AccountLineType
+		dataType: string
+		lineageTag: 7763fd70-8d6c-46b4-9181-343a15b5ea50
+		summarizeBy: none
+		sourceColumn: AccountLineType
+
+		annotation SummarizationSetBy = Automatic
+
+	column Amount
+		dataType: double
+		formatString: #,##0;(#,##0)
+		lineageTag: 715303f3-fe98-412f-a9e1-eb0555c6564f
+		summarizeBy: sum
+		sourceColumn: Amount
+
+		changedProperty = FormatString
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isCustom":true}
+
+	column AccountName
+		dataType: string
+		lineageTag: a79b3f0d-bff2-41e3-b321-8bffc584e99e
+		summarizeBy: none
+		sourceColumn: AccountName
+		sortByColumn: Index
+
+		changedProperty = SortByColumn
+
+		annotation SummarizationSetBy = Automatic
+
+	column Index
+		dataType: int64
+		formatString: 0
+		lineageTag: 40e65ded-8d53-4049-a768-63e66d7a40e0
+		summarizeBy: none
+		sourceColumn: Index
+
+		annotation SummarizationSetBy = Automatic
+
+	column DataFileID
+		dataType: string
+		lineageTag: 48fac9a9-d06a-4885-b11c-894f1f14375c
+		summarizeBy: none
+		sourceColumn: DataFileID
+
+		annotation SummarizationSetBy = Automatic
+
+	partition BalanceSheetReportIndented-d03b48d1-ee24-485e-afc8-c8ad832d9594 = m
+		mode: import
+		queryGroup: 'Balance Sheet'
+		source =
+				let
+				    Source = OData.Feed(odatalink, null, [Implementation="2.0"]),
+				    #"BalanceSheet_function (Date as nullable date, PaymentsOnly as nullable logical, StandardLayout as nullable logical) as table" = Source{[Name="BalanceSheet",Signature="function (Date as nullable date, PaymentsOnly as nullable logical, StandardLayout as nullable logical) as table"]}[Data],
+				    #"Invoked FunctionBalanceSheet_function (Date as nullable date, PaymentsOnly as nullable logical, StandardLayout as nullable logical) as table1" = #"BalanceSheet_function (Date as nullable date, PaymentsOnly as nullable logical, StandardLayout as nullable logical) as table"(null, null, null),
+				    #"Removed Columns" = Table.RemoveColumns(#"Invoked FunctionBalanceSheet_function (Date as nullable date, PaymentsOnly as nullable logical, StandardLayout as nullable logical) as table1",{"PaymentsOnly", "StandardLayout"}),
+				    #"Expanded Lines" = Table.ExpandTableColumn(#"Removed Columns", "Lines", {"LineType", "AccountID", "AccountName", "AccountLineType", "Amount"}, {"LineType", "AccountID", "AccountName", "AccountLineType", "Amount"}),
+				    #"Added Index" = Table.AddIndexColumn(#"Expanded Lines", "Index", 1, 1, Int64.Type),
+				    #"Invoked Custom Function" = Table.AddColumn(#"Added Index", "AccountName Indented", each fxIndent([LineType], [AccountName], [AccountLineType])),
+				    #"Removed Columns1" = Table.RemoveColumns(#"Invoked Custom Function",{"AccountName"}),
+				    #"Renamed Columns" = Table.RenameColumns(#"Removed Columns1",{{"AccountName Indented", "AccountName"}}),
+				    #"Expanded DataFile" = Table.ExpandRecordColumn(#"Renamed Columns", "DataFile", {"DataFileID"}, {"DataFileID"})
+				in
+				    #"Expanded DataFile"
+
+	annotation PBI_ResultType = Table
+

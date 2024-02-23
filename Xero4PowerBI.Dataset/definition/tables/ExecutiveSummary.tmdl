@@ -1,0 +1,131 @@
+table ExecutiveSummary
+	lineageTag: 5fc85914-650d-497e-8f48-3ed54639f82f
+
+	column Date
+		dataType: dateTime
+		formatString: dd/mm/yyyy
+		lineageTag: 8292f30f-ad2b-4fe3-87d1-3d9871f1e12e
+		summarizeBy: none
+		sourceColumn: Date
+
+		changedProperty = FormatString
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation UnderlyingDateTimeDataType = Date
+
+		annotation PBI_FormatHint = {"isDateTimeCustom":true}
+
+	column UpdatedDateUTC
+		dataType: dateTime
+		formatString: General Date
+		lineageTag: cb19e3ad-30a9-4d51-8c0b-35389c4655e6
+		summarizeBy: none
+		sourceColumn: UpdatedDateUTC
+
+		annotation SummarizationSetBy = Automatic
+
+	column Description
+		dataType: string
+		lineageTag: dab1b03c-c323-4f07-9a9b-26a83b971213
+		summarizeBy: none
+		sourceColumn: Description
+		sortByColumn: Index
+
+		changedProperty = SortByColumn
+
+		annotation SummarizationSetBy = Automatic
+
+	column Type
+		dataType: string
+		lineageTag: 76cad5b3-0e42-40f9-8e51-e11d18fa4b6c
+		summarizeBy: none
+		sourceColumn: Type
+
+		annotation SummarizationSetBy = Automatic
+
+	column ThisMonth
+		dataType: double
+		formatString: #,##0;(#,##0)
+		lineageTag: 80fc75f9-f2fc-4412-b793-f92fdcb5f3a6
+		summarizeBy: sum
+		sourceColumn: ThisMonth
+
+		changedProperty = FormatString
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isCustom":true}
+
+	column LastMonth
+		dataType: double
+		formatString: #,##0;(#,##0)
+		lineageTag: 33d02004-0838-4954-ad00-e24d0a47e9f4
+		summarizeBy: sum
+		sourceColumn: LastMonth
+
+		changedProperty = FormatString
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isCustom":true}
+
+	column VariancePercent
+		dataType: double
+		formatString: 0.00%;-0.00%;0.00%
+		lineageTag: 2c39e762-0992-49e7-a573-d4a90cdb23ac
+		summarizeBy: sum
+		sourceColumn: VariancePercent
+
+		changedProperty = FormatString
+
+		annotation SummarizationSetBy = Automatic
+
+	column Index
+		dataType: int64
+		formatString: 0
+		lineageTag: d8f6cf3f-d9d5-4893-888c-a01d87957c91
+		summarizeBy: sum
+		sourceColumn: Index
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Icon Flag'
+		dataType: int64
+		formatString: 0
+		lineageTag: 4323592b-1af7-425a-8270-50216f318cf4
+		summarizeBy: sum
+		sourceColumn: Icon Flag
+
+		annotation SummarizationSetBy = Automatic
+
+	column DataFileID
+		dataType: string
+		lineageTag: 22322cf3-9196-4af3-904f-d9161f61ca51
+		summarizeBy: none
+		sourceColumn: DataFileID
+
+		annotation SummarizationSetBy = Automatic
+
+	partition ExecutiveSummary-b60e1dfa-22b9-4804-af92-897f4fac4aa3 = m
+		mode: import
+		queryGroup: 'Executive Summary'
+		source =
+				let
+				    Source = OData.Feed(odatalink, null, [Implementation="2.0"]),
+				    #"ExecutiveSummary_function (Date as nullable date) as table" = Source{[Name="ExecutiveSummary",Signature="function (Date as nullable date) as table"]}[Data],
+				    #"Invoked FunctionExecutiveSummary_function (Date as nullable date) as table1" = #"ExecutiveSummary_function (Date as nullable date) as table"(null),
+				    #"Expanded Lines" = Table.ExpandTableColumn(#"Invoked FunctionExecutiveSummary_function (Date as nullable date) as table1", "Lines", {"Description", "Type", "ThisMonthAmount", "LastMonthAmount", "VariancePercent"}, {"Description", "Type", "ThisMonthAmount", "LastMonthAmount", "VariancePercent"}),
+				    #"Added Index" = Table.AddIndexColumn(#"Expanded Lines", "Index", 0, 1, Int64.Type),
+				    #"Changed Type" = Table.TransformColumnTypes(#"Added Index",{{"VariancePercent", Percentage.Type}}),
+				    #"Divided Column" = Table.TransformColumns(#"Changed Type", {{"VariancePercent", each _ / 100, Percentage.Type}}),
+				    #"Renamed Columns" = Table.RenameColumns(#"Divided Column",{{"LastMonthAmount", "LastMonth"}, {"ThisMonthAmount", "ThisMonth"}}),
+				    #"Inserted Sign" = Table.AddColumn(#"Renamed Columns", "Sign", each Number.Sign([VariancePercent]), Int64.Type),
+				    #"Added IconFlag" = Table.AddColumn(#"Inserted Sign", "Icon Flag", each if List.Contains(InvertIconList,[Description]) then [Sign] * 2 else [Sign], Int64.Type),
+				    #"Removed Columns" = Table.RemoveColumns(#"Added IconFlag",{"Sign"}),
+				    #"Expanded DataFile" = Table.ExpandRecordColumn(#"Removed Columns", "DataFile", {"DataFileID"}, {"DataFileID"})
+				in
+				    #"Expanded DataFile"
+
+	annotation PBI_ResultType = Table
+

@@ -1,0 +1,168 @@
+table CashFlowTotalsTypes
+	lineageTag: e422501b-595e-4676-adbe-4d280798d67f
+
+	column CashFlowTotal
+		dataType: string
+		lineageTag: a86cc148-4535-4f40-9a08-79015697f3e9
+		summarizeBy: none
+		sourceColumn: CashFlowTotal
+
+		annotation SummarizationSetBy = Automatic
+
+	column AccountType
+		dataType: string
+		lineageTag: fd3f9c30-ee58-41ce-a998-c0a80217d5cd
+		summarizeBy: none
+		sourceColumn: AccountType
+
+		annotation SummarizationSetBy = Automatic
+
+	column DrCrSign
+		dataType: double
+		lineageTag: 62bb2f3e-0cfe-426a-985e-afd704dd4af7
+		summarizeBy: sum
+		sourceColumn: DrCrSign
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column UseOpeningBalance
+		dataType: boolean
+		formatString: """TRUE"";""TRUE"";""FALSE"""
+		lineageTag: 48634ac6-56f2-465a-8198-942fb9af387d
+		summarizeBy: none
+		sourceColumn: UseOpeningBalance
+
+		annotation SummarizationSetBy = Automatic
+
+	column UseMovement
+		dataType: boolean
+		formatString: """TRUE"";""TRUE"";""FALSE"""
+		lineageTag: a6f8f659-f428-4f1d-b92b-96e6d13ab087
+		summarizeBy: none
+		sourceColumn: UseMovement
+
+		annotation SummarizationSetBy = Automatic
+
+	column UseClosingBalance
+		dataType: boolean
+		formatString: """TRUE"";""TRUE"";""FALSE"""
+		lineageTag: b75c1657-94fb-4b97-af62-7278fdd6af60
+		summarizeBy: none
+		sourceColumn: UseClosingBalance
+
+		annotation SummarizationSetBy = Automatic
+
+	partition CashFlowTotalsTypes = m
+		mode: import
+		source = ```
+				let
+				    Source = Table.FromRecords(
+				     {
+				     [CashFlowTotal="OPENINGBANK", AccountType="BANK", DrCrSign=1, UseOpeningBalance=true, UseMovement=false, UseClosingBalance=false],
+				
+				     [CashFlowTotal="INCOME", AccountType="REVENUE", DrCrSign=1, UseOpeningBalance=false, UseMovement=true, UseClosingBalance=false],
+				     [CashFlowTotal="INCOME", AccountType="SALES", DrCrSign=1, UseOpeningBalance=false, UseMovement=true, UseClosingBalance=false],
+				
+				     [CashFlowTotal="DIRECTCOSTS", AccountType="DIRECTCOSTS", DrCrSign=-1, UseOpeningBalance=false, UseMovement=true, UseClosingBalance=false],
+				
+				     [CashFlowTotal="GROSSPROFIT", AccountType="REVENUE", DrCrSign=1, UseOpeningBalance=false, UseMovement=true, UseClosingBalance=false],
+				     [CashFlowTotal="GROSSPROFIT", AccountType="SALES", DrCrSign=1, UseOpeningBalance=false, UseMovement=true, UseClosingBalance=false],
+				     [CashFlowTotal="GROSSPROFIT", AccountType="DIRECTCOSTS", DrCrSign=-1, UseOpeningBalance=false, UseMovement=true, UseClosingBalance=false],
+				
+				     [CashFlowTotal="OTHERINCOME", AccountType="OTHERINCOME", DrCrSign=1, UseOpeningBalance=false, UseMovement=true, UseClosingBalance=false],
+				
+				     [CashFlowTotal="EXPENSES", AccountType="EXPENSE", DrCrSign=-1, UseOpeningBalance=false, UseMovement=true, UseClosingBalance=false],
+				     [CashFlowTotal="EXPENSES", AccountType="OVERHEADS", DrCrSign=-1, UseOpeningBalance=false, UseMovement=true, UseClosingBalance=false],
+				     [CashFlowTotal="EXPENSES", AccountType="DEPRECIATN", DrCrSign=-1, UseOpeningBalance=false, UseMovement=true, UseClosingBalance=false],
+				     [CashFlowTotal="EXPENSES", AccountType="WAGESEXPENSE", DrCrSign=-1, UseOpeningBalance=false, UseMovement=true, UseClosingBalance=false],
+				     [CashFlowTotal="EXPENSES", AccountType="SUPERANNUATIONEXPENSE", DrCrSign=-1, UseOpeningBalance=false, UseMovement=true, UseClosingBalance=false],
+				
+				     [CashFlowTotal="NETPROFIT", AccountType="REVENUE", DrCrSign=1, UseOpeningBalance=false, UseMovement=true, UseClosingBalance=false],
+				     [CashFlowTotal="NETPROFIT", AccountType="SALES", DrCrSign=1, UseOpeningBalance=false, UseMovement=true, UseClosingBalance=false],
+				     [CashFlowTotal="NETPROFIT", AccountType="OTHERINCOME", DrCrSign=1, UseOpeningBalance=false, UseMovement=true, UseClosingBalance=false],
+				     [CashFlowTotal="NETPROFIT", AccountType="DIRECTCOSTS", DrCrSign=-1, UseOpeningBalance=false, UseMovement=true, UseClosingBalance=false],
+				     [CashFlowTotal="NETPROFIT", AccountType="EXPENSE", DrCrSign=-1, UseOpeningBalance=false, UseMovement=true, UseClosingBalance=false],
+				     [CashFlowTotal="NETPROFIT", AccountType="OVERHEADS", DrCrSign=-1, UseOpeningBalance=false, UseMovement=true, UseClosingBalance=false],
+				     [CashFlowTotal="NETPROFIT", AccountType="DEPRECIATN", DrCrSign=-1, UseOpeningBalance=false, UseMovement=true, UseClosingBalance=false],
+				     [CashFlowTotal="NETPROFIT", AccountType="WAGESEXPENSE", DrCrSign=-1, UseOpeningBalance=false, UseMovement=true, UseClosingBalance=false],
+				     [CashFlowTotal="NETPROFIT", AccountType="SUPERANNUATIONEXPENSE", DrCrSign=-1, UseOpeningBalance=false, UseMovement=true, UseClosingBalance=false],
+				
+				     [CashFlowTotal="ASSETS", AccountType="CURRENT", DrCrSign=-1, UseOpeningBalance=false, UseMovement=true, UseClosingBalance=false],
+				     [CashFlowTotal="ASSETS", AccountType="INVENTORY", DrCrSign=-1, UseOpeningBalance=false, UseMovement=true, UseClosingBalance=false],
+				     [CashFlowTotal="ASSETS", AccountType="PREPAYMENT", DrCrSign=-1, UseOpeningBalance=false, UseMovement=true, UseClosingBalance=false],
+				     [CashFlowTotal="ASSETS", AccountType="FIXED", DrCrSign=-1, UseOpeningBalance=false, UseMovement=true, UseClosingBalance=false],
+				     [CashFlowTotal="ASSETS", AccountType="NONCURRENT", DrCrSign=-1, UseOpeningBalance=false, UseMovement=true, UseClosingBalance=false],
+				
+				     [CashFlowTotal="LIABILITIES", AccountType="CURRLIAB", DrCrSign=1, UseOpeningBalance=false, UseMovement=true, UseClosingBalance=false],
+				     [CashFlowTotal="LIABILITIES", AccountType="LIABILITY", DrCrSign=1, UseOpeningBalance=false, UseMovement=true, UseClosingBalance=false],
+				     [CashFlowTotal="LIABILITIES", AccountType="TERMLIAB", DrCrSign=1, UseOpeningBalance=false, UseMovement=true, UseClosingBalance=false],
+				     [CashFlowTotal="LIABILITIES", AccountType="PAYGLIABILITY", DrCrSign=1, UseOpeningBalance=false, UseMovement=true, UseClosingBalance=false],
+				     [CashFlowTotal="LIABILITIES", AccountType="SUPERANNUATIONLIABILITY", DrCrSign=1, UseOpeningBalance=false, UseMovement=true, UseClosingBalance=false],
+				
+				     [CashFlowTotal="NETASSETS", AccountType="CURRENT", DrCrSign=-1, UseOpeningBalance=false, UseMovement=true, UseClosingBalance=false],
+				     [CashFlowTotal="NETASSETS", AccountType="INVENTORY", DrCrSign=-1, UseOpeningBalance=false, UseMovement=true, UseClosingBalance=false],
+				     [CashFlowTotal="NETASSETS", AccountType="PREPAYMENT", DrCrSign=-1, UseOpeningBalance=false, UseMovement=true, UseClosingBalance=false],
+				     [CashFlowTotal="NETASSETS", AccountType="FIXED", DrCrSign=-1, UseOpeningBalance=false, UseMovement=true, UseClosingBalance=false],
+				     [CashFlowTotal="NETASSETS", AccountType="NONCURRENT", DrCrSign=-1, UseOpeningBalance=false, UseMovement=true, UseClosingBalance=false],
+				     [CashFlowTotal="NETASSETS", AccountType="CURRLIAB", DrCrSign=1, UseOpeningBalance=false, UseMovement=true, UseClosingBalance=false],
+				     [CashFlowTotal="NETASSETS", AccountType="LIABILITY", DrCrSign=1, UseOpeningBalance=false, UseMovement=true, UseClosingBalance=false],
+				     [CashFlowTotal="NETASSETS", AccountType="TERMLIAB", DrCrSign=1, UseOpeningBalance=false, UseMovement=true, UseClosingBalance=false],
+				     [CashFlowTotal="NETASSETS", AccountType="PAYGLIABILITY", DrCrSign=1, UseOpeningBalance=false, UseMovement=true, UseClosingBalance=false],
+				     [CashFlowTotal="NETASSETS", AccountType="SUPERANNUATIONLIABILITY", DrCrSign=1, UseOpeningBalance=false, UseMovement=true, UseClosingBalance=false],
+				
+				     [CashFlowTotal="EQUITY", AccountType="EQUITY", DrCrSign=1, UseOpeningBalance=false, UseMovement=true, UseClosingBalance=false],
+				
+				     [CashFlowTotal="CLOSINGBANK", AccountType="BANK", DrCrSign=1, UseOpeningBalance=false, UseMovement=false, UseClosingBalance=true],
+				
+				     [CashFlowTotal="OPENINGCASHBALANCE", AccountType="BANK", DrCrSign=1, UseOpeningBalance=true, UseMovement=false, UseClosingBalance=false],
+				
+				     [CashFlowTotal="NETCASHMOVEMENT", AccountType="CURRENT", DrCrSign=-1, UseOpeningBalance=false, UseMovement=true, UseClosingBalance=false],
+				     [CashFlowTotal="NETCASHMOVEMENT", AccountType="INVENTORY", DrCrSign=-1, UseOpeningBalance=false, UseMovement=true, UseClosingBalance=false],
+				     [CashFlowTotal="NETCASHMOVEMENT", AccountType="PREPAYMENT", DrCrSign=-1, UseOpeningBalance=false, UseMovement=true, UseClosingBalance=false],
+				     [CashFlowTotal="NETCASHMOVEMENT", AccountType="FIXED", DrCrSign=-1, UseOpeningBalance=false, UseMovement=true, UseClosingBalance=false],
+				     [CashFlowTotal="NETCASHMOVEMENT", AccountType="NONCURRENT", DrCrSign=-1, UseOpeningBalance=false, UseMovement=true, UseClosingBalance=false],
+				     [CashFlowTotal="NETCASHMOVEMENT", AccountType="CURRLIAB", DrCrSign=1, UseOpeningBalance=false, UseMovement=true, UseClosingBalance=false],
+				     [CashFlowTotal="NETCASHMOVEMENT", AccountType="LIABILITY", DrCrSign=1, UseOpeningBalance=false, UseMovement=true, UseClosingBalance=false],
+				     [CashFlowTotal="NETCASHMOVEMENT", AccountType="TERMLIAB", DrCrSign=1, UseOpeningBalance=false, UseMovement=true, UseClosingBalance=false],
+				     [CashFlowTotal="NETCASHMOVEMENT", AccountType="PAYGLIABILITY", DrCrSign=1, UseOpeningBalance=false, UseMovement=true, UseClosingBalance=false],
+				     [CashFlowTotal="NETCASHMOVEMENT", AccountType="SUPERANNUATIONLIABILITY", DrCrSign=1, UseOpeningBalance=false, UseMovement=true, UseClosingBalance=false],
+				     [CashFlowTotal="NETCASHMOVEMENT", AccountType="EQUITY", DrCrSign=1, UseOpeningBalance=false, UseMovement=true, UseClosingBalance=false],
+				
+				     [CashFlowTotal="CLOSINGCASHBALANCE", AccountType="CURRENT", DrCrSign=-1, UseOpeningBalance=false, UseMovement=true, UseClosingBalance=false],
+				     [CashFlowTotal="CLOSINGCASHBALANCE", AccountType="INVENTORY", DrCrSign=-1, UseOpeningBalance=false, UseMovement=true, UseClosingBalance=false],
+				     [CashFlowTotal="CLOSINGCASHBALANCE", AccountType="PREPAYMENT", DrCrSign=-1, UseOpeningBalance=false, UseMovement=true, UseClosingBalance=false],
+				     [CashFlowTotal="CLOSINGCASHBALANCE", AccountType="FIXED", DrCrSign=-1, UseOpeningBalance=false, UseMovement=true, UseClosingBalance=false],
+				     [CashFlowTotal="CLOSINGCASHBALANCE", AccountType="NONCURRENT", DrCrSign=-1, UseOpeningBalance=false, UseMovement=true, UseClosingBalance=false],
+				     [CashFlowTotal="CLOSINGCASHBALANCE", AccountType="CURRLIAB", DrCrSign=1, UseOpeningBalance=false, UseMovement=true, UseClosingBalance=false],
+				     [CashFlowTotal="CLOSINGCASHBALANCE", AccountType="LIABILITY", DrCrSign=1, UseOpeningBalance=false, UseMovement=true, UseClosingBalance=false],
+				     [CashFlowTotal="CLOSINGCASHBALANCE", AccountType="TERMLIAB", DrCrSign=1, UseOpeningBalance=false, UseMovement=true, UseClosingBalance=false],
+				     [CashFlowTotal="CLOSINGCASHBALANCE", AccountType="PAYGLIABILITY", DrCrSign=1, UseOpeningBalance=false, UseMovement=true, UseClosingBalance=false],
+				     [CashFlowTotal="CLOSINGCASHBALANCE", AccountType="SUPERANNUATIONLIABILITY", DrCrSign=1, UseOpeningBalance=false, UseMovement=true, UseClosingBalance=false],
+				     [CashFlowTotal="CLOSINGCASHBALANCE", AccountType="EQUITY", DrCrSign=1, UseOpeningBalance=false, UseMovement=true, UseClosingBalance=false],
+				     [CashFlowTotal="CLOSINGCASHBALANCE", AccountType="BANK", DrCrSign=1, UseOpeningBalance=true, UseMovement=false, UseClosingBalance=false],
+				
+				     [CashFlowTotal="OUTOFBALANCE", AccountType="CURRENT", DrCrSign=-1, UseOpeningBalance=false, UseMovement=true, UseClosingBalance=false],
+				     [CashFlowTotal="OUTOFBALANCE", AccountType="INVENTORY", DrCrSign=-1, UseOpeningBalance=false, UseMovement=true, UseClosingBalance=false],
+				     [CashFlowTotal="OUTOFBALANCE", AccountType="PREPAYMENT", DrCrSign=-1, UseOpeningBalance=false, UseMovement=true, UseClosingBalance=false],
+				     [CashFlowTotal="OUTOFBALANCE", AccountType="FIXED", DrCrSign=-1, UseOpeningBalance=false, UseMovement=true, UseClosingBalance=false],
+				     [CashFlowTotal="OUTOFBALANCE", AccountType="NONCURRENT", DrCrSign=-1, UseOpeningBalance=false, UseMovement=true, UseClosingBalance=false],
+				     [CashFlowTotal="OUTOFBALANCE", AccountType="CURRLIAB", DrCrSign=1, UseOpeningBalance=false, UseMovement=true, UseClosingBalance=false],
+				     [CashFlowTotal="OUTOFBALANCE", AccountType="LIABILITY", DrCrSign=1, UseOpeningBalance=false, UseMovement=true, UseClosingBalance=false],
+				     [CashFlowTotal="OUTOFBALANCE", AccountType="TERMLIAB", DrCrSign=1, UseOpeningBalance=false, UseMovement=true, UseClosingBalance=false],
+				     [CashFlowTotal="OUTOFBALANCE", AccountType="PAYGLIABILITY", DrCrSign=1, UseOpeningBalance=false, UseMovement=true, UseClosingBalance=false],
+				     [CashFlowTotal="OUTOFBALANCE", AccountType="SUPERANNUATIONLIABILITY", DrCrSign=1, UseOpeningBalance=false, UseMovement=true, UseClosingBalance=false],
+				     [CashFlowTotal="OUTOFBALANCE", AccountType="EQUITY", DrCrSign=1, UseOpeningBalance=false, UseMovement=true, UseClosingBalance=false],
+				     [CashFlowTotal="OUTOFBALANCE", AccountType="BANK", DrCrSign=1, UseOpeningBalance=true, UseMovement=false, UseClosingBalance=false],
+				     [CashFlowTotal="OUTOFBALANCE", AccountType="BANK", DrCrSign=-1, UseOpeningBalance=false, UseMovement=false, UseClosingBalance=true]
+				     }, 
+				     type table[CashFlowTotal=text, AccountType=text, DrCrSign=number, UseOpeningBalance=logical, UseMovement=logical, UseClosingBalance=logical]
+				),
+				    #"Renamed Columns" = Table.RenameColumns(Source,{{"CashFlowTotal", "CashFlowTotal"}})
+				in
+				    #"Renamed Columns"
+				```
+
+	annotation PBI_ResultType = Table
+

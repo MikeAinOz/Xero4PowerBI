@@ -1,0 +1,137 @@
+table BudgetSummaryByMonth
+	lineageTag: ca0970df-f33d-4e7a-8726-336e267bd2ca
+
+	measure Budget = ```
+			IF(
+			        SELECTEDVALUE(AccountsTotals[IsAccountClassification]) = FALSE
+			        && (ISFILTERED(Accounts) = TRUE() || ISFILTERED(AccountsTypes) = TRUE()), 
+			            BLANK(), 
+			            SUMX(AccountsTotalsTypes, CALCULATE(SUM(BudgetSummaryByMonth[Amount])) * AccountsTotalsTypes[DrCrSign])
+			    )   
+			```
+		formatString: #,##0.00;(#,##0.00)
+		lineageTag: d59456dc-9bbf-4019-8bfc-482b982f1e30
+
+		annotation PBI_FormatHint = {"isCustom":true}
+
+	measure Variance = [Movement] - [Budget]
+		formatString: #,##0.00;(#,##0.00)
+		lineageTag: 522be694-0da2-4619-900f-a6922eb4ac71
+
+		annotation PBI_FormatHint = {"isCustom":true}
+
+	column FinancialYear
+		dataType: int64
+		formatString: 0
+		lineageTag: 2fd4277c-10fa-41a9-ae51-90610cf6172f
+		summarizeBy: sum
+		sourceColumn: FinancialYear
+
+		annotation SummarizationSetBy = Automatic
+
+	column UpdatedDateUTC
+		dataType: dateTime
+		formatString: General Date
+		lineageTag: 40e870db-aeb4-42ec-bb9e-0c1d13fc3421
+		summarizeBy: none
+		sourceColumn: UpdatedDateUTC
+
+		annotation SummarizationSetBy = Automatic
+
+	column LineType
+		dataType: string
+		lineageTag: 38efe2ad-e3be-43c3-ae22-d8f557a93a87
+		summarizeBy: none
+		sourceColumn: LineType
+
+		annotation SummarizationSetBy = Automatic
+
+	column AccountID
+		dataType: string
+		lineageTag: 7bc2d652-b760-4698-99a5-25a0b2d397b6
+		summarizeBy: none
+		sourceColumn: AccountID
+
+		annotation SummarizationSetBy = Automatic
+
+	column AccountName
+		dataType: string
+		lineageTag: 7f30e099-f50d-4a40-a341-adabef9d5e05
+		summarizeBy: none
+		sourceColumn: AccountName
+
+		annotation SummarizationSetBy = Automatic
+
+	column AccountLineType
+		dataType: string
+		lineageTag: 8b58d63c-4143-4c22-bda9-fcc5f37e7aa9
+		summarizeBy: none
+		sourceColumn: AccountLineType
+
+		annotation SummarizationSetBy = Automatic
+
+	column Date
+		dataType: dateTime
+		formatString: Short Date
+		lineageTag: 1a45a4ec-03bc-4926-bef4-3bdf3cf1ea1d
+		summarizeBy: none
+		sourceColumn: Date
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation UnderlyingDateTimeDataType = Date
+
+	column Amount
+		dataType: double
+		lineageTag: 05d8ce8d-f93e-40a7-ba72-3953adbd631b
+		summarizeBy: sum
+		sourceColumn: Amount
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column Code
+		dataType: string
+		lineageTag: 08004274-8737-42ee-9d7e-5558aa8bc283
+		summarizeBy: none
+		sourceColumn: Code
+
+		annotation SummarizationSetBy = Automatic
+
+	column ReportKey
+		dataType: string
+		lineageTag: 3350de2c-4c5a-45e6-8ffe-8bc5ec6da3ff
+		summarizeBy: none
+		sourceColumn: ReportKey
+
+		annotation SummarizationSetBy = Automatic
+
+	column DataFileID
+		dataType: string
+		lineageTag: d6c73a58-5c38-4939-aabe-35902efb0d35
+		summarizeBy: none
+		sourceColumn: DataFileID
+
+		annotation SummarizationSetBy = Automatic
+
+	partition BudgetSummaryByMonth-10654550-d91c-4633-af14-da4ebfcd3b90 = m
+		mode: import
+		queryGroup: Budgets
+		source =
+				let
+				    Source = OData.Feed(odatalink, null, [Implementation="2.0"]),
+				    #"BudgetSummaryByMonth_function (FinancialYear as nullable number) as table" = Source{[Name="BudgetSummaryByMonth",Signature="function (FinancialYear as nullable number) as table"]}[Data],
+				    #"Invoked FunctionBudgetSummaryByMonth_function (FinancialYear as nullable number) as table1" = #"BudgetSummaryByMonth_function (FinancialYear as nullable number) as table"(FinancialYear),
+				    #"Expanded Lines" = Table.ExpandTableColumn(#"Invoked FunctionBudgetSummaryByMonth_function (FinancialYear as nullable number) as table1", "Lines", {"LineType", "AccountID", "AccountName", "AccountLineType", "Amounts"}, {"LineType", "AccountID", "AccountName", "AccountLineType", "Amounts"}),
+				    #"Expanded DataFile" = Table.ExpandRecordColumn(#"Expanded Lines", "DataFile", {"DataFileID"}, {"DataFileID"}),
+				    #"Expanded Amounts" = Table.ExpandTableColumn(#"Expanded DataFile", "Amounts", {"Date", "Amount"}, {"Date", "Amount"}),
+				    #"Filtered Rows" = Table.SelectRows(#"Expanded Amounts", each ([LineType] = "Detail")),
+				    #"Merged Queries" = Table.NestedJoin(#"Filtered Rows", {"AccountID"}, Accounts, {"AccountID"}, "Accounts", JoinKind.LeftOuter),
+				    #"Expanded Accounts" = Table.ExpandTableColumn(#"Merged Queries", "Accounts", {"Code"}, {"Code"}),
+				    #"Added Custom" = Table.AddColumn(#"Expanded Accounts", "ReportKey", each Number.ToText([FinancialYear],"d4") & fxFmonth(Date.Month([Date])) & [Code])
+				in
+				    #"Added Custom"
+
+	annotation PBI_ResultType = Table
+

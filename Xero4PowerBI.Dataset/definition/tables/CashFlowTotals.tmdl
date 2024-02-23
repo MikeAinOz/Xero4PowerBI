@@ -1,0 +1,72 @@
+table CashFlowTotals
+	lineageTag: 4e6b0ee2-45dd-4d1f-bb42-432a89fc5225
+
+	column CashFlowTotal
+		dataType: string
+		lineageTag: 2a1bebd3-f576-432b-bf58-c49e370aedff
+		summarizeBy: none
+		sourceColumn: CashFlowTotal
+
+		annotation SummarizationSetBy = Automatic
+
+	column CashFlowTotalName
+		dataType: string
+		lineageTag: 431b1d71-633d-4878-86a4-ba164d276448
+		summarizeBy: none
+		sourceColumn: CashFlowTotalName
+		sortByColumn: Order
+
+		changedProperty = SortByColumn
+
+		annotation SummarizationSetBy = Automatic
+
+	column IsAccountClassification
+		dataType: boolean
+		formatString: """TRUE"";""TRUE"";""FALSE"""
+		lineageTag: 3a93a3b0-779f-426b-8711-462c0070b12e
+		summarizeBy: none
+		sourceColumn: IsAccountClassification
+
+		annotation SummarizationSetBy = Automatic
+
+	column Order
+		dataType: double
+		lineageTag: c9effd7e-8ff2-4b03-8064-5e2bfd8aca74
+		summarizeBy: none
+		sourceColumn: Order
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	partition CashFlowTotals = m
+		mode: import
+		source = ```
+				let
+				    Source = Table.FromRecords(
+				     {
+				     [CashFlowTotal="OPENINGBANK", CashFlowTotalName="Opening Bank Balance", IsAccountClassification=true, Order=0],
+				     [CashFlowTotal="INCOME", CashFlowTotalName="Income", IsAccountClassification=true, Order=1],
+				     [CashFlowTotal="DIRECTCOSTS", CashFlowTotalName="Cost Of Sales", IsAccountClassification=true, Order=2],
+				     [CashFlowTotal="GROSSPROFIT", CashFlowTotalName="Gross Profit / (Loss)", IsAccountClassification=false, Order=3],
+				     [CashFlowTotal="OTHERINCOME", CashFlowTotalName="Other Income", IsAccountClassification=true, Order=4],
+				     [CashFlowTotal="EXPENSES", CashFlowTotalName="Operating Expenses", IsAccountClassification=true, Order=5],
+				     [CashFlowTotal="NETPROFIT", CashFlowTotalName="Net Profit", IsAccountClassification=false, Order=6],
+				     [CashFlowTotal="ASSETS", CashFlowTotalName="Assets", IsAccountClassification=true, Order=7],
+				     [CashFlowTotal="LIABILITIES", CashFlowTotalName="Liabilities", IsAccountClassification=true, Order=8],
+				     [CashFlowTotal="NETASSETS", CashFlowTotalName="Net Assets", IsAccountClassification=false, Order=9],
+				     [CashFlowTotal="EQUITY", CashFlowTotalName="Equity", IsAccountClassification=true, Order=10],
+				     [CashFlowTotal="CLOSINGBANK", CashFlowTotalName="Closing Bank Balance", IsAccountClassification=true, Order=11],
+				     [CashFlowTotal="OPENINGCASHBALANCE", CashFlowTotalName="Opening Cash Balance", IsAccountClassification=false, Order=12],
+				     [CashFlowTotal="NETCASHMOVEMENT", CashFlowTotalName="Net Cash Movement", IsAccountClassification=false, Order=13],
+				     [CashFlowTotal="CLOSINGCASHBALANCE", CashFlowTotalName="Closing Cash Balance", IsAccountClassification=false, Order=14],
+				     [CashFlowTotal="OUTOFBALANCE", CashFlowTotalName="Out of Balance", IsAccountClassification=false, Order=15]
+				     }, 
+				     type table[CashFlowTotal=text, CashFlowTotalName=text, IsAccountClassification=logical, Order=number]
+				)
+				in
+				    Source
+				```
+
+	annotation PBI_ResultType = Table
+

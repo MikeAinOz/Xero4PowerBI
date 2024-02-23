@@ -1,0 +1,177 @@
+table Journals
+	lineageTag: a8f4dbc9-5048-4d4e-84fc-1f8c0c54920c
+
+	column JournalID
+		dataType: string
+		lineageTag: 5332d542-1ec9-4cb2-91b3-d37b9e9ea9d3
+		summarizeBy: none
+		sourceColumn: JournalID
+
+		annotation SummarizationSetBy = Automatic
+
+	column JournalDate
+		dataType: dateTime
+		formatString: Short Date
+		lineageTag: 764b81d7-c443-4554-94fd-86e78e3bbafd
+		summarizeBy: none
+		sourceColumn: JournalDate
+
+		changedProperty = FormatString
+
+		annotation SummarizationSetBy = Automatic
+
+	column JournalNumber
+		dataType: int64
+		formatString: 0
+		lineageTag: 79258515-5f7c-4482-941d-6f8c238c21cb
+		summarizeBy: none
+		sourceColumn: JournalNumber
+
+		annotation SummarizationSetBy = User
+
+	column Reference
+		dataType: string
+		lineageTag: 9f32cce5-d7d5-4acb-870c-39dda48fd4c2
+		summarizeBy: none
+		sourceColumn: Reference
+
+		annotation SummarizationSetBy = Automatic
+
+	column SourceID
+		dataType: string
+		lineageTag: d34abc2f-fd8b-4398-90b2-45418917cc6c
+		summarizeBy: none
+		sourceColumn: SourceID
+
+		annotation SummarizationSetBy = Automatic
+
+	column SourceType
+		dataType: string
+		lineageTag: d915a4ed-c131-424f-8119-3c4f3d490337
+		summarizeBy: none
+		sourceColumn: SourceType
+
+		annotation SummarizationSetBy = Automatic
+
+	column CreatedDateUTC
+		dataType: dateTime
+		formatString: General Date
+		lineageTag: e8cadd96-efec-417f-9c73-bc26215e6379
+		summarizeBy: none
+		sourceColumn: CreatedDateUTC
+
+		annotation SummarizationSetBy = Automatic
+
+	column JournalLineID
+		dataType: string
+		lineageTag: db7fd167-175d-4593-b8c8-ce1f08fabb65
+		summarizeBy: none
+		sourceColumn: JournalLineID
+
+		annotation SummarizationSetBy = Automatic
+
+	column AccountID
+		dataType: string
+		lineageTag: adb60fde-50c4-420b-b709-efed911e16bc
+		summarizeBy: none
+		sourceColumn: AccountID
+
+		annotation SummarizationSetBy = Automatic
+
+	column AccountCode
+		dataType: string
+		lineageTag: 7a502726-f3d1-4423-9d1d-73b1774c127d
+		summarizeBy: none
+		sourceColumn: AccountCode
+
+		annotation SummarizationSetBy = Automatic
+
+	column AccountType
+		dataType: string
+		lineageTag: 010b8d35-c118-4515-940b-49504822bf92
+		summarizeBy: none
+		sourceColumn: AccountType
+
+		annotation SummarizationSetBy = Automatic
+
+	column AccountName
+		dataType: string
+		lineageTag: b71b0965-c7d0-444b-95a7-fc263df82cdb
+		summarizeBy: none
+		sourceColumn: AccountName
+
+		annotation SummarizationSetBy = Automatic
+
+	column Description
+		dataType: string
+		lineageTag: bec9e31f-46e8-4fa0-98fe-cb7c01f3a92a
+		summarizeBy: none
+		sourceColumn: Description
+
+		annotation SummarizationSetBy = Automatic
+
+	column NetAmount
+		dataType: double
+		lineageTag: 29062fdc-f554-4fdf-b76a-f59ff28b6c9c
+		summarizeBy: sum
+		sourceColumn: NetAmount
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column GrossAmount
+		dataType: double
+		lineageTag: 67627c5c-1b0d-492b-bf38-4a755dc48d5c
+		summarizeBy: sum
+		sourceColumn: GrossAmount
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column TaxAmount
+		dataType: double
+		lineageTag: 29a62db7-8b96-4ae9-bb93-0d0dfb05ba8e
+		summarizeBy: sum
+		sourceColumn: TaxAmount
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column DataFileID
+		dataType: string
+		lineageTag: b28af765-ae3e-4a19-a7a3-2c68ad30f574
+		summarizeBy: none
+		sourceColumn: DataFileID
+
+		annotation SummarizationSetBy = Automatic
+
+	column EomDate
+		dataType: dateTime
+		formatString: Long Date
+		lineageTag: 11afd4fe-7e92-4bf4-a986-d990601aa17a
+		summarizeBy: none
+		sourceColumn: EomDate
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation UnderlyingDateTimeDataType = Date
+
+	partition Journals-5b5bf9ac-890f-4b40-8e45-ffcb9ba70be5 = m
+		mode: import
+		source =
+				let
+				    Source = OData.Feed(odatalink, null, [Implementation="2.0"]),
+				    JournalsAccrual_table = Source{[Name="JournalsAccrual",Signature="table"]}[Data],
+				    #"Changed Type" = Table.TransformColumnTypes(JournalsAccrual_table,{{"CreatedDateUTC", type datetime}}),
+				    #"Filtered Rows" = Table.SelectRows(#"Changed Type", each Date.IsInPreviousNDays([CreatedDateUTC], 90)),
+				    #"Expanded JournalLines" = Table.ExpandTableColumn(#"Filtered Rows", "JournalLines", {"JournalLineID", "AccountID", "AccountCode", "AccountType", "AccountName", "Description", "NetAmount", "GrossAmount", "TaxAmount"}, {"JournalLineID", "AccountID", "AccountCode", "AccountType", "AccountName", "Description", "NetAmount", "GrossAmount", "TaxAmount"}),
+				    #"Expanded DataFile" = Table.ExpandRecordColumn(#"Expanded JournalLines", "DataFile", {"DataFileID"}, {"DataFileID"}),
+				    #"Added Custom" = Table.AddColumn(#"Expanded DataFile", "EomDate", each Date.EndOfMonth(Date.From([JournalDate])),Date.Type)
+				in
+				    #"Added Custom"
+
+	annotation PBI_ResultType = Table
+
