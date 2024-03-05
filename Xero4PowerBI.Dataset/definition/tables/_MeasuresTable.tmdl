@@ -84,6 +84,56 @@ table _MeasuresTable
 
 		annotation PBI_FormatHint = {"isGeneralNumber":true}
 
+	measure CurrentBalance = CALCULATE(SUM(CurrentExecutiveSummary[ThisMonth]),CurrentExecutiveSummary[Description]="Closing bank balance")
+		formatString: \$#,0;(\$#,0);\$#,0
+		lineageTag: 093527a7-f566-4529-89f5-865a35290386
+
+	measure CashIn =
+			CALCULATE(SUM(AccrualJournalTableRecent[GrossAmount]),
+			         //   AccrualJournalTableRecent[JournalDate] > TODAY() - 60,
+			            AccrualJournalTableRecent[AccountType]="BANK",
+			            AccrualJournalTableRecent[SourceType] IN {"ACCRECPAYMENT","CASHREC"})
+		formatString: \$#,0.###############;(\$#,0.###############);\$#,0.###############
+		lineageTag: a75bb5e0-042b-4fcd-b0a9-448e09f835a2
+
+	measure CashOut =
+			CALCULATE(SUM(AccrualJournalTableRecent[GrossAmount]),
+			          //  AccrualJournalTableRecent[JournalDate] > TODAY() - 60 ,// 60 days for testing
+			            AccrualJournalTableRecent[AccountType]="BANK",
+			            AccrualJournalTableRecent[SourceType] IN {"ACCPAYPAYMENT","CASHPAID","EXPPAYMENT"})  * -1
+		formatString: \$#,0.###############;(\$#,0.###############);\$#,0.###############
+		lineageTag: 79f77d1a-a7f6-441d-99c7-6327bff727b7
+
+	measure Revenue = CALCULATE(SUM(CurrentProfitAndLossTable[Amount]),CurrentProfitAndLossTable[AccountName]="Total Income")
+		formatString: \$#,0.###############;(\$#,0.###############);\$#,0.###############
+		lineageTag: eed2e6b2-f493-445c-8900-19ef59e650ed
+
+	measure CumulativeCash = ```
+			CALCULATE(
+			    Sum(AccrualJournalTableRecent[GrossAmount]),  
+			        AccrualJournalTableRecent[AccountType]="BANK",
+			        AccrualJournalTableRecent[SourceType] IN {"ACCRECPAYMENT","CASHREC","ACCPAYPAYMENT","CASHPAID","EXPPAYMENT"},
+			        ISONORAFTER(AccrualJournalTableRecent[JournalDate], MAX(AccrualJournalTableRecent[JournalDate]), DESC)
+			    ) + [Day30OpeningBalance]
+			
+			```
+		lineageTag: b33b6608-4f92-4285-8a39-137a2d87d81d
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	measure Day30OpeningBalance = SUMX(FILTER(Day31BalanceSheetTable,[AccountName]="Total Bank"),[Amount])
+		lineageTag: 1f14fbcf-ea57-47a1-a5ef-ef44ca3ffb99
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	measure Day31Revenue = CALCULATE(SUM(Day31ProfitAndLossTable[Amount]),Day31ProfitAndLossTable[AccountName]="Total Income")
+		formatString: \$#,0.###############;(\$#,0.###############);\$#,0.###############
+		lineageTag: 94eb9388-895e-4659-89a8-1c2e246ed115
+
+	measure RevenueGrowth = _MeasuresTable[Revenue]/_MeasuresTable[Day31Revenue]
+		formatString: 0.00%;-0.00%;0.00%
+		lineageTag: 726639eb-0ea2-444a-a0d9-5878bdfa8268
+
 	partition _MeasuresTable = m
 		mode: import
 		source =

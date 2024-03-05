@@ -1,0 +1,39 @@
+table Top10Sales
+	lineageTag: 99cc8f9d-2f06-4f95-9ac0-7b664943f896
+
+	column ContactID
+		dataType: string
+		lineageTag: 37af5d9d-1ada-4961-80e8-6fbf20733b7d
+		summarizeBy: none
+		isNameInferred
+		isDataTypeInferred
+		sourceColumn: Invoices[ContactID]
+
+		annotation SummarizationSetBy = Automatic
+
+	column TotalSales
+		dataType: double
+		lineageTag: b86a6d69-1650-4893-9d2f-02ed91fa3577
+		summarizeBy: sum
+		isNameInferred
+		isDataTypeInferred
+		sourceColumn: [TotalSales]
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	partition Top10Sales = calculated
+		mode: import
+		source = ```
+				
+				TOPN(10,
+				SUMMARIZECOLUMNS(
+				    Invoices[ContactID],    
+					FILTER(ALL(Invoices), Invoices[Date] > TODAY() - 30),
+					"TotalSales", SUM(Invoices[Total])
+					), [TotalSales], DESC )
+				```
+
+	annotation PBI_Id = 71e4ccaffd154335a455b3e703bbf0d7
+

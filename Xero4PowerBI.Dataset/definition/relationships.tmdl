@@ -196,3 +196,19 @@ relationship fd73f3fe-efda-40c0-8e22-9ab3ed51fc7c
 	fromColumn: BalanceSheet.AccountID
 	toColumn: Accounts.AccountID
 
+relationship 758f3d49-30c6-4606-b9a5-9588e7cfddb2
+	fromColumn: CurrentExecutiveSummary.Type
+	toColumn: ExecutiveSummaryType.Type
+
+relationship a4b22894-e3c2-46d8-90e1-d7fa3b3baced
+	crossFilteringBehavior: bothDirections
+	fromCardinality: one
+	fromColumn: Contacts.ContactID
+	toColumn: Top10Sales.ContactID
+
+relationship 1324447d-35c2-464c-92f4-428b07cc8998
+	crossFilteringBehavior: bothDirections
+	fromCardinality: one
+	fromColumn: Top10Purchases.ContactID
+	toColumn: Contacts.ContactID
+

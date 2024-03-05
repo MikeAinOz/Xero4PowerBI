@@ -1,0 +1,260 @@
+table AccrualJournalTableRecent
+	lineageTag: faf88976-1180-49a0-a99f-37f2c7c1a362
+
+	column DataFileID
+		dataType: string
+		lineageTag: 9f5567c3-e35c-41a9-adf9-b801a3fc211d
+		summarizeBy: none
+		sourceColumn: DataFileID
+
+		annotation SummarizationSetBy = Automatic
+
+	column DataFileName
+		dataType: string
+		lineageTag: 85d128dc-30ee-45ff-a308-bdc70080a36c
+		summarizeBy: none
+		sourceColumn: DataFileName
+
+		annotation SummarizationSetBy = Automatic
+
+	column DataFileCode
+		dataType: string
+		lineageTag: efecfc11-001c-4359-8ac9-9f89b1fe06df
+		summarizeBy: none
+		sourceColumn: DataFileCode
+
+		annotation SummarizationSetBy = Automatic
+
+	column JournalID
+		dataType: string
+		lineageTag: a8175277-6396-4cd5-aabe-5c988531de2e
+		summarizeBy: none
+		sourceColumn: JournalID
+
+		annotation SummarizationSetBy = Automatic
+
+	column JournalDate
+		dataType: dateTime
+		formatString: Short Date
+		lineageTag: 68c5ac4e-bef9-4e3b-8300-c97b3d6b09cd
+		summarizeBy: none
+		sourceColumn: JournalDate
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation UnderlyingDateTimeDataType = Date
+
+	column JournalNumber
+		dataType: int64
+		formatString: 0
+		lineageTag: 78ee6d7f-420a-4f18-9d49-edb92e16beed
+		summarizeBy: sum
+		sourceColumn: JournalNumber
+
+		annotation SummarizationSetBy = Automatic
+
+	column Reference
+		dataType: string
+		lineageTag: 03825e0a-6c5b-4c86-a59b-423dcffe6bb0
+		summarizeBy: none
+		sourceColumn: Reference
+
+		annotation SummarizationSetBy = Automatic
+
+	column SourceID
+		dataType: string
+		lineageTag: 303945f0-17d3-4129-a973-cf860c0937cd
+		summarizeBy: none
+		sourceColumn: SourceID
+
+		annotation SummarizationSetBy = Automatic
+
+	column SourceType
+		dataType: string
+		lineageTag: 47afb8d6-c75f-4e23-b034-1f022c41724e
+		summarizeBy: none
+		sourceColumn: SourceType
+
+		annotation SummarizationSetBy = Automatic
+
+	column JournalLineID
+		dataType: string
+		lineageTag: 437d0d89-3a26-49d5-b07f-f448dc49abce
+		summarizeBy: none
+		sourceColumn: JournalLineID
+
+		annotation SummarizationSetBy = Automatic
+
+	column AccountID
+		dataType: string
+		lineageTag: 237d1ae4-fc3b-426e-836c-9bbd4b85eeff
+		summarizeBy: none
+		sourceColumn: AccountID
+
+		annotation SummarizationSetBy = Automatic
+
+	column AccountCode
+		dataType: string
+		lineageTag: 8793bbf9-1038-4c10-96ab-4474afcb5d41
+		summarizeBy: none
+		sourceColumn: AccountCode
+
+		annotation SummarizationSetBy = Automatic
+
+	column AccountType
+		dataType: string
+		lineageTag: 73ba1fd4-a832-4493-b2e8-290125041aec
+		summarizeBy: none
+		sourceColumn: AccountType
+
+		annotation SummarizationSetBy = Automatic
+
+	column AccountName
+		dataType: string
+		lineageTag: 7ba61632-8658-4b16-9cbc-c5b193be5fe1
+		summarizeBy: none
+		sourceColumn: AccountName
+
+		annotation SummarizationSetBy = Automatic
+
+	column Description
+		dataType: string
+		lineageTag: 9bb1e099-2afa-4234-bb1f-2e1b44142a4b
+		summarizeBy: none
+		sourceColumn: Description
+
+		annotation SummarizationSetBy = Automatic
+
+	column NetAmount
+		dataType: double
+		lineageTag: 3f97dd01-e094-4690-bb76-e561e224bee1
+		summarizeBy: sum
+		sourceColumn: NetAmount
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column GrossAmount
+		dataType: double
+		lineageTag: 1813c0ec-04c1-46e1-a29e-db95fa7fa537
+		summarizeBy: sum
+		sourceColumn: GrossAmount
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column TaxAmount
+		dataType: double
+		lineageTag: f23528f1-fbc5-4fef-8590-da772f2318df
+		summarizeBy: sum
+		sourceColumn: TaxAmount
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column TaxType
+		dataType: string
+		lineageTag: 66850be6-86e6-431d-854f-bcb8bb97d916
+		summarizeBy: none
+		sourceColumn: TaxType
+
+		annotation SummarizationSetBy = Automatic
+
+	column TaxName
+		dataType: string
+		lineageTag: 9ae8a2ff-9c77-4ebd-b224-0e74c77002fb
+		summarizeBy: none
+		sourceColumn: TaxName
+
+		annotation SummarizationSetBy = Automatic
+
+	column TrackingCategory1ID
+		dataType: string
+		lineageTag: 4059950e-3c66-477c-97e7-b17e91144c85
+		summarizeBy: none
+		sourceColumn: TrackingCategory1ID
+
+		annotation SummarizationSetBy = Automatic
+
+	column TrackingCategory1Name
+		dataType: string
+		lineageTag: 6b2f5134-6c74-4ed9-8d4a-a395f53e30e7
+		summarizeBy: none
+		sourceColumn: TrackingCategory1Name
+
+		annotation SummarizationSetBy = Automatic
+
+	column TrackingOption1ID
+		dataType: string
+		lineageTag: 1ae2bcff-0695-4a43-afe3-a54a64912e8a
+		summarizeBy: none
+		sourceColumn: TrackingOption1ID
+
+		annotation SummarizationSetBy = Automatic
+
+	column TrackingOption1Name
+		dataType: string
+		lineageTag: d77da78d-835e-40cd-b1a9-70cb0d4787ad
+		summarizeBy: none
+		sourceColumn: TrackingOption1Name
+
+		annotation SummarizationSetBy = Automatic
+
+	column TrackingCategory2ID
+		dataType: string
+		lineageTag: 2fc97c5c-e3f4-4c8c-92a8-52b9e3e188c0
+		summarizeBy: none
+		sourceColumn: TrackingCategory2ID
+
+		annotation SummarizationSetBy = Automatic
+
+	column TrackingCategory2Name
+		dataType: string
+		lineageTag: aef5ff1a-e8eb-4465-9221-a090b6a81f2c
+		summarizeBy: none
+		sourceColumn: TrackingCategory2Name
+
+		annotation SummarizationSetBy = Automatic
+
+	column TrackingOption2ID
+		dataType: string
+		lineageTag: 61971b66-d52f-483f-ade7-8b2aa74cef86
+		summarizeBy: none
+		sourceColumn: TrackingOption2ID
+
+		annotation SummarizationSetBy = Automatic
+
+	column TrackingOption2Name
+		dataType: string
+		lineageTag: 6a67c7d7-d469-427a-9be7-f6ed1cb7a4aa
+		summarizeBy: none
+		sourceColumn: TrackingOption2Name
+
+		annotation SummarizationSetBy = Automatic
+
+	column CreatedDateUTC
+		dataType: dateTime
+		formatString: General Date
+		lineageTag: 5862c0be-bc9a-4d1c-a68d-74ab7b416d6f
+		summarizeBy: none
+		sourceColumn: CreatedDateUTC
+
+		annotation SummarizationSetBy = Automatic
+
+	partition AccrualJournalTableRecent = m
+		mode: import
+		source =
+				let
+				    Source = OData.Feed(odatalink, null, [Implementation="2.0"]),
+				    TodaysDate = DateTime.Date(DateTime.LocalNow()),
+				    FromDate = Date.AddDays(TodaysDate,-60),
+				    JournalsAccrual_table = Source{[Name="JournalsAccrualTable",Signature="table"]}[Data],
+				    #"Filtered Rows" = Table.SelectRows(JournalsAccrual_table, each [JournalDate] > FromDate)
+				in
+				    #"Filtered Rows"
+
+	annotation PBI_ResultType = Table
+

@@ -20,7 +20,7 @@ table ExecutiveSummaryType
 		dataType: double
 		isHidden
 		lineageTag: 8e0c1473-a159-478c-933b-bd46520c625f
-		summarizeBy: none
+		summarizeBy: sum
 		sourceColumn: Index
 
 		changedProperty = IsHidden

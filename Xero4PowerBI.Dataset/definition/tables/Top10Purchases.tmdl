@@ -1,0 +1,39 @@
+table Top10Purchases
+	lineageTag: 819c000b-6589-408b-912f-919cb3e6f3bb
+
+	column ContactID
+		dataType: string
+		lineageTag: 2075eccf-4d08-433a-b4c5-9966528df743
+		summarizeBy: none
+		isNameInferred
+		isDataTypeInferred
+		sourceColumn: Purchases[ContactID]
+
+		annotation SummarizationSetBy = Automatic
+
+	column TotalPurchases
+		dataType: double
+		lineageTag: f3fcf54d-433e-4b47-a84e-681f9bda729c
+		summarizeBy: sum
+		isNameInferred
+		isDataTypeInferred
+		sourceColumn: [TotalPurchases]
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	partition Top10Purchases = calculated
+		mode: import
+		source = ```
+				
+				TOPN(10,
+				SUMMARIZECOLUMNS(
+				    Purchases[ContactID],    
+					FILTER(ALL(Purchases), Purchases[Date] > TODAY() - 30),
+					"TotalPurchases", SUM(Purchases[Total])
+					), [TotalPurchases], DESC )
+				```
+
+	annotation PBI_Id = 622dcf96454b42e4b753d497ca336ac6
+

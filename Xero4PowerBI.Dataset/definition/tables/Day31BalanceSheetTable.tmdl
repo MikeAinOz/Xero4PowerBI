@@ -1,0 +1,95 @@
+table Day31BalanceSheetTable
+	lineageTag: f1e43a19-cb20-41cf-b794-f387b8745034
+
+	column DataFileID
+		dataType: string
+		lineageTag: d90e7809-b838-4684-b966-914a76d86ab2
+		summarizeBy: none
+		sourceColumn: DataFileID
+
+		annotation SummarizationSetBy = Automatic
+
+	column DataFileName
+		dataType: string
+		lineageTag: 1c3a5e49-8298-4fd4-a815-52acbc9a3b15
+		summarizeBy: none
+		sourceColumn: DataFileName
+
+		annotation SummarizationSetBy = Automatic
+
+	column DataFileCode
+		dataType: string
+		lineageTag: 0df5d5c4-d3f1-4655-be3a-efd9cd05e106
+		summarizeBy: none
+		sourceColumn: DataFileCode
+
+		annotation SummarizationSetBy = Automatic
+
+	column Date
+		dataType: dateTime
+		formatString: Long Date
+		lineageTag: c85bb6b8-3060-4736-90eb-8aa1ec50a923
+		summarizeBy: none
+		sourceColumn: Date
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation UnderlyingDateTimeDataType = Date
+
+	column LineType
+		dataType: string
+		lineageTag: 6018dba6-969b-444c-ba11-553759911296
+		summarizeBy: none
+		sourceColumn: LineType
+
+		annotation SummarizationSetBy = Automatic
+
+	column AccountID
+		dataType: string
+		lineageTag: 826b6432-1a36-4f6c-bf23-e123e5ae7b30
+		summarizeBy: none
+		sourceColumn: AccountID
+
+		annotation SummarizationSetBy = Automatic
+
+	column AccountName
+		dataType: string
+		lineageTag: a3a9c209-05c4-4831-9699-2bdd333a5bc4
+		summarizeBy: none
+		sourceColumn: AccountName
+
+		annotation SummarizationSetBy = Automatic
+
+	column AccountLineType
+		dataType: string
+		lineageTag: 292668b6-b9e3-4f97-a588-e1020910c39c
+		summarizeBy: none
+		sourceColumn: AccountLineType
+
+		annotation SummarizationSetBy = Automatic
+
+	column Amount
+		dataType: double
+		lineageTag: 16458152-3beb-4469-b4fb-7e4d3fa48a5a
+		summarizeBy: sum
+		sourceColumn: Amount
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	partition Day31BalanceSheetTable = m
+		mode: import
+		queryGroup: 'Balance Sheet'
+		source =
+				let
+				    Source = OData.Feed(odatalink, null, [Implementation="2.0"]),
+				    Day31Date = Date.AddDays(DateTime.Date(DateTime.LocalNow()),-31),
+				    #"BalanceSheetTable_function (Date as nullable date, PaymentsOnly as nullable logical, StandardLayout as nullable logical) as table" = Source{[Name="BalanceSheetTable",Signature="function (Date as nullable date, PaymentsOnly as nullable logical, StandardLayout as nullable logical) as table"]}[Data],
+				    #"Invoked FunctionBalanceSheetTable_function (Date as nullable date, PaymentsOnly as nullable logical, StandardLayout as nullable logical) as table1" = #"BalanceSheetTable_function (Date as nullable date, PaymentsOnly as nullable logical, StandardLayout as nullable logical) as table"(Day31Date, null, null),
+				    #"Removed Columns" = Table.RemoveColumns(#"Invoked FunctionBalanceSheetTable_function (Date as nullable date, PaymentsOnly as nullable logical, StandardLayout as nullable logical) as table1",{"UpdatedDateUTC", "PaymentsOnly", "StandardLayout"})
+				in
+				    #"Removed Columns"
+
+	annotation PBI_ResultType = Table
+

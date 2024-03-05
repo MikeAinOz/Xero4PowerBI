@@ -1,0 +1,117 @@
+table CurrentExecutiveSummary
+	lineageTag: 412e3988-8a76-403e-aa3e-2b41cef2a272
+
+	column DataFileID
+		dataType: string
+		lineageTag: 8832bb30-a1b0-4541-9e5c-b01aaba97ab9
+		summarizeBy: none
+		sourceColumn: DataFileID
+
+		annotation SummarizationSetBy = Automatic
+
+	column Date
+		dataType: dateTime
+		formatString: Long Date
+		lineageTag: 6041a62d-048b-442e-84d5-c0ab0619cde0
+		summarizeBy: none
+		sourceColumn: Date
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation UnderlyingDateTimeDataType = Date
+
+	column UpdatedDateUTC
+		dataType: dateTime
+		formatString: General Date
+		lineageTag: 73e07fd4-c0d0-4cde-903c-6d7233ac7290
+		summarizeBy: none
+		sourceColumn: UpdatedDateUTC
+
+		annotation SummarizationSetBy = Automatic
+
+	column Description
+		dataType: string
+		lineageTag: 35f01c18-5252-4551-a343-b29b86dd8cf6
+		summarizeBy: none
+		sourceColumn: Description
+
+		annotation SummarizationSetBy = Automatic
+
+	column Type
+		dataType: string
+		lineageTag: febdbb52-d64e-4976-8e72-9fe43eb1dcbf
+		summarizeBy: none
+		sourceColumn: Type
+
+		annotation SummarizationSetBy = Automatic
+
+	column ThisMonth
+		dataType: double
+		lineageTag: d3d8c750-20a8-4c94-9bfc-0f82de009948
+		summarizeBy: sum
+		sourceColumn: ThisMonth
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column LastMonth
+		dataType: double
+		lineageTag: d0397022-d193-4454-b480-33fe5dab732d
+		summarizeBy: sum
+		sourceColumn: LastMonth
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column VariancePercent
+		dataType: double
+		lineageTag: 28489814-ce08-4a66-a2a2-1b548a17a22d
+		summarizeBy: sum
+		sourceColumn: VariancePercent
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column Index
+		dataType: int64
+		formatString: 0
+		lineageTag: 27c698e6-6f50-4248-8693-f872e6f36dcd
+		summarizeBy: sum
+		sourceColumn: Index
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Icon Flag'
+		dataType: int64
+		formatString: 0
+		lineageTag: fa305cb9-0dd3-41a3-b23f-f1c437669f83
+		summarizeBy: sum
+		sourceColumn: Icon Flag
+
+		annotation SummarizationSetBy = Automatic
+
+	partition CurrentExecutiveSummary = m
+		mode: import
+		queryGroup: 'Executive Summary'
+		source =
+				let
+				    Source = OData.Feed(odatalink, null, [Implementation="2.0"]),
+				    #"ExecutiveSummary_function (Date as nullable date) as table" = Source{[Name="ExecutiveSummary",Signature="function (Date as nullable date) as table"]}[Data],
+				    #"Invoked FunctionExecutiveSummary_function (Date as nullable date) as table1" = #"ExecutiveSummary_function (Date as nullable date) as table"(DateTime.Date(DateTime.LocalNow())),
+				    #"Expanded Lines" = Table.ExpandTableColumn(#"Invoked FunctionExecutiveSummary_function (Date as nullable date) as table1", "Lines", {"Description", "Type", "ThisMonthAmount", "LastMonthAmount", "VariancePercent"}, {"Description", "Type", "ThisMonthAmount", "LastMonthAmount", "VariancePercent"}),
+				    #"Added Index" = Table.AddIndexColumn(#"Expanded Lines", "Index", 0, 1, Int64.Type),
+				    #"Changed Type" = Table.TransformColumnTypes(#"Added Index",{{"VariancePercent", Percentage.Type}}),
+				    #"Divided Column" = Table.TransformColumns(#"Changed Type", {{"VariancePercent", each _ / 100, Percentage.Type}}),
+				    #"Renamed Columns" = Table.RenameColumns(#"Divided Column",{{"LastMonthAmount", "LastMonth"}, {"ThisMonthAmount", "ThisMonth"}}),
+				    #"Inserted Sign" = Table.AddColumn(#"Renamed Columns", "Sign", each Number.Sign([VariancePercent]), Int64.Type),
+				    #"Added IconFlag" = Table.AddColumn(#"Inserted Sign", "Icon Flag", each if List.Contains(InvertIconList,[Description]) then [Sign] * 2 else [Sign], Int64.Type),
+				    #"Removed Columns" = Table.RemoveColumns(#"Added IconFlag",{"Sign"}),
+				    #"Expanded DataFile" = Table.ExpandRecordColumn(#"Removed Columns", "DataFile", {"DataFileID"}, {"DataFileID"})
+				in
+				    #"Expanded DataFile"
+
+	annotation PBI_ResultType = Table
+

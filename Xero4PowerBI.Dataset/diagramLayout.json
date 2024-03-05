@@ -401,6 +401,92 @@
             "width": 234
           },
           "zIndex": 0
+        },
+        {
+          "location": {},
+          "nodeIndex": "Top10Sales",
+          "size": {
+            "height": 200,
+            "width": 234
+          },
+          "zIndex": 0
+        },
+        {
+          "location": {},
+          "nodeIndex": "CurrentExecutiveSummary",
+          "size": {
+            "height": 300,
+            "width": 234
+          },
+          "zIndex": 0
+        },
+        {
+          "location": {},
+          "nodeIndex": "AccrualJournalTableRecent",
+          "size": {
+            "height": 300,
+            "width": 234
+          },
+          "zIndex": 0
+        },
+        {
+          "location": {},
+          "nodeIndex": "CurrentBalanceSheetTable",
+          "nodeLineageTag": "bd015263-7a9c-44c1-8838-3e4216f77c79",
+          "size": {
+            "height": 300,
+            "width": 234
+          },
+          "zIndex": 0
+        },
+        {
+          "location": {},
+          "nodeIndex": "CurrentProfitAndLossTable",
+          "nodeLineageTag": "37bb62e1-70f3-4d4c-922b-4f524fff17a3",
+          "size": {
+            "height": 300,
+            "width": 234
+          },
+          "zIndex": 0
+        },
+        {
+          "location": {},
+          "nodeIndex": "Purchases",
+          "nodeLineageTag": "3b1a2cfa-cdb9-42e7-9bf3-6f80f2acb4f1",
+          "size": {
+            "height": 300,
+            "width": 234
+          },
+          "zIndex": 0
+        },
+        {
+          "location": {},
+          "nodeIndex": "Top10Purchases",
+          "size": {
+            "height": 200,
+            "width": 234
+          },
+          "zIndex": 0
+        },
+        {
+          "location": {},
+          "nodeIndex": "Day31BalanceSheetTable",
+          "nodeLineageTag": "f1e43a19-cb20-41cf-b794-f387b8745034",
+          "size": {
+            "height": 296,
+            "width": 234
+          },
+          "zIndex": 0
+        },
+        {
+          "location": {},
+          "nodeIndex": "Day31ProfitAndLossTable",
+          "nodeLineageTag": "50565c4b-4dc2-471c-853c-27962a033f64",
+          "size": {
+            "height": 300,
+            "width": 234
+          },
+          "zIndex": 0
         }
       ],
       "name": "All tables",
@@ -959,7 +1045,7 @@
     {
       "ordinal": 7,
       "scrollPosition": {
-        "x": 0,
+        "x": 251.40414861748857,
         "y": 0
       },
       "nodes": [
@@ -1074,8 +1160,144 @@
       "showExtraHeaderInfo": false,
       "hideKeyFieldsWhenCollapsed": false,
       "tablesLocked": false
+    },
+    {
+      "ordinal": 8,
+      "scrollPosition": {
+        "x": 0,
+        "y": 0
+      },
+      "nodes": [
+        {
+          "location": {
+            "x": 20,
+            "y": 227
+          },
+          "nodeIndex": "ExecutiveSummary",
+          "nodeLineageTag": "5fc85914-650d-497e-8f48-3ed54639f82f",
+          "size": {
+            "height": 300,
+            "width": 234
+          },
+          "zIndex": 0
+        },
+        {
+          "location": {
+            "x": 343,
+            "y": 0
+          },
+          "nodeIndex": "ExecutiveSummaryType",
+          "nodeLineageTag": "4acf658f-d2dd-45be-9ac7-16420fb77321",
+          "size": {
+            "height": 128,
+            "width": 234
+          },
+          "zIndex": 0
+        },
+        {
+          "location": {
+            "x": 603,
+            "y": 213
+          },
+          "nodeIndex": "CurrentExecutiveSummary",
+          "nodeLineageTag": "412e3988-8a76-403e-aa3e-2b41cef2a272",
+          "size": {
+            "height": 300,
+            "width": 234
+          },
+          "zIndex": 0
+        }
+      ],
+      "name": "ExecutiveSummary",
+      "zoomValue": 100,
+      "pinKeyFieldsToTop": false,
+      "showExtraHeaderInfo": false,
+      "hideKeyFieldsWhenCollapsed": false,
+      "tablesLocked": false
+    },
+    {
+      "ordinal": 9,
+      "scrollPosition": {
+        "x": 0,
+        "y": 0
+      },
+      "nodes": [
+        {
+          "location": {
+            "x": 437,
+            "y": 196
+          },
+          "nodeIndex": "Top10Sales",
+          "nodeLineageTag": "99cc8f9d-2f06-4f95-9ac0-7b664943f896",
+          "size": {
+            "height": 128,
+            "width": 234
+          },
+          "zIndex": 0
+        },
+        {
+          "location": {
+            "x": 7,
+            "y": 270
+          },
+          "nodeIndex": "Contacts",
+          "nodeLineageTag": "9544aa37-389e-408a-8c63-7e0ba1c0db60",
+          "size": {
+            "height": 300,
+            "width": 234
+          },
+          "zIndex": 0
+        },
+        {
+          "location": {
+            "x": 440,
+            "y": 5
+          },
+          "nodeIndex": "Top10Purchases",
+          "nodeLineageTag": "819c000b-6589-408b-912f-919cb3e6f3bb",
+          "size": {
+            "height": 128,
+            "width": 234
+          },
+          "zIndex": 0
+        }
+      ],
+      "name": "Mobile",
+      "zoomValue": 100,
+      "pinKeyFieldsToTop": false,
+      "showExtraHeaderInfo": false,
+      "hideKeyFieldsWhenCollapsed": false,
+      "tablesLocked": false
+    },
+    {
+      "ordinal": 10,
+      "scrollPosition": {
+        "x": 0,
+        "y": 0
+      },
+      "nodes": [
+        {
+          "location": {
+            "x": 341,
+            "y": 210
+          },
+          "nodeIndex": "Day31BalanceSheetTable",
+          "nodeLineageTag": "f1e43a19-cb20-41cf-b794-f387b8745034",
+          "size": {
+            "height": 296,
+            "width": 234
+          },
+          "zIndex": 0
+        }
+      ],
+      "name": "Layout 1",
+      "zoomValue": 100,
+      "pinKeyFieldsToTop": false,
+      "showExtraHeaderInfo": false,
+      "hideKeyFieldsWhenCollapsed": false,
+      "tablesLocked": false
     }
   ],
-  "selectedDiagram": "AccountsReceivable",
+  "selectedDiagram": "Layout 1",
   "defaultDiagram": "All tables"
 }

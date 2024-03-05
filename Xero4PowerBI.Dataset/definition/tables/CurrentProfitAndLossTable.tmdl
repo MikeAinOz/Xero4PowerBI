@@ -1,0 +1,124 @@
+table CurrentProfitAndLossTable
+	lineageTag: 37bb62e1-70f3-4d4c-922b-4f524fff17a3
+
+	column DataFileID
+		dataType: string
+		lineageTag: 1220b756-82c1-4382-a7f2-46b5b6ee7e7f
+		summarizeBy: none
+		sourceColumn: DataFileID
+
+		annotation SummarizationSetBy = Automatic
+
+	column DataFileName
+		dataType: string
+		lineageTag: 4015ef8f-4d9f-4767-83cf-424214356e12
+		summarizeBy: none
+		sourceColumn: DataFileName
+
+		annotation SummarizationSetBy = Automatic
+
+	column DataFileCode
+		dataType: string
+		lineageTag: 414bbc03-5d40-4431-be52-b69ccad72113
+		summarizeBy: none
+		sourceColumn: DataFileCode
+
+		annotation SummarizationSetBy = Automatic
+
+	column FromDate
+		dataType: dateTime
+		formatString: Long Date
+		lineageTag: e6f437ac-bdcf-4863-abee-4a17ad8172a1
+		summarizeBy: none
+		sourceColumn: FromDate
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation UnderlyingDateTimeDataType = Date
+
+	column ToDate
+		dataType: dateTime
+		formatString: Long Date
+		lineageTag: efec709b-f668-4389-8277-aa929cf52c17
+		summarizeBy: none
+		sourceColumn: ToDate
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation UnderlyingDateTimeDataType = Date
+
+	column PaymentsOnly
+		dataType: boolean
+		formatString: """TRUE"";""TRUE"";""FALSE"""
+		lineageTag: 706d5c3d-cb19-499e-81e7-c4d7f7da5193
+		summarizeBy: none
+		sourceColumn: PaymentsOnly
+
+		annotation SummarizationSetBy = Automatic
+
+	column StandardLayout
+		dataType: boolean
+		formatString: """TRUE"";""TRUE"";""FALSE"""
+		lineageTag: cf6073a5-6d82-4ff8-b0fd-cec81f3649d5
+		summarizeBy: none
+		sourceColumn: StandardLayout
+
+		annotation SummarizationSetBy = Automatic
+
+	column LineType
+		dataType: string
+		lineageTag: ae0cd431-e76a-40e9-a4ac-73b39849ac7f
+		summarizeBy: none
+		sourceColumn: LineType
+
+		annotation SummarizationSetBy = Automatic
+
+	column AccountID
+		dataType: string
+		lineageTag: 642b9213-dd08-40ed-8e9c-2f8a0aaa9ad4
+		summarizeBy: none
+		sourceColumn: AccountID
+
+		annotation SummarizationSetBy = Automatic
+
+	column AccountName
+		dataType: string
+		lineageTag: 24d2d5c4-1474-4991-b89f-c583939c0f7b
+		summarizeBy: none
+		sourceColumn: AccountName
+
+		annotation SummarizationSetBy = Automatic
+
+	column AccountLineType
+		dataType: string
+		lineageTag: 4f14aca8-d68b-4c57-84b2-df9cac727958
+		summarizeBy: none
+		sourceColumn: AccountLineType
+
+		annotation SummarizationSetBy = Automatic
+
+	column Amount
+		dataType: double
+		lineageTag: 9f512157-9cc6-41cb-8755-b11562dace64
+		summarizeBy: sum
+		sourceColumn: Amount
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	partition CurrentProfitAndLossTable = m
+		mode: import
+		queryGroup: ProftAndLoss
+		source =
+				let
+				    Source = OData.Feed(odatalink, null, [Implementation="2.0"]),
+				    TodaysDate = DateTime.Date(DateTime.LocalNow()),
+				    StartDate = Date.AddDays(TodaysDate,-30), // I figure there may be no today but start at 30 days ago gives 30 days+ today if any
+				    #"ProfitAndLossTable_function" = Source{[Name="ProfitAndLossTable",Signature="function (FromDate as nullable date, ToDate as nullable date, PaymentsOnly as nullable logical, StandardLayout as nullable logical) as table"]}[Data],
+				    #"Invoked FunctionProfitAndLossTable_function" = #"ProfitAndLossTable_function"(StartDate, TodaysDate, null, null)
+				in
+				    #"Invoked FunctionProfitAndLossTable_function"
+
+	annotation PBI_ResultType = Table
+
