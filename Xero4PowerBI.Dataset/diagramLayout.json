@@ -487,6 +487,16 @@
             "width": 234
           },
           "zIndex": 0
+        },
+        {
+          "location": {},
+          "nodeIndex": "BankSummary",
+          "nodeLineageTag": "840917f0-fd73-4f83-94dc-2f35ec4ff3b1",
+          "size": {
+            "height": 200,
+            "width": 234
+          },
+          "zIndex": 0
         }
       ],
       "name": "All tables",
@@ -619,10 +629,11 @@
         },
         {
           "location": {
-            "x": 613.42612262667194,
+            "x": 720.27288578910452,
             "y": 0
           },
           "nodeIndex": "Accounts",
+          "nodeLineageTag": "291216f6-d528-445e-b37a-502ef422b975",
           "size": {
             "height": 300,
             "width": 234
@@ -631,10 +642,11 @@
         },
         {
           "location": {
-            "x": 943.97252107713666,
-            "y": 27.654456347923745
+            "x": 1109.8992591646791,
+            "y": 18.855311146311642
           },
           "nodeIndex": "AccountsTypes",
+          "nodeLineageTag": "ffe74c23-b262-494b-9a67-9f613d180b8b",
           "size": {
             "height": 128,
             "width": 234
@@ -671,9 +683,10 @@
             "y": 0
           },
           "nodeIndex": "BudgetSummaryByMonth",
+          "nodeLineageTag": "ca0970df-f33d-4e7a-8726-336e267bd2ca",
           "size": {
             "height": 300,
-            "width": 234
+            "width": 276.73870526497308
           },
           "zIndex": 1
         },
@@ -1298,6 +1311,6 @@
       "tablesLocked": false
     }
   ],
-  "selectedDiagram": "Layout 1",
+  "selectedDiagram": "ProfitAndLossMultiPeriod",
   "defaultDiagram": "All tables"
 }

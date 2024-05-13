@@ -30,11 +30,11 @@ queryGroup Budgets
 
 	annotation PBI_QueryGroupOrder = 5
 
-annotation PBIDesktopVersion = 2.126.1261.0 (24.02)
+annotation PBIDesktopVersion = 2.128.1380.0 (24.04)
 
 annotation __PBI_TimeIntelligenceEnabled = 0
 
-annotation PBI_QueryOrder = ["Accounts","AccountsClass","AccountsReceivable","AccType","Bills","Contacts","DataFiles","Dates","DatesByMonth","DatesByYear","Invoices","Journals","Organisation","ExecutiveSummary","ExecutiveSummaryType","BalanceSheet","BalanceSheetDetail","fxFmonth","BudgetsAmounts","BudgetSummary","BudgetSummaryByMonth","TrialBalance","BalanceSheetByMonth","BalanceSheetReportIndented","CurrentBalanceSheetTable","fxIndent","odatalink","Items","SalesItems","FinancialYear","InvertIconList","NumberOfMonths","AccountsTypes","AccountsTotals","AccountsTotalsTypes","ProfitAndLoss","Logo","CashFlowTotalsTypes","CashFlowTotals","_MeasuresTable","CurrentExecutiveSummary","AccrualJournalTableRecent","CurrentProfitAndLossTable","Purchases","Day31BalanceSheetTable","Day31ProfitAndLossTable"]
+annotation PBI_QueryOrder = ["Accounts","AccountsClass","AccountsReceivable","AccType","Bills","Contacts","DataFiles","Dates","DatesByMonth","DatesByYear","Invoices","Journals","Organisation","ExecutiveSummary","ExecutiveSummaryType","BalanceSheet","BalanceSheetDetail","fxFmonth","BudgetsAmounts","BudgetSummary","BudgetSummaryByMonth","TrialBalance","BalanceSheetByMonth","BalanceSheetReportIndented","CurrentBalanceSheetTable","fxIndent","odatalink","Items","SalesItems","FinancialYear","InvertIconList","NumberOfMonths","AccountsTypes","AccountsTotals","AccountsTotalsTypes","ProfitAndLoss","Logo","CashFlowTotalsTypes","CashFlowTotals","_MeasuresTable","CurrentExecutiveSummary","AccrualJournalTableRecent","CurrentProfitAndLossTable","Purchases","Day31BalanceSheetTable","Day31ProfitAndLossTable","BankSummary"]
 
 annotation PBI_ProTooling = ["DevMode","DaxQueryView_Desktop"]
 
@@ -74,10 +74,11 @@ ref table _MeasuresTable
 ref table Top10Sales
 ref table CurrentExecutiveSummary
 ref table AccrualJournalTableRecent
-ref table CurrentBalanceSheetTable
 ref table CurrentProfitAndLossTable
 ref table Purchases
 ref table Top10Purchases
 ref table Day31BalanceSheetTable
 ref table Day31ProfitAndLossTable
+ref table CurrentBalanceSheetTable
+ref table BankSummary
 

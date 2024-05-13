@@ -87,7 +87,7 @@ table Day31BalanceSheetTable
 				    Day31Date = Date.AddDays(DateTime.Date(DateTime.LocalNow()),-31),
 				    #"BalanceSheetTable_function (Date as nullable date, PaymentsOnly as nullable logical, StandardLayout as nullable logical) as table" = Source{[Name="BalanceSheetTable",Signature="function (Date as nullable date, PaymentsOnly as nullable logical, StandardLayout as nullable logical) as table"]}[Data],
 				    #"Invoked FunctionBalanceSheetTable_function (Date as nullable date, PaymentsOnly as nullable logical, StandardLayout as nullable logical) as table1" = #"BalanceSheetTable_function (Date as nullable date, PaymentsOnly as nullable logical, StandardLayout as nullable logical) as table"(Day31Date, null, null),
-				    #"Removed Columns" = Table.RemoveColumns(#"Invoked FunctionBalanceSheetTable_function (Date as nullable date, PaymentsOnly as nullable logical, StandardLayout as nullable logical) as table1",{"UpdatedDateUTC", "PaymentsOnly", "StandardLayout"})
+				    #"Removed Columns" = Table.RemoveColumns(#"Invoked FunctionBalanceSheetTable_function (Date as nullable date, PaymentsOnly as nullable logical, StandardLayout as nullable logical) as table1",{"PaymentsOnly", "StandardLayout"})
 				in
 				    #"Removed Columns"
 

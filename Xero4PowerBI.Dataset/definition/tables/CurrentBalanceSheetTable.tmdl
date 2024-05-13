@@ -1,9 +1,9 @@
 table CurrentBalanceSheetTable
-	lineageTag: bd015263-7a9c-44c1-8838-3e4216f77c79
+	lineageTag: bf7d3868-7627-4feb-8a53-d3f1ee6b741c
 
 	column DataFileID
 		dataType: string
-		lineageTag: 5b5a1739-5456-437d-9968-407727e3bec4
+		lineageTag: d2127822-c5c1-43ee-9028-95591c31f985
 		summarizeBy: none
 		sourceColumn: DataFileID
 
@@ -11,7 +11,7 @@ table CurrentBalanceSheetTable
 
 	column DataFileName
 		dataType: string
-		lineageTag: 7ab9e23a-35dc-4fff-bec6-b03dcc071f52
+		lineageTag: 7ee99d7b-ff2f-4564-b8d1-6791c907be75
 		summarizeBy: none
 		sourceColumn: DataFileName
 
@@ -19,7 +19,7 @@ table CurrentBalanceSheetTable
 
 	column DataFileCode
 		dataType: string
-		lineageTag: e1427ffd-4b4b-4ec2-87f2-91f67475bfe0
+		lineageTag: 34364537-e7c7-4e1e-8216-b3fc3703b0ef
 		summarizeBy: none
 		sourceColumn: DataFileCode
 
@@ -28,7 +28,7 @@ table CurrentBalanceSheetTable
 	column Date
 		dataType: dateTime
 		formatString: Long Date
-		lineageTag: b0457665-f52f-4044-9940-f5ae57f8550f
+		lineageTag: c14dc78f-06e0-460c-afc9-13cf5a77f946
 		summarizeBy: none
 		sourceColumn: Date
 
@@ -36,9 +36,27 @@ table CurrentBalanceSheetTable
 
 		annotation UnderlyingDateTimeDataType = Date
 
+	column PaymentsOnly
+		dataType: boolean
+		formatString: """TRUE"";""TRUE"";""FALSE"""
+		lineageTag: 4e4a8be5-6104-4b6d-a405-948186ad6152
+		summarizeBy: none
+		sourceColumn: PaymentsOnly
+
+		annotation SummarizationSetBy = Automatic
+
+	column StandardLayout
+		dataType: boolean
+		formatString: """TRUE"";""TRUE"";""FALSE"""
+		lineageTag: 6bd5e2fe-422c-4341-9da3-584f214d6e5a
+		summarizeBy: none
+		sourceColumn: StandardLayout
+
+		annotation SummarizationSetBy = Automatic
+
 	column LineType
 		dataType: string
-		lineageTag: 801ff10c-8722-467a-975c-ca545a0a358b
+		lineageTag: 7e93011a-6d37-4c1c-9d9c-50a6d9f5ffe5
 		summarizeBy: none
 		sourceColumn: LineType
 
@@ -46,7 +64,7 @@ table CurrentBalanceSheetTable
 
 	column AccountID
 		dataType: string
-		lineageTag: 2a704e3d-cf1e-45cd-ab94-211e194ca77d
+		lineageTag: f5f649f8-87cd-4686-aa16-01f709720d4b
 		summarizeBy: none
 		sourceColumn: AccountID
 
@@ -54,7 +72,7 @@ table CurrentBalanceSheetTable
 
 	column AccountName
 		dataType: string
-		lineageTag: 4ee3f7bc-c5b1-4bed-9a8b-7cb82991f270
+		lineageTag: 175b84e6-6d89-46dc-904e-a4fb5c3a6b5b
 		summarizeBy: none
 		sourceColumn: AccountName
 
@@ -62,7 +80,7 @@ table CurrentBalanceSheetTable
 
 	column AccountLineType
 		dataType: string
-		lineageTag: 25b7a603-e174-4daa-acc5-96f4e51b0f44
+		lineageTag: 0f61f5a8-9c02-44a1-876e-e427d1fabf79
 		summarizeBy: none
 		sourceColumn: AccountLineType
 
@@ -70,7 +88,7 @@ table CurrentBalanceSheetTable
 
 	column Amount
 		dataType: double
-		lineageTag: c4f49508-1117-4c6b-b8c1-e2e2091f1d1e
+		lineageTag: f9d7c35c-10df-40c2-b928-3f48fd5cce2d
 		summarizeBy: sum
 		sourceColumn: Amount
 
@@ -85,10 +103,9 @@ table CurrentBalanceSheetTable
 				let
 				    Source = OData.Feed(odatalink, null, [Implementation="2.0"]),
 				    #"BalanceSheetTable_function (Date as nullable date, PaymentsOnly as nullable logical, StandardLayout as nullable logical) as table" = Source{[Name="BalanceSheetTable",Signature="function (Date as nullable date, PaymentsOnly as nullable logical, StandardLayout as nullable logical) as table"]}[Data],
-				    #"Invoked FunctionBalanceSheetTable_function (Date as nullable date, PaymentsOnly as nullable logical, StandardLayout as nullable logical) as table1" = #"BalanceSheetTable_function (Date as nullable date, PaymentsOnly as nullable logical, StandardLayout as nullable logical) as table"(DateTime.Date(DateTime.LocalNow()), null, null),
-				    #"Removed Columns" = Table.RemoveColumns(#"Invoked FunctionBalanceSheetTable_function (Date as nullable date, PaymentsOnly as nullable logical, StandardLayout as nullable logical) as table1",{"UpdatedDateUTC", "PaymentsOnly", "StandardLayout"})
+				    #"Invoked FunctionBalanceSheetTable_function (Date as nullable date, PaymentsOnly as nullable logical, StandardLayout as nullable logical) as table1" = #"BalanceSheetTable_function (Date as nullable date, PaymentsOnly as nullable logical, StandardLayout as nullable logical) as table"(DateTime.Date(DateTime.LocalNow()), null, null)
 				in
-				    #"Removed Columns"
+				    #"Invoked FunctionBalanceSheetTable_function (Date as nullable date, PaymentsOnly as nullable logical, StandardLayout as nullable logical) as table1"
 
 	annotation PBI_ResultType = Table
 

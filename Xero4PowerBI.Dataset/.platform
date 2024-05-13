@@ -1,0 +1,11 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/gitIntegration/platformProperties/2.0.0/schema.json",
+  "metadata": {
+    "type": "SemanticModel",
+    "displayName": "Xero4PowerBI"
+  },
+  "config": {
+    "version": "2.0",
+    "logicalId": "f53c5074-ea1d-431d-a64b-3ac6d7f9609f"
+  }
+}

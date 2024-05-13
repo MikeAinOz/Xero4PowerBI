@@ -1,0 +1,82 @@
+table BankSummary
+	lineageTag: 840917f0-fd73-4f83-94dc-2f35ec4ff3b1
+
+	column FromDate
+		dataType: dateTime
+		formatString: Long Date
+		lineageTag: 0785aaaf-050d-4e7f-b752-e0c5bc043766
+		summarizeBy: none
+		sourceColumn: FromDate
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation UnderlyingDateTimeDataType = Date
+
+	column ToDate
+		dataType: dateTime
+		formatString: Long Date
+		lineageTag: 1442e796-2cd7-4a07-b628-6e7899081c38
+		summarizeBy: none
+		sourceColumn: ToDate
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation UnderlyingDateTimeDataType = Date
+
+	column UpdatedDateUTC
+		dataType: dateTime
+		formatString: General Date
+		lineageTag: 6d1092bd-78d4-40f5-a6d3-2125d334c2d8
+		summarizeBy: none
+		sourceColumn: UpdatedDateUTC
+
+		annotation SummarizationSetBy = Automatic
+
+	column AccountName
+		dataType: string
+		lineageTag: df7fdac4-e533-4e52-820b-ea14b7c28af2
+		summarizeBy: none
+		sourceColumn: AccountName
+
+		annotation SummarizationSetBy = Automatic
+
+	column Balance
+		dataType: double
+		lineageTag: 323685e9-0a41-4061-9cf0-89f52404db11
+		summarizeBy: sum
+		sourceColumn: Balance
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column AbsoluteBalance
+		dataType: int64
+		formatString: 0
+		lineageTag: b63a656b-4d49-49b0-b52b-2ad7cedefc8f
+		summarizeBy: sum
+		sourceColumn: AbsoluteBalance
+
+		changedProperty = DataType
+
+		annotation SummarizationSetBy = Automatic
+
+	partition BankSummary = m
+		mode: import
+		source =
+				let
+				    Source = OData.Feed(odatalink, null, [Implementation="2.0"]),
+				    BankSummary_function = Source{[Name="BankSummary",Signature="function (FromDate as nullable date, ToDate as nullable date) as table"]}[Data],
+				    Today = DateTime.Date(DateTime.LocalNow()),
+				    SOM = Date.StartOfMonth(Today),
+				    BankSummary = BankSummary_function(SOM, Today),
+				    #"Expanded Lines" = Table.ExpandTableColumn(BankSummary, "Lines", {"AccountName", "ClosingBalanceAmount"}, {"AccountName", "ClosingBalanceAmount"}),
+				    #"Filtered Rows" = Table.SelectRows(#"Expanded Lines", each ([AccountName] <> "Total")),
+				    #"Rounded Off" = Table.TransformColumns(#"Filtered Rows",{{"ClosingBalanceAmount", each Number.Round(_, 0), type number}}),
+				    #"Renamed Columns" = Table.RenameColumns(#"Rounded Off",{{"ClosingBalanceAmount", "Balance"}}),
+				    #"Added Custom" = Table.AddColumn(#"Renamed Columns", "AbsoluteBalance", each Number.Abs([Balance]))
+				in
+				    #"Added Custom"
+
+	annotation PBI_ResultType = Table
+

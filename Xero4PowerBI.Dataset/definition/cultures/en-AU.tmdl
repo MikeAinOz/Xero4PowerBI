@@ -4,7 +4,6 @@ culture en-AU
 			{
 			  "Version": "3.1.0",
 			  "Language": "en-US",
-			  "DynamicImprovement": "HighConfidence",
 			  "Entities": {
 			    "acc_type": {
 			      "Definition": {

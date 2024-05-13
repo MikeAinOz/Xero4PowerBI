@@ -45,7 +45,7 @@ expression fxIndent = ```
 expression odatalink = "https://data.odatalink.com/Mik-All-857730/bellandwhistle/BellAn/" meta [IsParameterQuery=true, Type="Text", IsParameterQueryRequired=true]
 	lineageTag: a5afbc33-9337-4ecb-8b6c-3c4873236314
 
-	annotation PBI_ResultType = Exception
+	annotation PBI_ResultType = Text
 
 expression FinancialYear = 2024 meta [IsParameterQuery=true, Type="Number", IsParameterQueryRequired=true]
 	lineageTag: d9236e19-338a-4e49-8233-bdfcd6097819

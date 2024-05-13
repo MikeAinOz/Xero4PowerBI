@@ -134,6 +134,26 @@ table _MeasuresTable
 		formatString: 0.00%;-0.00%;0.00%
 		lineageTag: 726639eb-0ea2-444a-a0d9-5878bdfa8268
 
+	measure ReceivablesOutstanding = SUMX(ALL(AccountsReceivable),[AmountDue])
+		formatString: \$#,0.###############;(\$#,0.###############);\$#,0.###############
+		lineageTag: 723bc0fe-c66a-4616-9efd-ca3235d24bb0
+
+	measure ReceivablesOverdue = SUMX(FILTER(ALL(AccountsReceivable), AccountsReceivable[DueDate] < TODAY()),[AmountDue])
+		formatString: \$#,0.###############;(\$#,0.###############);\$#,0.###############
+		lineageTag: 64cd263a-5e44-47ac-a1f0-ffa63141ae15
+
+	measure CostOfSales = CALCULATE(SUM(CurrentProfitAndLossTable[Amount]),CurrentProfitAndLossTable[AccountName]="Total Cost of Sales")
+		formatString: \$#,0.###############;(\$#,0.###############);\$#,0.###############
+		lineageTag: 1a4fe676-7a26-4042-9628-3513e61b61c8
+
+	measure OperatingExpenses = CALCULATE(SUM(CurrentProfitAndLossTable[Amount]),CurrentProfitAndLossTable[AccountName]="Total Operating Expenses")
+		formatString: \$#,0.###############;(\$#,0.###############);\$#,0.###############
+		lineageTag: 9bf63e34-845c-40e6-a1b4-e03a61162108
+
+	measure GrossProfit = CALCULATE(SUM(CurrentProfitAndLossTable[Amount]),CurrentProfitAndLossTable[AccountName]="Gross Profit")
+		formatString: \$#,0.###############;(\$#,0.###############);\$#,0.###############
+		lineageTag: 525fec0f-b0ee-40f0-9772-85f8258435ec
+
 	partition _MeasuresTable = m
 		mode: import
 		source =
